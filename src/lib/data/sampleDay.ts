@@ -3,12 +3,12 @@ import { DeliveryRequest, Vehicle } from '../../types';
 export const INITIAL_VEHICLES: Vehicle[] = [
   {
     id: "V-101",
-    driverName: "Ramesh Kumar (Prime Express Van)",
+    driverName: "Ramesh Kumar (Express Delivery Van)",
     plate: "TS-09-UB-4021",
     capacityKg: 75,
     currentLoadKg: 0,
     status: "available",
-    startLocationId: "Amazon FC (Begumpet)",
+    startLocationId: "Main Parcel Warehouse",
     completedStopsCount: 0
   },
   {
@@ -18,7 +18,7 @@ export const INITIAL_VEHICLES: Vehicle[] = [
     capacityKg: 120,
     currentLoadKg: 0,
     status: "available",
-    startLocationId: "Amazon FC (Begumpet)",
+    startLocationId: "Main Parcel Warehouse",
     completedStopsCount: 0
   },
   {
@@ -28,7 +28,7 @@ export const INITIAL_VEHICLES: Vehicle[] = [
     capacityKg: 45,
     currentLoadKg: 0,
     status: "available",
-    startLocationId: "Amazon FC (Begumpet)",
+    startLocationId: "Main Parcel Warehouse",
     completedStopsCount: 0
   }
 ];
@@ -36,7 +36,7 @@ export const INITIAL_VEHICLES: Vehicle[] = [
 export const INITIAL_DELIVERIES: DeliveryRequest[] = [
   {
     id: "DEL-101",
-    pickupLocationId: "Amazon FC (Begumpet)",
+    pickupLocationId: "Main Parcel Warehouse",
     dropLocationId: "Woxsen University",
     weightKg: 6.5,
     profit: 1450,
@@ -241,7 +241,7 @@ export const INITIAL_DELIVERIES: DeliveryRequest[] = [
   {
     id: "DEL-118",
     pickupLocationId: "Secunderabad",
-    dropLocationId: "Amazon FC (Begumpet)",
+    dropLocationId: "Main Parcel Warehouse",
     weightKg: 1.5,
     profit: 420,
     deadlineMinutesFromStart: 180,
@@ -444,14 +444,14 @@ export const INITIAL_DELIVERIES: DeliveryRequest[] = [
   },
   {
     id: "DEL-135",
-    pickupLocationId: "Amazon FC (Begumpet)",
+    pickupLocationId: "Main Parcel Warehouse",
     dropLocationId: "Gachibowli",
     weightKg: 4.0,
     profit: 760,
     deadlineMinutesFromStart: 200,
     priority: "HIGH",
     status: "pending",
-    packageType: "Same-Day Prime Consumer Electronics",
+    packageType: "Same-Day Express Consumer Electronics",
     riskLevel: "SAFE"
   }
 ];

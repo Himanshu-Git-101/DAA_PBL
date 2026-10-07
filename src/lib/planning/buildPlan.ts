@@ -11,7 +11,7 @@ export function buildCompletePlan(
   vehicle: Vehicle,
   candidates: DeliveryRequest[],
   strategy: PlanningStrategy = "dp_knapsack",
-  depotId: string = "Amazon FC (Begumpet)"
+  depotId: string = "Main Parcel Warehouse"
 ): FinalPlan {
   // Step 1: Pre-filtering impossible candidates
   // E.g. individual items whose direct travel time alone exceeds deadline

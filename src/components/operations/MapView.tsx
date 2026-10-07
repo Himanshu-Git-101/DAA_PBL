@@ -372,7 +372,7 @@ export const MapView: React.FC<MapViewProps> = ({
           </div>
 
           <span className="text-[11px] text-slate-500 font-medium hidden sm:inline">
-            Hyderabad Logistics Corridor (Begumpet Depot)
+            Hyderabad Logistics Corridor (Main Parcel Warehouse)
           </span>
         </div>
 

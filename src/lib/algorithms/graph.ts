@@ -67,7 +67,7 @@ export class LogisticsGraph {
 }
 
 /**
- * Hyderabad metropolitan logistics graph with Amazon Fulfillment Center (Begumpet) as Central Depot,
+ * Hyderabad metropolitan logistics graph with Main Parcel Warehouse as Central Depot,
  * extended with Woxsen University and major Greater Hyderabad logistic corridors.
  */
 export function createHyderabadNetwork(): LogisticsGraph {
@@ -75,9 +75,9 @@ export function createHyderabadNetwork(): LogisticsGraph {
 
   const hyderabadLocations: Location[] = [
     {
-      id: "Amazon FC (Begumpet)",
-      name: "Amazon FC (Begumpet)",
-      area: "Central Logistics Hub",
+      id: "Main Parcel Warehouse",
+      name: "Main Parcel Warehouse",
+      area: "Begumpet Central Logistics Hub",
       lat: 17.4447,
       lng: 78.4664,
       kind: "depot",
@@ -337,11 +337,11 @@ export function createHyderabadNetwork(): LogisticsGraph {
     ["Hitec City", "Madhapur", 3.0],
     ["Hitec City", "Kukatpally", 5.0],
 
-    // Central & Begumpet Hub
-    ["Amazon FC (Begumpet)", "Ameerpet", 3.0],
-    ["Amazon FC (Begumpet)", "Secunderabad", 5.0],
-    ["Amazon FC (Begumpet)", "Banjara Hills", 4.0],
-    ["Amazon FC (Begumpet)", "Koti", 6.0],
+    // Central & Depot Hub
+    ["Main Parcel Warehouse", "Ameerpet", 3.0],
+    ["Main Parcel Warehouse", "Secunderabad", 5.0],
+    ["Main Parcel Warehouse", "Banjara Hills", 4.0],
+    ["Main Parcel Warehouse", "Koti", 6.0],
     ["Ameerpet", "Madhapur", 6.0],
     ["Ameerpet", "Kukatpally", 6.0],
 

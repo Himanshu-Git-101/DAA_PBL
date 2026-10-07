@@ -9,7 +9,7 @@ interface Lab2DijkstraProps {
 
 export const Lab2Dijkstra: React.FC<Lab2DijkstraProps> = ({ graph }) => {
   const locations = graph.getAllLocations();
-  const [startId, setStartId] = useState<string>("Amazon FC (Begumpet)");
+  const [startId, setStartId] = useState<string>("Main Parcel Warehouse");
   const [destId, setDestId] = useState<string>("Woxsen University");
   const [stepIdx, setStepIdx] = useState<number>(0);
 

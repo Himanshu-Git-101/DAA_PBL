@@ -79,7 +79,7 @@ export const VivaGuide: React.FC = () => {
               <span>Step 1: Problem Statement & Graph Representation (1 min)</span>
             </div>
             <p className="text-slate-600 pl-7 leading-relaxed">
-              "We model last-mile logistics in Hyderabad as an undirected weighted road network with 13 hubs centered on Amazon FC (Begumpet). Hubs are vertices and arterial roads are edges stored as an Adjacency List to guarantee <code>O(V + E)</code> spatial efficiency over dense matrices."
+              "We model last-mile logistics in Hyderabad as an undirected weighted road network with 13 hubs centered on Main Parcel Warehouse. Hubs are vertices and arterial roads are edges stored as an Adjacency List to guarantee <code>O(V + E)</code> spatial efficiency over dense matrices."
             </p>
           </li>
 

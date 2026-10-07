@@ -1,7 +1,7 @@
 """
 graph.py - Graph representation using an Adjacency List.
 Supports 2D coordinates, 3D spatial elevations, and real GPS coordinates (Latitude & Longitude).
-Includes a dedicated Hyderabad logistics network with Amazon Fulfillment Center (Depot).
+Includes a dedicated Hyderabad logistics network with Main Parcel Warehouse (Depot).
 """
 from typing import Dict, List, Tuple, Optional
 
@@ -98,13 +98,13 @@ def create_sample_city() -> Graph:
 def create_hyderabad_city() -> Graph:
     """
     Creates an authentic Hyderabad metropolitan logistics network.
-    Central Warehouse: Amazon Fulfillment Centre (Begumpet / Central Hub)
+    Central Warehouse: Main Parcel Warehouse (Begumpet / Central Hub)
     Connected to key commercial, residential, and tech districts.
     Includes real Latitude & Longitude coordinates for map tiles.
     """
     g = Graph()
     locations = [
-        ("Amazon FC (Begumpet)", (5.0, 5.0, 1.0), {"lat": 17.4447, "lon": 78.4664}, "Amazon Warehouse"),
+        ("Main Parcel Warehouse", (5.0, 5.0, 1.0), {"lat": 17.4447, "lon": 78.4664}, "Main Parcel Warehouse"),
         ("Hitec City", (2.2, 7.2, 3.8), {"lat": 17.4504, "lon": 78.3808}, "Tech Hub"),
         ("Gachibowli", (1.6, 6.0, 4.2), {"lat": 17.4401, "lon": 78.3489}, "Financial District"),
         ("Madhapur", (3.0, 7.0, 3.5), {"lat": 17.4483, "lon": 78.3915}, "Commercial Hub"),
@@ -138,10 +138,10 @@ def create_hyderabad_city() -> Graph:
         ("Miyapur", "Kondapur", 6),
         ("Kondapur", "Hitec City", 4),
         ("Kondapur", "Gachibowli", 5),
-        ("Amazon FC (Begumpet)", "Ameerpet", 3),
-        ("Amazon FC (Begumpet)", "Secunderabad", 5),
-        ("Amazon FC (Begumpet)", "Banjara Hills", 4),
-        ("Amazon FC (Begumpet)", "Koti", 6),
+        ("Main Parcel Warehouse", "Ameerpet", 3),
+        ("Main Parcel Warehouse", "Secunderabad", 5),
+        ("Main Parcel Warehouse", "Banjara Hills", 4),
+        ("Main Parcel Warehouse", "Koti", 6),
         ("Ameerpet", "Madhapur", 6),
         ("Madhapur", "Hitec City", 3),
         ("Hitec City", "Gachibowli", 4),

@@ -68,7 +68,7 @@ export const Lab0Assumptions: React.FC<Lab0AssumptionsProps> = ({
             </li>
             <li className="flex items-start gap-2">
               <span className="text-orange-500 font-bold">•</span>
-              <span><strong>Depot Origin:</strong> Amazon FC (Begumpet) at time <code>t = 0</code> mins.</span>
+              <span><strong>Depot Origin:</strong> Main Parcel Warehouse at time <code>t = 0</code> mins.</span>
             </li>
           </ul>
         </div>

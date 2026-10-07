@@ -28,7 +28,7 @@ export function buildFeasibleRouteSchedule(
   graph: LogisticsGraph,
   vehicle: Vehicle,
   candidates: DeliveryRequest[],
-  depotId: string = "Amazon FC (Begumpet)",
+  depotId: string = "Main Parcel Warehouse",
   serviceTimeMinutes: number = 3.0,
   speedKmH: number = 28
 ): RouteScheduleOutcome {
