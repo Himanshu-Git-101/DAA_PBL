@@ -89,33 +89,6 @@ SmartRoute is built with zero-credential resilience:
 
 ---
 
-## 🎓 5–7 Minute Faculty Viva Walkthrough Script
-
-| Time | Stage | Action & Explanation |
-| :--- | :--- | :--- |
-| **0:00 - 1:00** | **Operations Overview** | Point to the KPI strip and delivery list. Explain parcel weights, profits, and deadlines. Select vehicle `V-101` (25 kg capacity). |
-| **1:00 - 2:00** | **Plan Generation** | Click **Plan Deliveries**. Show how 0/1 Knapsack DP selects the optimal subset while the stop sequence is constructed respecting **Pickup-Before-Drop** and deadlines. |
-| **2:00 - 3:30** | **Algorithm Lab: Graph & Dijkstra** | Switch to **Algorithm Lab**. Show Lab 1 (Adjacency List vs Matrix). Open Lab 2 and step through the Binary Min-Heap relaxation arithmetic: $\text{currDist} + \text{edge} < \text{oldDist}$. |
-| **3:30 - 5:00** | **Lab 4: 0/1 Knapsack DP** | Inspect the 2D DP table. Click a cell to display Bellman's recurrence: $\max(\text{skip}, \text{take})$. Trace the golden backtracking path. |
-| **5:00 - 6:00** | **Lab 5: Route Feasibility Repair** | Show load tracking after each stop (starts at 0 kg, never exceeds vehicle capacity). Demonstrate how late deliveries are transparently repaired. |
-| **6:00 - 7:00** | **Viva Defense & Academic Honesty** | Deliver the core boundary statement: Dijkstra solves shortest paths, Knapsack solves item value, and the stop sequencer is a polynomial heuristic—not a global VRP solver. |
-
----
-
-## 📖 Examiner Viva Glossary
-
-- **Vertex (Node):** A physical location, hub, or customer address in the service network.
-- **Edge:** A direct road connection with non-negative distance in km and travel time in minutes.
-- **Weight:** The cost of traversing an edge (road distance in km).
-- **Adjacency List:** A graph representation taking $O(|V| + |E|)$ memory, optimal for sparse street networks.
-- **Min-Heap (Priority Queue):** Complete binary tree maintaining minimum element at the root for $O(\log |V|)$ extraction.
-- **Relaxation:** Updating a neighbor's tentative distance if a shorter path is discovered via the current node.
-- **Greedy Choice:** Making the locally optimal decision at each step without backtracking ($O(n \log n)$).
-- **0/1 Knapsack DP:** Sub-problem memoization maximizing parcel profit within vehicle weight ($O(n \times C)$).
-- **Feasibility:** Guaranteeing that vehicle capacity is never exceeded and all delivered packages arrive before their deadline.
-- **Heuristic:** A practical polynomial-time approximation for NP-hard logistics problems.
-
----
 
 ## ⚖️ Academic Limitations & Boundary Statement
 
