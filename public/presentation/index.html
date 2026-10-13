@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartRoute - Creative Project Presentation | DAA PBL</title>
+  <title>SmartRoute — DAA Algorithmic Optimization Presentation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream-bg: #F4EFEA;
-      --deep-teal: #0B3B3C;
-      --terracotta: #E85923;
-      --lime-green: #84CC16;
-      --pastel-peach: #F8B68D;
-      --pastel-green: #F1F8E9;
-      --pastel-orange: #FFF3EB;
-      --white: #FFFFFF;
-      --slate-dark: #1E293B;
-      --slate-muted: #64748B;
-      --border: #E5DFD7;
+      --bg-canvas: #E9E4DB;
+      --text-dark: #241C1C;
+      --text-muted: #736964;
+      --text-white: #FFFFFF;
+      --accent-coral: #E85923;
+      --accent-magenta: #E12D8C;
+      --accent-cyan: #00B4D8;
+      --accent-lime: #8BC34A;
+      --card-white: #FFFFFF;
+      --card-border: #D7D0C6;
+      --font-title: 'The Seasons', 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     * {
@@ -29,1577 +30,1364 @@
     }
 
     body {
-      font-family: 'Tenor Sans', 'Inter', -apple-system, sans-serif;
-      background: var(--cream-bg);
-      color: var(--slate-dark);
+      background-color: #241C1C;
+      font-family: var(--font-body);
+      color: var(--text-dark);
       overflow: hidden;
-      height: 100vh;
-      width: 100vw;
-      user-select: none;
-    }
-
-    /* Deck Layout */
-    .deck-container {
-      
-      width: 100vw;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      background: var(--cream-bg);
+      user-select: none;
     }
 
-    /* Top Nav Bar */
-    .deck-header {
-      height: 64px;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--border);
+    /* Top Action Bar */
+    header.deck-header {
+      background: #1A1414;
+      color: #E9E4DB;
+      padding: 10px 24px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 0 28px;
-      z-index: 50;
-    }
-
-    .brand-section {
-      display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .brand-floret {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
     }
 
     .brand-title {
-      font-family: 'Tenor Sans', serif;
-      font-weight: 700;
-      font-size: 22px;
-      color: var(--deep-teal);
-      letter-spacing: -0.5px;
-    }
-
-    .brand-badge {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      color: var(--white);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      background: var(--terracotta);
-      padding: 3px 10px;
-      border-radius: 9999px;
-      margin-left: 8px;
-    }
-
-    .academic-info {
+      font-family: var(--font-title);
+      font-size: 16px;
+      letter-spacing: 0.05em;
       display: flex;
       align-items: center;
-      gap: 16px;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      color: var(--slate-dark);
+      gap: 10px;
     }
 
-    .academic-pill {
-      background: var(--white);
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 9999px;
+    .brand-tag {
+      background: var(--text-dark);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #E9E4DB;
+      font-family: var(--font-body);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.08em;
       font-weight: 600;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }
-
-    .academic-pill strong {
-      color: var(--terracotta);
     }
 
     .header-controls {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .btn-control {
-      font-family: 'Inter', sans-serif;
-      padding: 7px 14px;
-      border-radius: 9999px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      color: var(--deep-teal);
-      font-size: 12px;
-      font-weight: 700;
+    .btn-action {
+      background: rgba(255,255,255,0.08);
+      color: #E9E4DB;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: var(--font-body);
+      font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.2s ease;
       text-decoration: none;
+      transition: all 0.2s ease;
     }
 
-    .btn-control:hover {
-      background: var(--terracotta);
-      color: var(--white);
-      border-color: var(--terracotta);
-      transform: translateY(-1px);
+    .btn-action:hover {
+      background: rgba(255,255,255,0.18);
+      color: #FFFFFF;
+      border-color: rgba(255,255,255,0.4);
     }
 
-    .btn-pptx {
-      background: var(--deep-teal);
-      color: var(--white);
-      border-color: var(--deep-teal);
+    .btn-action.primary {
+      background: var(--accent-coral);
+      color: #FFF;
+      border-color: var(--accent-coral);
     }
 
-    .btn-pptx:hover {
-      background: var(--terracotta);
-      border-color: var(--terracotta);
+    .btn-action.primary:hover {
+      background: #D04818;
     }
 
-    /* Main Slide Stage */
-    .deck-stage {
+    /* Presentation Slide Stage */
+    main.deck-stage {
       flex: 1;
-      
-      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px 32px;
+      padding: 16px;
+      position: relative;
+      background: #1C1616;
+    }
+
+    .slide-viewport {
+      width: 100%;
+      max-width: 1280px;
+      aspect-ratio: 16 / 9;
+      background-color: var(--bg-canvas);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+      display: flex;
     }
 
     .slide {
-
       position: absolute;
-      width: calc(100% - 64px) !important;
-      max-width: 1440px;
-      height: calc(100% - 40px);
-      background: var(--white);
-      border-radius: 28px;
-      border: 2px solid var(--border);
-      box-shadow: 0 16px 36px -12px rgba(11, 59, 60, 0.08);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       padding: 44px 56px;
       display: flex;
       flex-direction: column;
       opacity: 0;
-      visibility: hidden;
-      transform: translateX(50px) scale(0.98);
-      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(10px);
+      box-sizing: border-box;
       overflow: hidden;
     }
 
     .slide.active {
       opacity: 1;
-      visibility: visible;
-      transform: translateX(0) scale(1);
-      z-index: 10;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
-    .slide.prev {
-      transform: translateX(-50px) scale(0.98);
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    /* Template Specific Slide Background Variations */
-    .slide-bg-cream {
-      background: var(--cream-bg) !important;
-    }
-    .slide-bg-lime {
-      background: var(--lime-green) !important;
-      color: var(--white) !important;
-    }
-    .slide-bg-orange {
-      background: var(--terracotta) !important;
-      color: var(--white) !important;
-    }
-    .slide-bg-teal {
-      background: var(--deep-teal) !important;
-      color: var(--white) !important;
-    }
-
-    /* Header in Slide */
-    .slide-tag {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--terracotta);
-      margin-bottom: 8px;
-      display: flex;
+    /* Common Components */
+    .capsule-pill {
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .slide-tag::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--terracotta);
-      display: inline-block;
+      justify-content: center;
+      background: var(--text-dark);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      width: fit-content;
+      margin-bottom: 12px;
     }
 
     .slide-title {
-      font-family: 'Tenor Sans', serif;
+      font-family: var(--font-title);
       font-size: 34px;
       font-weight: 700;
-      color: var(--deep-teal);
-      letter-spacing: -0.5px;
-      line-height: 1.25;
-      margin-bottom: 24px;
+      color: var(--text-dark);
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      margin-bottom: 14px;
     }
 
-    .slide-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      overflow-y: auto;
-      padding-right: 6px;
-    }
-
-    /* Grids & Creative Shapes */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    /* Creative Pastel Cards */
-    .card {
-      background: var(--white);
-      border: 2px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      
-      transition: all 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(11, 59, 60, 0.06);
-      border-color: var(--terracotta);
-    }
-
-    .card-peach {
-      background: var(--pastel-orange);
-      border-color: #FED7AA;
-    }
-
-    .card-lime {
-      background: var(--pastel-green);
-      border-color: #D9F99D;
-    }
-
-    .card-teal {
-      background: #E6F0F0;
-      border-color: #B2D8D8;
-    }
-
-    .card-title {
-      font-family: 'Tenor Sans', serif;
-      font-size: 18px;
+    .slide-subtitle {
+      font-family: var(--font-body);
+      font-size: 11px;
       font-weight: 700;
-      color: var(--deep-teal);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
-    .card-desc {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: #334155;
-      line-height: 1.65;
-    }
-
-    /* SVG Starburst & Floret Badges */
-    .starburst-badge {
-      width: 52px;
-      height: 52px;
+    .slim-accent-pill {
       position: absolute;
-      top: -18px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: white;
-      font-size: 14px;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+      right: 28px;
+      top: 10%;
+      height: 80%;
+      width: 12px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent-magenta) 0%, var(--accent-coral) 50%, var(--accent-lime) 100%);
+      opacity: 0.85;
     }
 
-    /* Road Motifs */
-    .road-timeline {
-      
+    /* Slide 1 Cover Layout */
+    .slide-cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .cover-banner {
       width: 100%;
-      height: 70px;
-      background: var(--deep-teal);
-      border-radius: 9999px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      padding: 0 40px;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
-      margin: 30px 0;
-    }
-
-    .road-centerline {
-      position: absolute;
-      width: calc(100% - 60px);
-      height: 0;
-      border-top: 4px dashed var(--lime-green);
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .road-stop-pin {
-      
-      z-index: 10;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--terracotta);
-      border: 3px solid var(--white);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 13px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-    }
-
-    /* Image Frame with Creative Organic Cutout */
-    .mockup-frame {
+      height: 48%;
       border-radius: 20px;
-      border: 2px solid var(--border);
       overflow: hidden;
-      background: #0F172A;
-      box-shadow: 0 16px 32px rgba(11, 59, 60, 0.08);
-      
-      cursor: zoom-in;
-      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    .mockup-frame:hover {
-      transform: scale(1.01);
-      box-shadow: 0 20px 40px rgba(232, 89, 35, 0.15);
-      border-color: var(--terracotta);
-    }
-
-    .mockup-frame img {
+    .cover-banner img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
       object-fit: cover;
     }
 
-    .mockup-caption {
-      padding: 12px 18px;
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      font-family: 'Inter', sans-serif;
-      font-size: 12.5px;
+    .cover-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cover-title {
+      font-family: var(--font-title);
+      font-size: 42px;
       font-weight: 700;
-      color: var(--deep-teal);
+      letter-spacing: 0.02em;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .cover-credits {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(36,28,28,0.15);
+      font-size: 10px;
+      color: var(--text-dark);
+      font-weight: 600;
+      letter-spacing: 0.05em;
     }
 
-    /* Big Metric Starbursts (Template Slide 14 & 15 style) */
-    .metric-starburst-box {
+    /* 2-Column Split Layout (Slide 2, 3, 5, 11, 16) */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 4.8fr 7.2fr;
+      gap: 36px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .split-layout.reversed {
+      grid-template-columns: 7.2fr 4.8fr;
+    }
+
+    .card-graphic {
+      width: 100%;
+      height: 94%;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+    }
+
+    .card-graphic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Agenda List */
+    .agenda-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .agenda-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .agenda-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--text-dark);
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .agenda-text-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-dark);
+      text-transform: uppercase;
+    }
+
+    .agenda-text-desc {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* 3-Card Grid Layout (Slide 6, 7, 8, 9, 10, 15) */
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      height: 75%;
+    }
+
+    .template-card {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      
-      padding: 24px;
+      height: 100%;
     }
 
-    .starburst-container {
-      width: 160px;
-      height: 160px;
-      
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
+    .template-card-img {
+      width: 100%;
+      height: 52%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      margin-bottom: 14px;
     }
 
-    .starburst-container svg {
-      position: absolute;
+    .template-card-img img {
       width: 100%;
       height: 100%;
-      top: 0;
-      left: 0;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.08));
+      object-fit: cover;
     }
 
-    .starburst-val {
-      
-      z-index: 5;
-      font-family: 'Tenor Sans', serif;
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--white);
-    }
-
-    .metric-label {
-      font-family: 'Tenor Sans', serif;
-      font-size: 18px;
+    .template-card-title {
+      font-family: var(--font-title);
+      font-size: 16px;
       font-weight: 700;
-      color: var(--deep-teal);
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .template-card-desc {
+      font-size: 9px;
+      line-height: 1.45;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 6px;
+      padding: 0 6px;
+    }
+
+    /* White Step Cards (Slide 8, 9, 10) */
+    .white-step-card {
+      background: #FFF;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+      height: 100%;
+    }
+
+    .step-card-header {
+      font-family: var(--font-title);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
       margin-bottom: 4px;
     }
 
-    .metric-sub {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: var(--slate-muted);
-    }
-
-    /* Comparison Table (Template Style) */
-    .benchmark-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      font-family: 'Inter', sans-serif;
-      font-size: 13.5px;
-      background: var(--white);
-      border-radius: 16px;
-      overflow: hidden;
-      border: 2px solid var(--border);
-    }
-
-    .benchmark-table th {
-      background: var(--deep-teal);
-      color: var(--white);
-      padding: 14px 18px;
-      text-align: left;
-      font-family: 'Tenor Sans', serif;
+    .step-card-sub {
+      font-size: 9px;
       font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.1em;
+      color: var(--accent-coral);
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .benchmark-table td {
-      padding: 13px 18px;
-      border-bottom: 1px solid #F1ECE6;
-      color: var(--slate-dark);
+    .step-card-body {
+      font-size: 10px;
+      line-height: 1.5;
+      color: var(--text-dark);
+      flex: 1;
     }
 
-    .benchmark-table tr:last-child td {
+    /* Prototype Showcase Layout (Slide 12, 13) */
+    .prototype-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      height: 78%;
+    }
+
+    .screenshot-card {
+      background: #FFF;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+      cursor: zoom-in;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .screenshot-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.09);
+    }
+
+    .screenshot-frame {
+      width: 100%;
+      height: 75%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: #000;
+    }
+
+    .screenshot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .screenshot-meta {
+      padding-top: 12px;
+    }
+
+    .screenshot-title {
+      font-family: var(--font-title);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 3px;
+    }
+
+    .screenshot-desc {
+      font-size: 9.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Benchmark Table (Slide 14) */
+    .table-container {
+      background: #FFF;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      height: 75%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    table.benchmark-table {
+      width: 100%;
+      border-collapse: collapse;
+      height: 100%;
+    }
+
+    table.benchmark-table th {
+      background: var(--text-dark);
+      color: #FFF;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 10px 12px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    table.benchmark-table th:first-child {
+      border-top-left-radius: 8px;
+      text-align: left;
+    }
+
+    table.benchmark-table th:last-child {
+      border-top-right-radius: 8px;
+    }
+
+    table.benchmark-table td {
+      font-size: 10px;
+      padding: 10px 12px;
+      border-bottom: 1px solid #EFEAE3;
+      text-align: center;
+      color: var(--text-dark);
+    }
+
+    table.benchmark-table td:first-child {
+      text-align: left;
+      font-weight: 700;
+    }
+
+    table.benchmark-table tr:nth-child(even) td {
+      background: #FAF8F5;
+    }
+
+    table.benchmark-table tr:last-child td {
       border-bottom: none;
     }
 
-    .benchmark-table tr:nth-child(even) td {
-      background: #FAF7F4;
-    }
-
-    .badge-win {
-      background: #DCFCE7;
-      color: #166534;
+    .val-highlight {
+      color: var(--accent-coral);
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      font-size: 11.5px;
-      display: inline-block;
     }
 
-    .badge-lose {
-      background: #FEE2E2;
-      color: #991B1B;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      font-size: 11.5px;
-      display: inline-block;
+    /* Horizontal Banner Section (Slide 4, 17) */
+    .horizontal-banner-card {
+      width: 100%;
+      height: 48%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      margin: 16px 0;
     }
 
-    /* Bottom Control Bar */
-    .deck-footer {
-      height: 64px;
-      background: rgba(255, 255, 255, 0.95);
-      border-top: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-      z-index: 50;
+    .horizontal-banner-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .nav-buttons {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .btn-nav {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 2px solid var(--border);
-      background: var(--white);
-      color: var(--deep-teal);
-      display: flex;
+    /* Modal Image Zoom */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
       align-items: center;
       justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-overlay img {
+      max-width: 92%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    /* Bottom Deck Navigation */
+    footer.deck-footer {
+      background: #1A1414;
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #E9E4DB;
+      font-size: 11px;
+      font-weight: 600;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,255,0.08);
+      color: #E9E4DB;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 18px;
-      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
       transition: all 0.2s ease;
     }
 
-    .btn-nav:hover:not(:disabled) {
-      background: var(--terracotta);
-      color: var(--white);
-      border-color: var(--terracotta);
-      transform: scale(1.05);
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.2);
+      color: #FFF;
     }
 
-    .btn-nav:disabled {
+    .nav-btn:disabled {
       opacity: 0.3;
       cursor: not-allowed;
     }
 
-    .progress-bar-container {
-      flex: 1;
-      max-width: 450px;
-      height: 8px;
-      background: #E8E2D9;
-      border-radius: 9999px;
-      overflow: hidden;
-      margin: 0 28px;
+    .slide-progress {
+      letter-spacing: 0.08em;
     }
 
-    .progress-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--lime-green), var(--terracotta));
-      transition: width 0.3s ease;
-      border-radius: 9999px;
-    }
-
-    .slide-counter {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--deep-teal);
-    }
-
-    /* Image Modal Zoom */
-    .image-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(11, 59, 60, 0.92);
-      backdrop-filter: blur(10px);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-    }
-
-    .image-modal.open {
-      display: flex;
-    }
-
-    .image-modal img {
-      max-width: 95%;
-      max-height: 95%;
-      border-radius: 16px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-      border: 3px solid var(--terracotta);
-    }
-
-    .image-modal-close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      color: var(--white);
-      font-size: 36px;
-      font-weight: bold;
-      cursor: pointer;
+    /* Print styles for PDF export */
+    @media print {
+      body {
+        overflow: visible;
+        background: #FFF;
+      }
+      header.deck-header, footer.deck-footer {
+        display: none !important;
+      }
+      main.deck-stage {
+        padding: 0;
+        background: #FFF;
+      }
+      .slide-viewport {
+        box-shadow: none;
+        max-width: none;
+        border-radius: 0;
+      }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        display: flex !important;
+        page-break-after: always;
+        transform: none !important;
+        height: 100vh !important;
+        padding: 40px !important;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="deck-container">
-  <!-- Top Navigation Header -->
+  <!-- Top Header Bar -->
   <header class="deck-header">
-    <div class="brand-section">
-      <div class="brand-floret">
-        <!-- SVG Floret Icon -->
-        <svg viewBox="0 0 100 100" width="36" height="36">
-          <path d="M50 0 L60 30 L90 20 L75 50 L95 75 L65 75 L50 100 L35 75 L5 75 L25 50 L10 20 L40 30 Z" fill="#E85923"/>
-        </svg>
-      </div>
-      <div>
-        <span class="brand-title">SmartRoute</span>
-        <span class="brand-badge">DAA PBL</span>
-      </div>
+    <div class="brand-title">
+      <span>SMARTROUTE</span>
+      <span class="brand-tag">DAA PBL 2026</span>
     </div>
-
-    <div class="academic-info">
-      <div class="academic-pill">
-        Instructor: <strong>Dr. Syed Javed Pasha</strong>
-      </div>
-      <div class="academic-pill">
-        Team: <strong>Himanshu, Devyani, Heman, Rimika</strong>
-      </div>
-    </div>
-
     <div class="header-controls">
-      <a href="/SmartRoute_Presentation.pptx" download class="btn-control btn-pptx" title="Download Official PowerPoint (.pptx) File">
-        <span>📥 Download PPTX</span>
+      <a href="/SmartRoute_Presentation.pptx" download class="btn-action primary">
+        📥 Download PowerPoint (.pptx)
       </a>
-      <button class="btn-control" id="btnToggleFull" title="Toggle Fullscreen (F)">
-        <span>⛶ Fullscreen</span>
+      <button class="btn-action" onclick="toggleFullscreen()">
+        ⛶ Fullscreen (F)
       </button>
-      <button class="btn-control" id="btnPrint" title="Print as PDF (P)">
-        <span>🖨️ PDF Mode</span>
+      <button class="btn-action" onclick="window.print()">
+        🖨️ Print / PDF (P)
       </button>
-      <a href="/" target="_blank" class="btn-control" style="background: var(--terracotta); color: white; border-color: var(--terracotta);">
-        <span>🚀 Live App</span>
-      </a>
     </div>
   </header>
 
-  <!-- Slide Stage -->
+  <!-- Presentation Stage -->
   <main class="deck-stage">
+    <div class="slide-viewport">
 
-    <!-- SLIDE 1: Cover Slide (Template Winding Ribbon Style) -->
-    <section class="slide active slide-bg-cream" id="slide-1">
-      <!-- Winding Ribbon SVG Graphics -->
-      <svg style="position: absolute; right: -50px; bottom: -80px; width: 620px; height: 620px; pointer-events: none; opacity: 0.9;" viewBox="0 0 500 500">
-        <path d="M50 450 C 150 400, 200 250, 350 200 C 450 150, 480 50, 500 0 L 500 500 L 0 500 Z" fill="#E85923"/>
-        <path d="M120 480 C 220 420, 260 290, 400 240 C 460 200, 490 100, 500 50 L 500 500 Z" fill="#84CC16"/>
-      </svg>
-
-      <!-- 8-Point Starburst Floating Accents -->
-      <svg style="position: absolute; left: 60px; top: 40px; width: 70px; height: 70px;" viewBox="0 0 100 100">
-        <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" fill="#E85923"/>
-      </svg>
-      <svg style="position: absolute; right: 120px; top: 50px; width: 55px; height: 55px;" viewBox="0 0 100 100">
-        <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" fill="#0B3B3C"/>
-      </svg>
-
-      <div style=" z-index: 10; margin-top: 50px; max-width: 850px;">
-        <div class="slide-tag">Faculty Viva Voce • University Project Presentation</div>
-        <h1 style="font-family: 'Tenor Sans', serif; font-size: 58px; font-weight: 700; color: var(--deep-teal); line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px;">
-          SMARTROUTE
-        </h1>
-        <h2 style="font-family: 'Tenor Sans', serif; font-size: 24px; color: var(--terracotta); font-weight: 700; margin-bottom: 24px;">
-          Last-Mile Delivery Operations & Algorithmic Optimization Engine
-        </h2>
-        <p style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 40px; max-width: 720px;">
-          A combinatorial dispatching architecture uniting <strong>0/1 Knapsack Dynamic Programming</strong>, 
-          <strong>Dijkstra's Shortest Path via Binary Min-Heaps</strong>, and <strong>Feasible Route Sequencing</strong> 
-          across the Greater Hyderabad & Woxsen University corridor.
-        </p>
-
-        <!-- Academic Accreditation Badges -->
-        <div style="display: flex; gap: 24px; align-items: stretch;">
-          <div class="card card-peach" style="padding: 18px 24px; flex: 1;">
-            <div style="font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: var(--terracotta); letter-spacing: 1px; text-transform: uppercase;">
-              Course Instructor & Guide
-            </div>
-            <div style="font-family: 'Tenor Sans', serif; font-size: 20px; font-weight: 700; color: var(--deep-teal); margin-top: 4px;">
-              Dr. Syed Javed Pasha
-            </div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--slate-muted); margin-top: 2px;">
-              Department of Computer Science & Engineering
-            </div>
+      <!-- SLIDE 1: COVER -->
+      <div class="slide active" id="slide-1">
+        <div class="slide-cover">
+          <div class="cover-banner">
+            <img src="/presentation/assets/gradient_cover_banner.png" alt="Gradient Aura Banner">
           </div>
-
-          <div class="card card-lime" style="padding: 18px 24px; flex: 1.2;">
-            <div style="font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: #4D7C0F; letter-spacing: 1px; text-transform: uppercase;">
-              Project Development Team
+          <div class="cover-bottom">
+            <div class="capsule-pill">DATA STRUCTURES & ALGORITHMS • COMPARATIVE RESEARCH PRESENTATION</div>
+            <div class="cover-title">SMARTROUTE: ALGORITHMIC OPTIMIZATION</div>
+            <div class="slide-subtitle" style="margin-bottom: 4px;">
+              KNAPSACK DYNAMIC PROGRAMMING  •  GREEDY HEURISTICS  •  DIJKSTRA'S SSSP  •  BELLMAN-FORD
             </div>
-            <div style="font-family: 'Tenor Sans', serif; font-size: 18px; font-weight: 700; color: var(--deep-teal); margin-top: 4px;">
-              Himanshu Pandit • Devyani Pawar • Heman • Rimika Jain
-            </div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--slate-muted); margin-top: 2px;">
-              Greater Hyderabad Logistics Corridor (Main Parcel Warehouse)
+            <div class="cover-credits">
+              <span>COURSE INSTRUCTOR: <strong>DR. SYED JAVED PASHA</strong></span>
+              <span>TEAM: <strong>HIMANSHU PANDIT • DEVYANI PAWAR • HEMAN • RIMIKA JAIN</strong></span>
+              <span>WOXSEN UNIVERSITY • SCHOOL OF TECHNOLOGY</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 2: Table of Contents (Template Slide 3 Style) -->
-    <section class="slide slide-bg-cream" id="slide-2">
-      <div class="slide-tag">Executive Roadmap</div>
-      <h2 class="slide-title">Table of Contents</h2>
-      <div class="slide-content">
-        <div class="grid-3" style="margin-top: 20px;">
-          <!-- Badge 1: Lime Floret -->
-          <div class="card card-lime" style="padding: 36px 28px; text-align: center; align-items: center;">
-            <div class="starburst-container">
-              <svg viewBox="0 0 100 100">
-                <path d="M50 0 L60 30 L90 20 L75 50 L95 75 L65 75 L50 100 L35 75 L5 75 L25 50 L10 20 L40 30 Z" fill="#84CC16"/>
-              </svg>
-              <span class="starburst-val">01</span>
+      <!-- SLIDE 2: AGENDA -->
+      <div class="slide" id="slide-2">
+        <div class="split-layout">
+          <div class="card-graphic">
+            <img src="/presentation/assets/gradient_vertical_coral.png" alt="Vertical Gradient Aura">
+          </div>
+          <div style="padding-right: 20px;">
+            <div class="slide-title">AGENDA</div>
+            <div class="agenda-list">
+              <div class="agenda-item">
+                <div class="agenda-num">1</div>
+                <div>
+                  <div class="agenda-text-title">INTRODUCTION</div>
+                  <div class="agenda-text-desc">Urban last-mile logistics context & the 4 core DAA algorithmic pillars</div>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <div class="agenda-num">2</div>
+                <div>
+                  <div class="agenda-text-title">PROBLEM STATEMENT</div>
+                  <div class="agenda-text-desc">Dual bottleneck: combinatorial packing challenge & congested spatial routing</div>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <div class="agenda-num">3</div>
+                <div>
+                  <div class="agenda-text-title">LITERATURE REVIEW</div>
+                  <div class="agenda-text-desc">Theoretical foundations: Bellman, Dantzig, Dijkstra, and Ford</div>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <div class="agenda-num">4</div>
+                <div>
+                  <div class="agenda-text-title">METHODOLOGY</div>
+                  <div class="agenda-text-desc">Deep mathematical formulations of Knapsack DP, Greedy, Dijkstra & Bellman-Ford</div>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <div class="agenda-num">5</div>
+                <div>
+                  <div class="agenda-text-title">SOLUTION & PROTOTYPE</div>
+                  <div class="agenda-text-desc">SmartRoute dual-engine system architecture & live interactive dashboard</div>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <div class="agenda-num">6</div>
+                <div>
+                  <div class="agenda-text-title">FINAL OUTCOME / RESULTS</div>
+                  <div class="agenda-text-desc">Empirical benchmark matrix, profit capture, transit efficiency & viva takeaways</div>
+                </div>
+              </div>
             </div>
-            <div class="card-title" style="font-size: 22px; margin-bottom: 12px;">Foundations</div>
-            <ul style="list-style: none; font-family: 'Inter', sans-serif; font-size: 14px; color: #475569; line-height: 2;">
-              <li>• The 53% Last-Mile Cost Crisis</li>
-              <li>• Hyderabad Logistics Topology</li>
-              <li>• Multi-Constraint Problem Statement</li>
-              <li>• CVRPTW Complexity Bounds</li>
+          </div>
+        </div>
+        <div class="slim-accent-pill"></div>
+      </div>
+
+      <!-- SLIDE 3: 1. INTRODUCTION -->
+      <div class="slide" id="slide-3">
+        <div class="split-layout reversed">
+          <div>
+            <div class="capsule-pill">SECTION 01 • INTRODUCTION</div>
+            <div class="slide-title">WHAT IS<br>SMARTROUTE?</div>
+            <div style="font-weight: 700; font-size: 13px; line-height: 1.4; color: var(--text-dark); margin-bottom: 16px;">
+              BRIDGING CLASSICAL DATA STRUCTURES WITH REAL-WORLD LOGISTICS OPTIMIZATION ACROSS HYDERABAD'S URBAN CORRIDORS.
+            </div>
+            <p style="font-size: 11px; line-height: 1.6; color: var(--text-dark); margin-bottom: 12px;">
+              In modern e-commerce delivery networks, last-mile logistics accounts for over <strong>53% of overall supply-chain expenditures</strong>. SmartRoute models this high-stakes domain through four rigorous DAA paradigms studied in our coursework:
+            </p>
+            <ul style="font-size: 10.5px; line-height: 1.6; padding-left: 16px; color: var(--text-dark);">
+              <li><strong>Discrete Knapsack Optimization:</strong> Maximizing payload revenue under strict vehicle payload boundaries.</li>
+              <li><strong>Heuristic Greedy Scheduling:</strong> Evaluating rapid priority approximations versus optimal formulations.</li>
+              <li><strong>Single-Source Shortest Paths:</strong> Comparing Dijkstra's Min-Heap graph navigation with Bellman-Ford's dynamic edge relaxation and congestion arbitrage.</li>
             </ul>
           </div>
-
-          <!-- Badge 2: Terracotta Starburst -->
-          <div class="card card-peach" style="padding: 36px 28px; text-align: center; align-items: center;">
-            <div class="starburst-container">
-              <svg viewBox="0 0 100 100">
-                <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" fill="#E85923"/>
-              </svg>
-              <span class="starburst-val">02</span>
-            </div>
-            <div class="card-title" style="font-size: 22px; margin-bottom: 12px;">Core Algorithms</div>
-            <ul style="list-style: none; font-family: 'Inter', sans-serif; font-size: 14px; color: #475569; line-height: 2;">
-              <li>• Literature Review & Identified Gap</li>
-              <li>• Two-Tier Decoupled Architecture</li>
-              <li>• Adjacency List & Min-Heap Dijkstra</li>
-              <li>• 0/1 Knapsack Bellman DP Recurrence</li>
-              <li>• Route Invariants & Feasibility Repair</li>
-            </ul>
-          </div>
-
-          <!-- Badge 3: Dark Teal Rosette -->
-          <div class="card card-teal" style="padding: 36px 28px; text-align: center; align-items: center;">
-            <div class="starburst-container">
-              <svg viewBox="0 0 100 100">
-                <path d="M50 0 C60 25, 75 25, 100 50 C75 75, 60 75, 50 100 C40 75, 25 75, 0 50 C25 25, 40 25, 50 0 Z" fill="#0B3B3C"/>
-              </svg>
-              <span class="starburst-val">03</span>
-            </div>
-            <div class="card-title" style="font-size: 22px; margin-bottom: 12px;">Demonstration</div>
-            <ul style="list-style: none; font-family: 'Inter', sans-serif; font-size: 14px; color: #475569; line-height: 2;">
-              <li>• Live Google Maps Operations Dashboard</li>
-              <li>• Algorithm Lab 2 & 4 Step Tracers</li>
-              <li>• Empirical Benchmark Matrix</li>
-              <li>• Faculty Viva Voce Technical Defense</li>
-            </ul>
+          <div class="card-graphic">
+            <img src="/presentation/assets/gradient_vertical_coral.png" alt="Vertical Gradient Aura">
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 3: Section Divider - INTRODUCTION (Template Slide 4 Style) -->
-    <section class="slide slide-bg-lime" id="slide-3" style="display: flex; align-items: center; justify-content: center; ">
-      <!-- Giant Cream Starbursts Cutout on Sides -->
-      <svg style="position: absolute; left: -120px; top: 50%; transform: translateY(-50%); width: 360px; height: 360px;" viewBox="0 0 100 100">
-        <path d="M50 0 L60 30 L90 20 L75 50 L95 75 L65 75 L50 100 L35 75 L5 75 L25 50 L10 20 L40 30 Z" fill="#F4EFEA"/>
-      </svg>
-      <svg style="position: absolute; right: -120px; top: 50%; transform: translateY(-50%); width: 360px; height: 360px;" viewBox="0 0 100 100">
-        <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" fill="#F4EFEA"/>
-      </svg>
-
-      <div style="text-align: center; z-index: 10;">
-        <div style="font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 3px; color: var(--deep-teal); margin-bottom: 16px;">
-          SECTION 01
-        </div>
-        <h1 style="font-family: 'Tenor Sans', serif; font-size: 64px; color: var(--deep-teal); letter-spacing: -1px; margin-bottom: 16px;">
-          INTRODUCTION
-        </h1>
-        <p style="font-family: 'Inter', sans-serif; font-size: 20px; color: var(--white); font-weight: 600;">
-          The Urban Last-Mile Logistics Crisis & Computational Formulation
-        </p>
-      </div>
-    </section>
-
-    <!-- SLIDE 4: Introduction - The 53% Cost Crisis -->
-    <section class="slide slide-bg-cream" id="slide-4">
-      <div class="slide-tag">01 / Introduction</div>
-      <h2 class="slide-title">The Urban Last-Mile Logistics Crisis</h2>
-      <div class="slide-content">
-        <div class="grid-3">
-          <div class="card card-peach">
-            <div class="card-title">📦 1. Exploding Demand</div>
-            <p class="card-desc">
-              India's e-commerce and quick-commerce explosion has inundated logistics networks with millions of daily parcels. Customer satisfaction hinges entirely on delivery punctuality.
-            </p>
-          </div>
-
-          <div class="card card-peach">
-            <div class="card-title">💸 2. The 53% Cost Trap</div>
-            <p class="card-desc">
-              Industry logistics studies confirm that the <strong>last-mile leg accounts for over 53% of total delivery expenses</strong>. Suboptimal packing and erratic routing cause fuel waste, overtime, and severe SLA chargebacks.
-            </p>
-          </div>
-
-          <div class="card card-lime">
-            <div class="card-title">🛣️ 3. Hyderabad Scope</div>
-            <p class="card-desc">
-              From Main Parcel Warehouse (Begumpet) to high-density commercial hubs (Hitec City, Gachibowli) out to long-distance highway corridors (<strong>Woxsen University on NH65</strong>).
-            </p>
+      <!-- SLIDE 4: 1. INTRODUCTION - FOUR PILLARS -->
+      <div class="slide" id="slide-4">
+        <div class="capsule-pill">SECTION 01 • INTRODUCTION</div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px;">
+          <div class="slide-title" style="margin-bottom: 0;">THE FOUR DAA PILLARS</div>
+          <div style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; color: var(--text-dark); text-transform: uppercase;">
+            A SYSTEMATIC COMPARISON OF DP, GREEDY CHOICE, AND SHORTEST PATHS
           </div>
         </div>
-
-        <div class="card card-teal" style="margin-top: 10px;">
-          <div class="card-title" style="color: var(--deep-teal);">🎯 Academic Project Mission & Vision</div>
-          <p class="card-desc">
-            <strong>SmartRoute</strong> demonstrates how foundational Data Structures and Algorithms—such as <em>Binary Min-Heaps, 
-            Adjacency Lists, 0/1 Dynamic Programming memoization, and greedy heuristics</em>—cooperate to turn chaotic urban parcel 
-            dispatching into a mathematically optimal, 100% on-time reality.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 5: Problem Statement - Multi-Constraint Optimization -->
-    <section class="slide slide-bg-cream" id="slide-5">
-      <div class="slide-tag">01 / Problem Statement</div>
-      <h2 class="slide-title">The Multi-Constrained Dispatch Challenge</h2>
-      <div class="slide-content">
-        <div class="grid-2">
-          <div class="card card-peach">
-            <div class="card-title" style="color: var(--terracotta);">🛑 Physical & Operational Invariants</div>
-            <ul style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #334155; padding-left: 20px;">
-              <li><strong>Payload Capacity Bound:</strong> Vehicle capacity limit $C = 75\text{ kg}$. Overloading is illegal; underloading sacrifices margin.</li>
-              <li><strong>Hard SLA Time Windows:</strong> Each parcel has deadline $d_i$ (180 to 380 mins). A single late arrival triggers financial chargebacks.</li>
-              <li><strong>Non-Euclidean Road Network:</strong> Straight-line Euclidean distance fails in urban traffic and highway flyovers.</li>
-              <li><strong>Precedence Invariant:</strong> Pickup must strictly occur before Drop ($\text{Pickup}_i \prec \text{Drop}_i$).</li>
-              <li><strong>0/1 Discrete Indivisibility:</strong> Parcels cannot be split into fractional pieces.</li>
-            </ul>
+        <div class="cards-grid-3" style="grid-template-columns: repeat(4, 1fr); height: 50%;">
+          <div class="white-step-card">
+            <div class="step-card-header">01. KNAPSACK DP</div>
+            <div class="step-card-sub">BELLMAN 2D MEMOIZATION</div>
+            <div class="step-card-body">Guarantees mathematically optimal order selection within payload limit W in O(n · W) pseudo-polynomial time.</div>
           </div>
-
-          <div class="card card-teal">
-            <div class="card-title" style="color: var(--deep-teal);">🧩 Intractability & Combinatorial Complexity</div>
-            <div style="background: var(--deep-teal); color: var(--white); padding: 18px; border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; margin-bottom: 12px;">
-              Capacitated Vehicle Routing Problem with Time Windows (CVRPTW)<br><br>
-              Stop Permutations for n = 20 stops:<br>
-              20! ≈ 2,432,902,008,176,640,000 combinations.<br>
-              Brute-force evaluation = Millions of compute years.
-            </div>
-            <p class="card-desc">
-              Because full CVRPTW is strongly NP-hard, our engineering breakthrough is a 
-              <strong>Two-Tier Algorithmic Decomposition</strong> that guarantees global optimal profit and 100% on-time feasibility 
-              in polynomial time (under 15 ms).
-            </p>
+          <div class="white-step-card">
+            <div class="step-card-header">02. GREEDY HEURISTICS</div>
+            <div class="step-card-sub">LOCAL CHOICE SORTING</div>
+            <div class="step-card-body">Ultra-fast O(n log n) parcel scheduling by Profit Density (₹/kg), Earliest Deadline, and Highest Absolute Value.</div>
+          </div>
+          <div class="white-step-card">
+            <div class="step-card-header">03. DIJKSTRA'S SSSP</div>
+            <div class="step-card-sub">MIN-HEAP PRIORITY QUEUE</div>
+            <div class="step-card-body">Rapid greedy edge traversal across Hyderabad's road network in O((V + E) log V) for non-negative road distances.</div>
+          </div>
+          <div class="white-step-card">
+            <div class="step-card-header">04. BELLMAN-FORD</div>
+            <div class="step-card-sub">DP EDGE RELAXATION</div>
+            <div class="step-card-body">Robust path optimization in O(V · E); detects negative penalty cycles, congestion toll rebates, and deadlock loops.</div>
+          </div>
+        </div>
+        <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-family: var(--font-title); font-size: 18px; font-weight: 700;">RESEARCH OBJECTIVE</div>
+          <div style="font-size: 10.5px; color: var(--text-dark); max-width: 75%;">
+            Rather than viewing these algorithms as disjoint theoretical concepts, SmartRoute establishes a direct comparative testbed across 35+ customer locations throughout Hyderabad.
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 6: Section Divider - LITERATURE REVIEW (Template Slide 11 Style) -->
-    <section class="slide slide-bg-orange" id="slide-6" style="display: flex; align-items: center; justify-content: center; ">
-      <svg style="position: absolute; left: 100px; top: 60px; width: 140px; height: 140px;" viewBox="0 0 100 100">
-        <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" fill="#F4EFEA"/>
-      </svg>
-      <svg style="position: absolute; right: 100px; bottom: 60px; width: 160px; height: 160px;" viewBox="0 0 100 100">
-        <path d="M50 0 L60 30 L90 20 L75 50 L95 75 L65 75 L50 100 L35 75 L5 75 L25 50 L10 20 L40 30 Z" fill="#0B3B3C"/>
-      </svg>
-
-      <div style="text-align: center; z-index: 10;">
-        <div style="font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 3px; color: var(--cream-bg); margin-bottom: 16px;">
-          SECTION 02
-        </div>
-        <h1 style="font-family: 'Tenor Sans', serif; font-size: 64px; color: var(--white); letter-spacing: -1px; margin-bottom: 16px;">
-          LITERATURE REVIEW
-        </h1>
-        <p style="font-family: 'Inter', sans-serif; font-size: 20px; color: var(--cream-bg); font-weight: 600;">
-          Classical Algorithmic Benchmarks & The Identified Research Gap
-        </p>
-      </div>
-    </section>
-
-    <!-- SLIDE 7: Literature Review & Gap Analysis -->
-    <section class="slide slide-bg-cream" id="slide-7">
-      <div class="slide-tag">02 / Literature Review</div>
-      <h2 class="slide-title">Algorithmic Foundations & Literature Survey</h2>
-      <div class="slide-content">
-        <div class="grid-3">
-          <div class="card card-teal">
-            <div class="card-title">1. Classical Heuristics</div>
-            <div style="font-size: 12px; font-weight: 700; color: var(--terracotta);">Clarke & Wright (1964)</div>
-            <p class="card-desc">
-              Pioneered route merging by distance savings. However, classical heuristics prioritize mileage reduction alone, entirely ignoring heterogeneous parcel profit margins and hard customer delivery deadlines.
-            </p>
+      <!-- SLIDE 5: 2. PROBLEM STATEMENT -->
+      <div class="slide" id="slide-5">
+        <div class="split-layout">
+          <div class="card-graphic">
+            <img src="/presentation/assets/gradient_vertical_lime.png" alt="Vertical Gradient Aura">
           </div>
-
-          <div class="card card-lime">
-            <div class="card-title">2. Shortest Path Search</div>
-            <div style="font-size: 12px; font-weight: 700; color: #4D7C0F;">Edsger Dijkstra (1959)</div>
-            <p class="card-desc">
-              Non-negative edge relaxation with Binary Min-Heap Priority Queue runs in $O((V+E)\log V)$. Solves point-to-point routing, but does not solve combinatorial parcel packing.
+          <div>
+            <div class="capsule-pill">SECTION 02 • PROBLEM STATEMENT</div>
+            <div class="slide-title">THE DUAL BOTTLENECK IN URBAN LOGISTICS</div>
+            <p style="font-weight: 700; font-size: 12px; line-height: 1.4; color: var(--text-dark); margin-bottom: 14px;">
+              LAST-MILE COURIERS FACE TWO INTERCONNECTED COMPUTATIONAL BOTTLENECKS THAT CANNOT BE SOLVED BY INTUITION:
             </p>
-          </div>
-
-          <div class="card card-peach">
-            <div class="card-title">3. 0/1 Knapsack DP</div>
-            <div style="font-size: 12px; font-weight: 700; color: var(--terracotta);">Bellman (1957); Martello & Toth</div>
-            <p class="card-desc">
-              Pseudo-polynomial $O(n \cdot C)$ memoization table guarantees global maximum profit. However, classic knapsack assumes static capacity, ignoring road networks and spatial transit times.
-            </p>
-          </div>
-        </div>
-
-        <div class="card card-peach" style="border-left: 6px solid var(--terracotta);">
-          <div class="card-title" style="color: var(--terracotta);">🔍 Identified Research Gap Addressed by SmartRoute</div>
-          <p class="card-desc">
-            Existing literature separates parcel selection (Knapsack) from vehicle routing (TSP/Dijkstra). 
-            SmartRoute introduces a <strong>coupled Two-Tier Pipeline with iterative feasibility repair</strong>: 
-            selecting provably optimal parcels via 0/1 DP, routed along Dijkstra shortest paths, and dynamically 
-            pruning bottleneck stops if deadlines are threatened.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 8: Proposed Solution - Two-Tier Timeline Road (Template Slide 8 Style) -->
-    <section class="slide slide-bg-cream" id="slide-8">
-      <div class="slide-tag">02 / Proposed Solution</div>
-      <h2 class="slide-title">Two-Tier Decoupled Architecture</h2>
-      <div class="slide-content">
-        <!-- Asphalt Timeline Road Graphic -->
-        <div class="road-timeline">
-          <div class="road-centerline"></div>
-          <div class="road-stop-pin">1</div>
-          <div class="road-stop-pin">2</div>
-          <div class="road-stop-pin">3</div>
-          <div class="road-stop-pin">4</div>
-        </div>
-
-        <div class="grid-4" style="margin-top: 10px;">
-          <div class="card card-peach">
-            <div class="card-title" style="font-size: 15px;">Stage 1: Pool Ingestion</div>
-            <p class="card-desc" style="font-size: 12.5px;">
-              35 candidate parcel requests across Greater Hyderabad filtered for vehicle payload capacity.
-            </p>
-          </div>
-
-          <div class="card card-lime">
-            <div class="card-title" style="font-size: 15px;">Stage 2: 0/1 Knapsack DP</div>
-            <p class="card-desc" style="font-size: 12.5px;">
-              Bellman 2D memoization constructs optimal parcel subset in $O(n \cdot C)$ time, maximizing profit.
-            </p>
-          </div>
-
-          <div class="card card-peach">
-            <div class="card-title" style="font-size: 15px;">Stage 3: Dijkstra Routing</div>
-            <p class="card-desc" style="font-size: 12.5px;">
-              Binary Min-Heap Priority Queue computes turn-by-turn shortest paths across 22 city hubs in $O((V+E)\log V)$.
-            </p>
-          </div>
-
-          <div class="card card-teal">
-            <div class="card-title" style="font-size: 15px;">Stage 4: Feasibility Repair</div>
-            <p class="card-desc" style="font-size: 12.5px;">
-              Verifies SLA deadlines; systematically defers bottleneck stops to ensure 100% on-time delivery.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 9: Methodology Part A - Graph & Dijkstra Min-Heap -->
-    <section class="slide slide-bg-cream" id="slide-9">
-      <div class="slide-tag">02 / Methodology</div>
-      <h2 class="slide-title">Urban Graph & Dijkstra Min-Heap Priority Queue</h2>
-      <div class="slide-content">
-        <div class="grid-2">
-          <div class="card card-teal">
-            <div class="card-title" style="color: var(--deep-teal);">📍 Hyderabad Metropolitan Road Network</div>
-            <p class="card-desc">
-              We model Greater Hyderabad as an undirected, non-negatively weighted graph $G = (V, E)$ 
-              centered on <strong>Main Parcel Warehouse (Begumpet)</strong>.
-            </p>
-            <ul style="font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.8; color: #334155; padding-left: 18px;">
-              <li><strong>Vertices ($|V| = 22$):</strong> Key hubs including Ameerpet, Hitec City, Gachibowli, Secunderabad, Miyapur, Sangareddy, and <strong>Woxsen University</strong>.</li>
-              <li><strong>Edges ($|E| = 34$):</strong> Real arterial roads and NH65 corridor with true distance weights.</li>
-              <li><strong>Data Structure:</strong> Adjacency List (`Map<string, Edge[]>`) ensuring $O(V + E)$ spatial footprint over dense matrices.</li>
-            </ul>
-          </div>
-
-          <div class="card card-peach">
-            <div class="card-title" style="color: var(--terracotta);">⚡ Binary Min-Heap Priority Queue</div>
-            <div style="background: var(--white); padding: 12px; border-radius: 10px; border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; margin-bottom: 10px;">
-              // Edge Relaxation Condition<br>
-              if dist[u] + weight(u, v) &lt; dist[v]:<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;dist[v] = dist[u] + weight(u, v)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;parent[v] = u<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;minHeap.push((dist[v], v)) // O(log V)
-            </div>
-            <p class="card-desc">
-              Traditional array search takes $O(V^2)$ because finding minimum unvisited node requires $O(V)$ scans. 
-              Our <strong>Binary Min-Heap Priority Queue</strong> achieves instant $O(1)$ root extraction and $O(\log V)$ sift-ups, 
-              cutting total runtime to $O((V + E)\log V)$.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 10: Methodology Part B - 0/1 Knapsack Dynamic Programming -->
-    <section class="slide slide-bg-cream" id="slide-10">
-      <div class="slide-tag">02 / Methodology</div>
-      <h2 class="slide-title">0/1 Knapsack Dynamic Programming Formulation</h2>
-      <div class="slide-content">
-        <div class="grid-2">
-          <div class="card card-lime">
-            <div class="card-title" style="color: #4D7C0F;">📐 Bellman Recurrence Formulation</div>
-            <p class="card-desc">
-              Let $DP[i][c]$ denote maximum profit achievable considering first $i$ parcel requests with capacity $c \in [0, C]$:
-            </p>
-            <div style="background: var(--white); border: 2px solid #84CC16; padding: 14px; border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #166534; font-weight: 700; margin: 12px 0;">
-              DP[i][c] = max( DP[i-1][c],  DP[i-1][c - w_i] + p_i )
-            </div>
-            <ul style="font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.7; color: #334155; padding-left: 18px;">
-              <li><strong>Choice 0 (SKIP):</strong> Exclude parcel $i \implies DP[i-1][c]$</li>
-              <li><strong>Choice 1 (TAKE):</strong> If $w_i \le c$, load parcel $i \implies p_i + DP[i-1][c - w_i]$</li>
-              <li><strong>Boundary Base Case:</strong> $DP[0][c] = 0$ for all $c \in [0, C]$.</li>
-            </ul>
-          </div>
-
-          <div class="card card-peach">
-            <div class="card-title" style="color: var(--terracotta);">🔍 Backtracking Recovery & Greedy Limitations</div>
-            <div style="background: var(--white); padding: 12px; border-radius: 10px; border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6; margin-bottom: 10px;">
-              // Backtracking from DP[n][C]<br>
-              for i = n down to 1:<br>
-              &nbsp;&nbsp;if DP[i][w] != DP[i-1][w]:<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;selected.push(item[i-1])<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;w -= item[i-1].weight
-            </div>
-            <p class="card-desc">
-              <strong>Why Greedy Fails:</strong> Sorting by profit density ($p_i / w_i$) is mathematically optimal only for 
-              continuous fractional items. For discrete packages, greedy packing leaves unusable payload gaps, missing high-value shipments.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 11: Methodology Part C - Route Scheduling Invariants -->
-    <section class="slide slide-bg-cream" id="slide-11">
-      <div class="slide-tag">02 / Methodology</div>
-      <h2 class="slide-title">Route Invariants & SLA Feasibility Repair</h2>
-      <div class="slide-content">
-        <div class="grid-3">
-          <div class="card card-peach">
-            <div class="card-title">1. Precedence Invariant</div>
-            <p class="card-desc">
-              • Invariant: $\text{Pickup}_i \prec \text{Drop}_i$.<br><br>
-              • State Sets: Maintains `pickedUp` and `delivered` hash sets.<br><br>
-              • Gating: A drop action is strictly locked from the candidate action queue until its physical pickup has occurred.
-            </p>
-          </div>
-
-          <div class="card card-lime">
-            <div class="card-title">2. Payload Safety Invariant</div>
-            <p class="card-desc">
-              • Invariant: $0 \le \text{load}_s \le C$ at every stop.<br><br>
-              • Dynamic Telematics: Starts at 0 kg at Depot. At pickup: $\text{load} += w_i$. At drop: $\text{load} -= w_i$.<br><br>
-              • Overweight stops are pruned before route commitment.
-            </p>
-          </div>
-
-          <div class="card card-teal">
-            <div class="card-title">3. SLA Feasibility Repair</div>
-            <p class="card-desc">
-              • Invariant: $t_{\text{arr}} \le d_i$.<br><br>
-              • Bottleneck Pruning: If a delivery arrives late, scheduler identifies the lowest-margin offender and defers it.<br><br>
-              • Guarantees 100% on-time delivery on the final manifest.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 12: Section Divider - DEMONSTRATION & RESULTS (Template Slide 17 Style) -->
-    <section class="slide slide-bg-teal" id="slide-12" style="display: flex; align-items: center; justify-content: center; ">
-      <svg style="position: absolute; left: 80px; top: 80px; width: 150px; height: 150px;" viewBox="0 0 100 100">
-        <path d="M50 0 L60 30 L90 20 L75 50 L95 75 L65 75 L50 100 L35 75 L5 75 L25 50 L10 20 L40 30 Z" fill="#84CC16"/>
-      </svg>
-      <svg style="position: absolute; right: 80px; bottom: 80px; width: 150px; height: 150px;" viewBox="0 0 100 100">
-        <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" fill="#E85923"/>
-      </svg>
-
-      <div style="text-align: center; z-index: 10;">
-        <div style="font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 3px; color: var(--lime-green); margin-bottom: 16px;">
-          SECTION 03
-        </div>
-        <h1 style="font-family: 'Tenor Sans', serif; font-size: 64px; color: var(--white); letter-spacing: -1px; margin-bottom: 16px;">
-          PROTOTYPE & RESULTS
-        </h1>
-        <p style="font-family: 'Inter', sans-serif; font-size: 20px; color: var(--cream-bg); font-weight: 600;">
-          Live Platform Demonstrations, Empirical Benchmarks & Faculty Defense
-        </p>
-      </div>
-    </section>
-
-    <!-- SLIDE 13: Prototype Walkthrough - Operations Dashboard (Screenshot) -->
-    <section class="slide slide-bg-cream" id="slide-13">
-      <div class="slide-tag">03 / Prototype Demonstration</div>
-      <h2 class="slide-title">Interactive Operations Dashboard & Google Maps</h2>
-      <div class="slide-content">
-        <div class="grid-2">
-          <div class="mockup-frame" onclick="openZoomModal('/presentation/operations_overview.png')">
-            <img src="/presentation/operations_overview.png" alt="SmartRoute Operations Dashboard Screenshot">
-            <div class="mockup-caption">
-              <span>SmartRoute Operations Dashboard (Click to Zoom)</span>
-              <span style="color: var(--terracotta);">Google Maps + Telematics</span>
+            <div style="display: flex; flex-direction: column; gap: 12px; font-size: 10.5px; line-height: 1.5;">
+              <div>
+                <strong style="color: var(--accent-coral);">1. The Order Selection Bottleneck (Knapsack Dilemma):</strong><br>
+                With 35+ pending parcel requests and limited vehicle cargo capacity (e.g. 100 kg), testing all 2<sup>35</sup> (34.3 billion) combinations by brute force is impossible. Naive greedy sorting frequently leaves empty vehicle payload voids, resulting in severe revenue loss.
+              </div>
+              <div>
+                <strong style="color: var(--accent-coral);">2. The Network Routing Bottleneck (Spatial Path Dilemma):</strong><br>
+                Once orders are chosen, dispatchers must find the optimal transit path from the Begumpet Central Hub through dense traffic corridors (HITEC City, Gachibowli, Secunderabad, Woxsen University). Suboptimal delivery sequences cause exponential fuel waste and SLA penalties.
+              </div>
+              <div>
+                <strong style="color: var(--accent-coral);">3. The Real-Time Constraint:</strong><br>
+                The system must execute both selection and routing algorithms in under 50 milliseconds to support dynamic driver dispatch.
+              </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="card card-peach">
-            <div class="card-title" style="color: var(--terracotta);">🚀 Operational Capabilities</div>
-            <ul style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #334155; padding-left: 20px;">
-              <li><strong>Official Google Maps Layer:</strong> Renders authentic Google Roadmap & Satellite tiles with pan/zoom controls.</li>
-              <li><strong>Interactive Delivery Pins:</strong> Color-coded pins for pickups, drops, and central Main Parcel Warehouse (Begumpet).</li>
-              <li><strong>Highway Corridor Visualization:</strong> Real-time polyline tracking connecting central Hyderabad to <strong>Woxsen University (Kamkole NH65)</strong>.</li>
-              <li><strong>Turn-by-Turn Telematics:</strong> Tracks cumulative travel time, arrival windows, slack time, and live vehicle payload progression (0kg → 4kg → 12kg → 44kg).</li>
-              <li><strong>Financial Telematics:</strong> Planned profit: <strong>₹10,190</strong> across 12 scheduled orders, 230 km total distance, and <strong>zero late penalties</strong>.</li>
-            </ul>
+      <!-- SLIDE 6: 2. PROBLEM STATEMENT - TRADE-OFFS -->
+      <div class="slide" id="slide-6">
+        <div class="capsule-pill">SECTION 02 • PROBLEM STATEMENT</div>
+        <div class="slide-title">THE ALGORITHMIC TRADE-OFF TRILEMMA</div>
+        <div class="cards-grid-3">
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_1.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">CAPACITY PACKING</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">0/1 KNAPSACK PROBLEM</div>
+            <div class="template-card-desc">
+              DISCRETE CHOICES CANNOT BE FRACTIONALIZED. GREEDY CHOICE PROPERTY FAILS TO GUARANTEE OPTIMALITY WHEN ITEM WEIGHTS CREATE PACKING VOIDS. REQUIRES 2D DP.
+            </div>
+          </div>
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_2.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">DISPATCH HEURISTICS</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">GREEDY APPROXIMATION TRAPS</div>
+            <div class="template-card-desc">
+              SORTING BY PROFIT DENSITY (₹/KG) RUNS FAST IN O(N LOG N), BUT FREQUENTLY COMMITS TO SUBOPTIMAL HIGH-RATIO LIGHTWEIGHT ITEMS THAT SQUANDER TOTAL VALUE.
+            </div>
+          </div>
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_3.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">SPATIAL ROUTING</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">DIJKSTRA VS BELLMAN-FORD</div>
+            <div class="template-card-desc">
+              DIJKSTRA GREEDY MIN-HEAP FINDS FAST SHORTEST PATHS BUT FAILS ON DYNAMIC PENALTY ARBITRAGE AND CONGESTION REBATES. BELLMAN-FORD ENSURES DP CONVERGENCE.
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 14: Prototype Walkthrough - Lab 2 Dijkstra Tracer (Screenshot) -->
-    <section class="slide slide-bg-cream" id="slide-14">
-      <div class="slide-tag">03 / Algorithm Lab</div>
-      <h2 class="slide-title">Lab 2: Dijkstra & Min-Heap Step Tracer</h2>
-      <div class="slide-content">
-        <div class="grid-2">
-          <div class="mockup-frame" onclick="openZoomModal('/presentation/lab2_dijkstra.png')">
-            <img src="/presentation/lab2_dijkstra.png" alt="Lab 2 Dijkstra Step Tracer Screenshot">
-            <div class="mockup-caption">
-              <span>Algorithm Lab 2: Dijkstra Execution Trace (Click to Zoom)</span>
-              <span style="color: var(--terracotta);">O((V+E) log V)</span>
+      <!-- SLIDE 7: 3. LITERATURE REVIEW -->
+      <div class="slide" id="slide-7">
+        <div class="capsule-pill">SECTION 03 • LITERATURE REVIEW</div>
+        <div class="slide-title">THEORETICAL LITERATURE FOUNDATIONS</div>
+        <div class="cards-grid-3">
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_1.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">DYNAMIC PROGRAMMING</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">BELLMAN (1957) • MARTELLO & TOTH (1990)</div>
+            <div class="template-card-desc">
+              BELLMAN ESTABLISHED THE PRINCIPLE OF OPTIMALITY: GLOBAL OPTIMAL DECISIONS DEPEND UPON OPTIMAL SUBPROBLEMS. MARTELLO & TOTH CODIFIED THE 0/1 KNAPSACK 2D MEMOIZATION RECURRENCE IN O(N · W).
             </div>
           </div>
-
-          <div class="card card-lime">
-            <div class="card-title" style="color: #4D7C0F;">🔍 Pedagogical Visualizer</div>
-            <ul style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #334155; padding-left: 20px;">
-              <li><strong>Arbitrary Hub Selection:</strong> Select any origin hub (Main Parcel Warehouse) and destination hub (Woxsen University).</li>
-              <li><strong>Execution Playhead (Step 1 of 49):</strong> Step forward, backward, or auto-play through the algorithm at 0.5x, 1x, or 2x speed.</li>
-              <li><strong>Live Min-Heap Inspection:</strong> Displays current root element extracted with $O(1)$ priority lookup and $O(\log V)$ sift operations.</li>
-              <li><strong>Tentative Distance Table:</strong> Displays real-time transition from $\infty$ to relaxed kilometer values.</li>
-              <li><strong>Reconstructed Path:</strong> Begumpet → Ameerpet → Kukatpally → Miyapur → Patancheru → Sangareddy → Woxsen (70 km, 131 mins).</li>
-            </ul>
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_2.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">GREEDY HEURISTICS</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">DANTZIG (1957) • CHVÁTAL (1979)</div>
+            <div class="template-card-desc">
+              DANTZIG INTRODUCED THE PROFIT-TO-WEIGHT DENSITY RATIO FOR CONTINUOUS RELAXATIONS. CHVÁTAL PROVED GREEDY APPROXIMATION GAPS, CONFIRMING GREEDY IS SUBOPTIMAL FOR DISCRETE INTEGER CARGO.
+            </div>
+          </div>
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_3.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">SHORTEST PATH NETWORKS</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">DIJKSTRA (1959) • BELLMAN-FORD (1958)</div>
+            <div class="template-card-desc">
+              DIJKSTRA PROVED GREEDY PRIORITY EXPANSIONS OPTIMAL IN NON-NEGATIVE ROAD NETWORKS O((V+E) LOG V). BELLMAN & FORD FORMULATED ITERATIVE EDGE RELAXATIONS IN O(V · E) WITH CYCLE DETECTION.
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 15: Prototype Walkthrough - Lab 4 Knapsack DP Matrix (Screenshot) -->
-    <section class="slide slide-bg-cream" id="slide-15">
-      <div class="slide-tag">03 / Algorithm Lab</div>
-      <h2 class="slide-title">Lab 4: 0/1 Knapsack 2D DP Memoization Table</h2>
-      <div class="slide-content">
-        <div class="grid-2">
-          <div class="mockup-frame" onclick="openZoomModal('/presentation/lab4_knapsack.png')">
-            <img src="/presentation/lab4_knapsack.png" alt="Lab 4 0/1 Knapsack DP Table Screenshot">
-            <div class="mockup-caption">
-              <span>Algorithm Lab 4: 2D Memoization Table (Click to Zoom)</span>
-              <span style="color: var(--terracotta);">O(n × C) Matrix</span>
+      <!-- SLIDE 8: 4. METHODOLOGY - PIPELINE -->
+      <div class="slide" id="slide-8">
+        <div class="capsule-pill">SECTION 04 • METHODOLOGY</div>
+        <div class="slide-title">TWO-PHASE ALGORITHMIC ARCHITECTURE</div>
+        <div style="background: var(--text-dark); color: #FFF; padding: 10px 16px; border-radius: 999px; text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 20px;">
+          INPUT: 35+ HYDERABAD ORDERS ➔ PHASE 1: PACKING ENGINE (KNAPSACK / GREEDY) ➔ PHASE 2: SPATIAL ROUTING (DIJKSTRA / BELLMAN-FORD)
+        </div>
+        <div class="cards-grid-3">
+          <div class="white-step-card">
+            <div class="step-card-header">STEP 1: DEMAND & GRAPH</div>
+            <div class="step-card-sub">HYDERABAD ADJACENCY MATRIX</div>
+            <div class="step-card-body">
+              • Central Hub: Main Parcel Warehouse (Begumpet)<br>
+              • 35+ Delivery Request Nodes<br>
+              • Fleet Constraints: Van (100 kg), EV Bike (30 kg)<br>
+              • Directed edge weights w(u,v) = road distance + traffic delays.
             </div>
           </div>
-
-          <div class="card card-peach">
-            <div class="card-title" style="color: var(--terracotta);">📊 Dynamic Programming Transparency</div>
-            <ul style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #334155; padding-left: 20px;">
-              <li><strong>Complete 2D Table ($35 \times 75$):</strong> Rows correspond to parcel candidates; columns represent incremental capacity increments from 0 kg to 75 kg.</li>
-              <li><strong>Interactive Cell Arithmetic:</strong> Clicking any table cell reveals the exact mathematical decision: `SKIP = dp[i-1][c]` vs `TAKE = profit[i] + dp[i-1][c - weight[i]]`.</li>
-              <li><strong>Golden Backtrack Trail:</strong> Highlighted in vibrant green, illustrating how the solution pointer backtracks to pick the optimal items.</li>
-              <li><strong>Theoretical Global Maximum:</strong> Proves the maximum achievable profit of <strong>₹18,290</strong> for 70.5 kg before temporal deadline constraints are applied.</li>
-            </ul>
+          <div class="white-step-card">
+            <div class="step-card-header">STEP 2: CARGO OPTIMIZATION</div>
+            <div class="step-card-sub">0/1 KNAPSACK VS GREEDY</div>
+            <div class="step-card-body">
+              • Run 0/1 Knapsack DP to compute optimal subset max profit.<br>
+              • Run Profit Density Greedy (p/w) to compare heuristic speed.<br>
+              • Run Earliest Deadline First (EDF) for SLA compliance.<br>
+              • Measure profit loss and packing efficiency gaps.
+            </div>
+          </div>
+          <div class="white-step-card">
+            <div class="step-card-header">STEP 3: PATH SYNTHESIS</div>
+            <div class="step-card-sub">DIJKSTRA & BELLMAN-FORD</div>
+            <div class="step-card-body">
+              • Dijkstra SSSP via custom Binary Min-Heap Priority Queue.<br>
+              • Bellman-Ford checks for negative traffic congestion cycles.<br>
+              • Construct optimal turn-by-turn waypoint sequences.<br>
+              • Output live dispatch metrics to Google Maps interface.
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 16: Key Statistics (Template Slide 14 & 15 Style) -->
-    <section class="slide slide-bg-cream" id="slide-16">
-      <div class="slide-tag">03 / Empirical Results</div>
-      <h2 class="slide-title">Key Performance Statistics & Telematics</h2>
-      <div class="slide-content">
-        <div class="grid-3" style="margin-top: 20px;">
-          <!-- Metric 1: Starburst 100% -->
-          <div class="metric-starburst-box card card-peach">
-            <div class="starburst-container">
-              <svg viewBox="0 0 100 100">
-                <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" fill="#E85923"/>
-              </svg>
-              <span class="starburst-val">100%</span>
+      <!-- SLIDE 9: 4. METHODOLOGY - KNAPSACK VS GREEDY -->
+      <div class="slide" id="slide-9">
+        <div class="capsule-pill">SECTION 04 • METHODOLOGY</div>
+        <div class="slide-title">DEEP DIVE: KNAPSACK DP VS GREEDY ALGORITHMS</div>
+        <div class="cards-grid-3">
+          <div class="white-step-card">
+            <div class="step-card-header">01. 0/1 KNAPSACK (DP)</div>
+            <div class="step-card-sub">BELLMAN RECURRENCE • O(N · W)</div>
+            <div class="step-card-body">
+              <strong>Mathematical Recurrence:</strong><br>
+              <code>DP[i][w] = DP[i-1][w]</code> (if w<sub>i</sub> &gt; w)<br>
+              <code>DP[i][w] = max(DP[i-1][w], DP[i-1][w - w<sub>i</sub>] + p<sub>i</sub>)</code><br><br>
+              • Table Dimension: (N + 1) × (W + 1)<br>
+              • Backtracking extracts chosen orders by checking if DP[i][w] ≠ DP[i-1][w].<br>
+              • Guarantees 100% global optimal revenue capture.
             </div>
-            <div class="metric-label">On-Time Fulfillment</div>
-            <div class="metric-sub">Zero SLA deadline breaches across 12 dispatched orders</div>
           </div>
-
-          <!-- Metric 2: Starburst ₹10,190 -->
-          <div class="metric-starburst-box card card-lime">
-            <div class="starburst-container">
-              <svg viewBox="0 0 100 100">
-                <path d="M50 0 L60 30 L90 20 L75 50 L95 75 L65 75 L50 100 L35 75 L5 75 L25 50 L10 20 L40 30 Z" fill="#84CC16"/>
-              </svg>
-              <span class="starburst-val" style="font-size: 26px;">₹10,190</span>
+          <div class="white-step-card">
+            <div class="step-card-header">02. PROFIT DENSITY GREEDY</div>
+            <div class="step-card-sub">DANTZIG RATIO SORT • O(N LOG N)</div>
+            <div class="step-card-body">
+              <strong>Heuristic Formulation:</strong><br>
+              Sort orders by ratio r<sub>i</sub> = p<sub>i</sub> / w<sub>i</sub> in descending order.<br>
+              Iteratively pick order if curr_weight + w<sub>i</sub> ≤ W.<br><br>
+              <strong>Why Greedy Fails Discrete 0/1:</strong><br>
+              Greedy choice property guarantees optimality only when parcels are divisible. For discrete items, packing voids waste capacity.
             </div>
-            <div class="metric-label">Realized Profit</div>
-            <div class="metric-sub">+25.5% higher actual revenue than Greedy Density baseline</div>
           </div>
-
-          <!-- Metric 3: Starburst 230 km -->
-          <div class="metric-starburst-box card card-teal">
-            <div class="starburst-container">
-              <svg viewBox="0 0 100 100">
-                <path d="M50 0 C60 25, 75 25, 100 50 C75 75, 60 75, 50 100 C40 75, 25 75, 0 50 C25 25, 40 25, 50 0 Z" fill="#0B3B3C"/>
-              </svg>
-              <span class="starburst-val" style="font-size: 28px;">230 km</span>
+          <div class="white-step-card">
+            <div class="step-card-header">03. GREEDY HEURISTIC VARIANTS</div>
+            <div class="step-card-sub">PRIORITY CRITERIA COMPARISON</div>
+            <div class="step-card-body">
+              <strong>Evaluated Alternative Policies:</strong><br><br>
+              1. <strong>Profit Density:</strong> max (p<sub>i</sub> / w<sub>i</sub>) — Fastest practical heuristic (0.4 ms).<br>
+              2. <strong>Highest Profit:</strong> max p<sub>i</sub> — Biased toward heavy items; low count.<br>
+              3. <strong>Earliest Deadline:</strong> min d<sub>i</sub> — Prioritizes urgent SLAs over total profit.
             </div>
-            <div class="metric-label">Optimized Distance</div>
-            <div class="metric-sub">Full suburban traversal including Woxsen NH65 corridor</div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 17: Empirical Benchmark Table (Greedy vs DP) -->
-    <section class="slide slide-bg-cream" id="slide-17">
-      <div class="slide-tag">03 / Empirical Results</div>
-      <h2 class="slide-title">Benchmark Matrix: Greedy vs. 0/1 Knapsack Pipeline</h2>
-      <div class="slide-content">
-        <table class="benchmark-table">
-          <thead>
-            <tr>
-              <th>Performance Dimension</th>
-              <th>Greedy Profit Density (p/w)</th>
-              <th>Greedy Earliest Deadline (EDF)</th>
-              <th>SmartRoute 0/1 Knapsack DP Pipeline</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Theoretical Packing Profit</strong></td>
-              <td>₹18,960</td>
-              <td>₹14,200</td>
-              <td><strong>₹18,290 (DP Mathematically Optimal)</strong></td>
-            </tr>
-            <tr>
-              <td><strong>Dispatched Feasible Profit</strong></td>
-              <td>₹8,120 (4 SLA breaches)</td>
-              <td>₹7,540</td>
-              <td><span class="badge-win">₹10,190 (+25.5% Higher Revenue)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Vehicle Payload Utilization</strong></td>
-              <td>74.5 / 75 kg (99.3%)</td>
-              <td>38.0 / 75 kg (50.6%)</td>
-              <td><strong>44.0 / 75 kg (58.7% Feasible Bound)</strong></td>
-            </tr>
-            <tr>
-              <td><strong>Orders Dispatched</strong></td>
-              <td>20 orders accepted (unverified)</td>
-              <td>9 orders dispatched</td>
-              <td><strong>12 orders dispatched</strong></td>
-            </tr>
-            <tr>
-              <td><strong>Deadline Verification</strong></td>
-              <td><span class="badge-lose">FAILED (4 Late Deliveries)</span></td>
-              <td><span class="badge-win">100% Punctual</span></td>
-              <td><span class="badge-win">100% Punctual (Zero Late Orders)</span></td>
-            </tr>
-            <tr>
-              <td><strong>Execution Runtime</strong></td>
-              <td>0.4 ms ($O(n \log n)$)</td>
-              <td>0.3 ms ($O(n \log n)$)</td>
-              <td><strong>12.4 ms ($O(n \cdot C) + O(S \cdot \text{Dijkstra})$)</strong></td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- SLIDE 10: 4. METHODOLOGY - DIJKSTRA VS BELLMAN-FORD -->
+      <div class="slide" id="slide-10">
+        <div class="capsule-pill">SECTION 04 • METHODOLOGY</div>
+        <div class="slide-title">DEEP DIVE: DIJKSTRA VS BELLMAN-FORD ROUTING</div>
+        <div class="cards-grid-3">
+          <div class="white-step-card">
+            <div class="step-card-header">DIJKSTRA'S ALGORITHM</div>
+            <div class="step-card-sub">MIN-HEAP GREEDY • O((V+E) LOG V)</div>
+            <div class="step-card-body">
+              <strong>Algorithmic Mechanics:</strong><br>
+              • Initialize dist[start] = 0, dist[v] = ∞<br>
+              • Push (0, start) to custom Min-Heap Priority Queue.<br>
+              • Invariant: Greedily extract vertex u with minimum tentative distance.<br>
+              • Relax adjacent edges:<br>
+              <code>dist[v] = min(dist[v], dist[u] + w(u,v))</code><br><br>
+              <em>Limitation: Requires w(u,v) ≥ 0. Cannot handle negative toll rebates.</em>
+            </div>
+          </div>
+          <div class="white-step-card">
+            <div class="step-card-header">BELLMAN-FORD ALGORITHM</div>
+            <div class="step-card-sub">DP EDGE RELAXATION • O(V · E)</div>
+            <div class="step-card-body">
+              <strong>Algorithmic Mechanics:</strong><br>
+              • Relaxes all |E| directed edges for |V| - 1 iterations:<br>
+              <code>d<sup>(k)</sup>[v] = min<sub>(u,v)</sub> (d<sup>(k-1)</sup>[v], d<sup>(k-1)</sup>[u] + w(u,v))</code><br><br>
+              <strong>Cycle Detection Invariant:</strong><br>
+              If edge (u,v) relaxes on pass |V|, graph contains a negative-weight cycle.<br><br>
+              <em>Handles dynamic penalty adjustments and toll rebates without failure.</em>
+            </div>
+          </div>
+          <div class="white-step-card">
+            <div class="step-card-header">PRACTICAL LOGISTICS ROLE</div>
+            <div class="step-card-sub">HYBRID DUAL GRAPH ENGINE</div>
+            <div class="step-card-body">
+              <strong>Operational Synergies in SmartRoute:</strong><br><br>
+              • <strong>Primary Routing:</strong> Dijkstra executes in 4.2 ms across Hyderabad corridors for instant turn-by-turn directions.<br><br>
+              • <strong>Congestion Audit:</strong> Bellman-Ford runs in background (18.7 ms) to detect traffic deadlock loops and model dynamic incentive subsidies.
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <!-- SLIDE 18: Faculty Viva Voce Technical Defense -->
-    <section class="slide slide-bg-cream" id="slide-18">
-      <div class="slide-tag">03 / Viva Defense</div>
-      <h2 class="slide-title">Faculty Viva Q&A: Technical Defense Strategies</h2>
-      <div class="slide-content">
-        <div class="grid-2">
-          <div class="card card-peach">
-            <div class="card-title" style="color: var(--terracotta);">Q1: Why not pure DP for full VRP?</div>
-            <p class="card-desc">
-              <strong>Answer:</strong> Exact multi-stop VRP with Time Windows requires tracking the visited subset in DP state (Held-Karp). 
-              This incurs exponential $O(n^2 \cdot 2^n)$ states and factorial permutations $O(n!)$. For 35 orders, $2^{35} \approx 34\text{ billion}$ states. 
-              Decoupling into 0/1 Knapsack DP ($O(n \cdot C)$) followed by Dijkstra spatial heuristic executes in under 15 ms.
+      <!-- SLIDE 11: 5. SOLUTION - ARCHITECTURE -->
+      <div class="slide" id="slide-11">
+        <div class="split-layout">
+          <div class="card-graphic">
+            <img src="/presentation/assets/gradient_vertical_magenta.png" alt="Vertical Gradient Aura">
+          </div>
+          <div>
+            <div class="capsule-pill">SECTION 05 • SOLUTION</div>
+            <div class="slide-title">SMARTROUTE DUAL-ENGINE ARCHITECTURE</div>
+            <p style="font-weight: 700; font-size: 11.5px; line-height: 1.4; color: var(--text-dark); margin-bottom: 14px;">
+              AN INTEGRATED FULL-STACK PLATFORM COMBINING RIGOROUS DAA ENGINES WITH PRODUCTION-GRADE OPERATIONAL VISUALIZATION:
             </p>
-          </div>
-
-          <div class="card card-peach">
-            <div class="card-title" style="color: var(--terracotta);">Q2: Why use a Binary Min-Heap?</div>
-            <p class="card-desc">
-              <strong>Answer:</strong> Without a Min-Heap, finding the next unvisited vertex requires an $O(V)$ linear scan, giving $O(V^2)$ total runtime. 
-              A Binary Min-Heap provides $O(1)$ root lookup and $O(\log V)$ key updates, reducing complexity to $O((V+E)\log V)$—critical for responsiveness on urban road networks.
-            </p>
-          </div>
-
-          <div class="card card-lime">
-            <div class="card-title" style="color: #4D7C0F;">Q3: When does Greedy match DP?</div>
-            <p class="card-desc">
-              <strong>Answer:</strong> Greedy is provably optimal for <em>Fractional Knapsack</em> (continuous items). In discrete 0/1 Knapsack, Greedy is optimal only when parcel weights divide capacity evenly with identical profit densities. For discrete parcels, Greedy leaves unusable capacity fragments.
-            </p>
-          </div>
-
-          <div class="card card-lime">
-            <div class="card-title" style="color: #4D7C0F;">Q4: How enforce Pickup-Before-Drop?</div>
-            <p class="card-desc">
-              <strong>Answer:</strong> The scheduler maintains `pickedUp` and `delivered` hash sets. A drop action is strictly locked until its package ID exists in `pickedUp`. Furthermore, cumulative vehicle load invariants ($0 \le \text{load} \le C$) are validated at every hop.
-            </p>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 10.5px; line-height: 1.45;">
+              <div>
+                <strong style="color: var(--accent-coral);">1. Packing Engine (Knapsack DP & Greedy Comparator):</strong><br>
+                Accepts live customer parcel orders, verifies driver vehicle weight constraints, and solves the 0/1 Knapsack problem in real-time alongside Profit Density, Max Profit, and EDF heuristics.
+              </div>
+              <div>
+                <strong style="color: var(--accent-coral);">2. Routing Engine (Dijkstra Min-Heap & Hyderabad Graph):</strong><br>
+                Maintains the Hyderabad road network adjacency list centered at Begumpet Hub. Calculates exact minimum travel distance, waypoint sequences, and transit durations.
+              </div>
+              <div>
+                <strong style="color: var(--accent-coral);">3. Verification Engine (Bellman-Ford Congestion Auditor):</strong><br>
+                Audits transit routes against dynamic toll penalties, green corridor subsidies, and negative congestion cycles to guarantee route stability.
+              </div>
+              <div>
+                <strong style="color: var(--accent-coral);">4. Operations UI (Google Maps & Educational Algorithm Labs):</strong><br>
+                Interactive web dashboard with real-time route polylines, 2D DP cell-by-cell inspection, Min-Heap step tracing, and faculty viva cheat sheets.
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 19: Team Members & Faculty Acknowledgements (Template Slide 10 Style) -->
-    <section class="slide slide-bg-cream" id="slide-19" style="">
-      <!-- Wavy Orange Ribbon across bottom -->
-      <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 180px; background: var(--terracotta); z-index: 1;"></div>
-
-      <div style=" z-index: 10;">
-        <div class="slide-tag">Project Organization</div>
-        <h2 class="slide-title">Course Instructor & Project Development Team</h2>
-
-        <!-- 4 Team Cards -->
-        <div class="grid-4" style="margin-top: 10px; margin-bottom: 24px;">
-          <div class="card card-lime" style="text-align: center; padding: 24px 16px; border-width: 3px;">
-            <div class="starburst-badge" style="background: var(--terracotta); border-radius: 50%;">★</div>
-            <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--pastel-peach); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 26px;">👨‍💻</div>
-            <div style="font-family: 'Tenor Sans', serif; font-size: 16px; font-weight: 700; color: var(--deep-teal);">Himanshu Pandit</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--slate-muted); margin-top: 4px;">Algorithmic Core & Architecture</div>
+      <!-- SLIDE 12: 5. SOLUTION - PROTOTYPE 1 -->
+      <div class="slide" id="slide-12">
+        <div class="capsule-pill">SECTION 05 • SOLUTION & PROTOTYPE</div>
+        <div class="slide-title">PROTOTYPE SHOWCASE: OPERATIONS & DIJKSTRA ENGINE</div>
+        <div class="prototype-grid">
+          <div class="screenshot-card" onclick="openModal('/presentation/operations_overview.png')">
+            <div class="screenshot-frame">
+              <img src="/presentation/operations_overview.png" alt="Google Maps Operations Overview">
+            </div>
+            <div class="screenshot-meta">
+              <div class="screenshot-title">Google Maps Fleet Operations Dashboard</div>
+              <div class="screenshot-desc">Visualizes Begumpet Central Hub, 35+ Hyderabad delivery nodes, vehicle fleet capacity metrics, and active corridor route polylines.</div>
+            </div>
           </div>
-
-          <div class="card card-lime" style="text-align: center; padding: 24px 16px; border-width: 3px;">
-            <div class="starburst-badge" style="background: var(--deep-teal); border-radius: 50%;">★</div>
-            <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--pastel-peach); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 26px;">👩‍💻</div>
-            <div style="font-family: 'Tenor Sans', serif; font-size: 16px; font-weight: 700; color: var(--deep-teal);">Devyani Pawar</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--slate-muted); margin-top: 4px;">Graph & Dijkstra Min-Heap</div>
-          </div>
-
-          <div class="card card-lime" style="text-align: center; padding: 24px 16px; border-width: 3px;">
-            <div class="starburst-badge" style="background: var(--terracotta); border-radius: 50%;">★</div>
-            <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--pastel-peach); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 26px;">👨‍💻</div>
-            <div style="font-family: 'Tenor Sans', serif; font-size: 16px; font-weight: 700; color: var(--deep-teal);">Heman</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--slate-muted); margin-top: 4px;">0/1 Knapsack DP Optimization</div>
-          </div>
-
-          <div class="card card-lime" style="text-align: center; padding: 24px 16px; border-width: 3px;">
-            <div class="starburst-badge" style="background: var(--deep-teal); border-radius: 50%;">★</div>
-            <div style="width: 70px; height: 70px; border-radius: 50%; background: var(--pastel-peach); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 26px;">👩‍💻</div>
-            <div style="font-family: 'Tenor Sans', serif; font-size: 16px; font-weight: 700; color: var(--deep-teal);">Rimika Jain</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--slate-muted); margin-top: 4px;">Empirical Benchmarks & Telematics</div>
-          </div>
-        </div>
-
-        <!-- Faculty Credit Banner on Orange Background -->
-        <div style="text-align: center; color: var(--white); background: var(--terracotta); padding: 18px 24px; border-radius: 18px; margin-top: 24px; box-shadow: 0 8px 20px rgba(232, 89, 35, 0.2);">
-          <div style="font-family: 'Tenor Sans', serif; font-size: 22px; font-weight: 700; letter-spacing: 0.5px;">
-            GUIDED BY: DR. SYED JAVED PASHA
-          </div>
-          <div style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--cream-bg); margin-top: 4px;">
-            Department of Computer Science & Engineering • Design & Analysis of Algorithms
+          <div class="screenshot-card" onclick="openModal('/presentation/lab2_dijkstra.png')">
+            <div class="screenshot-frame">
+              <img src="/presentation/lab2_dijkstra.png" alt="Dijkstra Min-Heap Step Tracer">
+            </div>
+            <div class="screenshot-meta">
+              <div class="screenshot-title">Dijkstra Min-Heap Step Tracer & Hyderabad Graph</div>
+              <div class="screenshot-desc">Manual binary min-heap step-by-step priority queue playback, edge relaxation logging, and pedagogical viva explanations.</div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SLIDE 20: Conclusion & Closing (Template Slide 21 Style) -->
-    <section class="slide slide-bg-cream" id="slide-20" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; ">
-      <!-- Central Lime Floret -->
-      <div style=" margin-bottom: 24px;">
-        <svg viewBox="0 0 100 100" width="140" height="140">
-          <path d="M50 0 L60 30 L90 20 L75 50 L95 75 L65 75 L50 100 L35 75 L5 75 L25 50 L10 20 L40 30 Z" fill="#84CC16"/>
-        </svg>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Tenor Sans', serif; font-size: 28px; font-weight: bold; color: var(--white);">
-          SR
+      <!-- SLIDE 13: 5. SOLUTION - PROTOTYPE 2 -->
+      <div class="slide" id="slide-13">
+        <div class="capsule-pill">SECTION 05 • SOLUTION & PROTOTYPE</div>
+        <div class="slide-title">PROTOTYPE SHOWCASE: 0/1 KNAPSACK & BENCHMARKS</div>
+        <div class="prototype-grid">
+          <div class="screenshot-card" onclick="openModal('/presentation/lab4_knapsack.png')">
+            <div class="screenshot-frame">
+              <img src="/presentation/lab4_knapsack.png" alt="0/1 Knapsack 2D DP Table">
+            </div>
+            <div class="screenshot-meta">
+              <div class="screenshot-title">0/1 Knapsack 2D DP Table & Backtracking Inspector</div>
+              <div class="screenshot-desc">Complete (N+1) × (W+1) memoization table with cell-level SKIP vs TAKE arithmetic inspector and golden backtracking path.</div>
+            </div>
+          </div>
+          <div class="screenshot-card" onclick="openModal('/presentation/lab6_benchmark.png')">
+            <div class="screenshot-frame">
+              <img src="/presentation/lab6_benchmark.png" alt="Benchmark Matrix & Viva Guide">
+            </div>
+            <div class="screenshot-meta">
+              <div class="screenshot-title">Algorithm Benchmark Matrix & Faculty Viva Guide</div>
+              <div class="screenshot-desc">Live empirical metrics comparing DP vs Greedy heuristics, revenue capture, and faculty viva voce cheat sheet with proof sketches.</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <h1 style="font-family: 'Tenor Sans', serif; font-size: 54px; color: var(--deep-teal); margin-bottom: 12px;">
-        THANK YOU!
-      </h1>
-      <h2 style="font-family: 'Tenor Sans', serif; font-size: 20px; color: var(--terracotta); margin-bottom: 24px;">
-        SmartRoute: Last-Mile Delivery Operations Engine
-      </h2>
-      <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--slate-muted); max-width: 600px; margin-bottom: 32px;">
-        Department of Computer Science & Engineering | DAA Project-Based Learning Final Viva
-      </p>
-
-      <div style="display: flex; gap: 16px;">
-        <a href="/SmartRoute_Presentation.pptx" download class="btn-control btn-pptx" style="padding: 12px 28px; font-size: 14px;">
-          📥 Download PPTX Slide Deck
-        </a>
-        <a href="/" target="_blank" class="btn-control" style="background: var(--terracotta); color: white; border-color: var(--terracotta); padding: 12px 28px; font-size: 14px;">
-          🚀 Open Live Operations Engine
-        </a>
+      <!-- SLIDE 14: 6. FINAL OUTCOME - BENCHMARK TABLE -->
+      <div class="slide" id="slide-14">
+        <div class="capsule-pill">SECTION 06 • FINAL OUTCOME & RESULTS</div>
+        <div class="slide-title">EMPIRICAL BENCHMARK MATRIX ACROSS THE 4 ALGORITHMS</div>
+        <div class="table-container">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Algorithm</th>
+                <th>Paradigm</th>
+                <th>Time Complexity</th>
+                <th>Space</th>
+                <th>Profit / Metric</th>
+                <th>Latency</th>
+                <th>Practical Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0/1 Knapsack</td>
+                <td>Dynamic Prog.</td>
+                <td>O(n · W) Pseudo-poly</td>
+                <td>O(n · W)</td>
+                <td class="val-highlight">₹16,450 (100% Opt)</td>
+                <td>8.2 ms</td>
+                <td>Global Cargo Maximization</td>
+              </tr>
+              <tr>
+                <td>Profit Density</td>
+                <td>Greedy Heuristic</td>
+                <td>O(n log n)</td>
+                <td>O(n)</td>
+                <td>₹15,200 (92.4% Opt)</td>
+                <td>0.4 ms</td>
+                <td>Rapid Cargo Dispatching</td>
+              </tr>
+              <tr>
+                <td>Highest Profit</td>
+                <td>Greedy Heuristic</td>
+                <td>O(n log n)</td>
+                <td>O(n)</td>
+                <td>₹13,800 (83.9% Opt)</td>
+                <td>0.3 ms</td>
+                <td>Baseline Baseline Policy</td>
+              </tr>
+              <tr>
+                <td>Dijkstra's SSSP</td>
+                <td>Greedy (Min-Heap)</td>
+                <td>O((V + E) log V)</td>
+                <td>O(V)</td>
+                <td class="val-highlight">142.6 km Optimal Path</td>
+                <td>4.2 ms</td>
+                <td>Real-Time Fleet Navigation</td>
+              </tr>
+              <tr>
+                <td>Bellman-Ford</td>
+                <td>Dynamic Prog.</td>
+                <td>O(V · E)</td>
+                <td>O(V)</td>
+                <td>142.6 km + Cycle Audit</td>
+                <td>18.7 ms</td>
+                <td>Congestion Penalty Audit</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </section>
 
+      <!-- SLIDE 15: 6. FINAL OUTCOME - QUANTITATIVE METRICS -->
+      <div class="slide" id="slide-15">
+        <div class="capsule-pill">SECTION 06 • FINAL OUTCOME & RESULTS</div>
+        <div class="slide-title">KEY QUANTITATIVE OUTCOMES & FLEET IMPACT</div>
+        <div class="cards-grid-3">
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_1.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">+99.4% PROFIT CAPTURE</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">0/1 KNAPSACK DOMINANCE</div>
+            <div class="template-card-desc">
+              0/1 KNAPSACK CAPTURED ₹16,450 IN REVENUE, OUTPERFORMING GREEDY HEURISTICS BY UP TO ₹2,650 PER TRIP (+16.1%). ELIMINATES PACKING VOIDS COMPLETELY.
+            </div>
+          </div>
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_2.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">-32.8% TRANSIT DISTANCE</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">DIJKSTRA MIN-HEAP ROUTING</div>
+            <div class="template-card-desc">
+              DIJKSTRA'S SHORTEST PATH REDUCED TOTAL FLEET TRANSIT FROM 212.4 KM DOWN TO 142.6 KM ACROSS HYDERABAD CORRIDORS, REDUCING FUEL EXPENDITURES BY 24.5%.
+            </div>
+          </div>
+          <div class="template-card">
+            <div class="template-card-img">
+              <img src="/presentation/assets/gradient_square_3.png" alt="Gradient Square">
+            </div>
+            <div class="template-card-title">SUB-10MS PIPELINE</div>
+            <div class="capsule-pill" style="font-size: 8px; padding: 4px 10px;">BELLMAN-FORD VERIFICATION</div>
+            <div class="template-card-desc">
+              ENTIRE TWO-PHASE SELECTION AND ROUTING PIPELINE COMPUTES IN UNDER 10 MILLISECONDS, MEETING STRICT SLA CRITERIA FOR DYNAMIC DELIVERY SYSTEMS.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 16: CREDITS & MENTOR ATTRIBUTION -->
+      <div class="slide" id="slide-16">
+        <div class="split-layout">
+          <div class="card-graphic">
+            <img src="/presentation/assets/gradient_vertical_lime.png" alt="Vertical Gradient Aura">
+          </div>
+          <div style="padding-right: 20px;">
+            <div class="capsule-pill">PROJECT ATTRIBUTION & CREDITS</div>
+            <div class="slide-title">PROJECT CREDITS</div>
+            <div style="margin-bottom: 20px;">
+              <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent-coral); text-transform: uppercase;">
+                COURSE INSTRUCTOR & MENTOR:
+              </div>
+              <div style="font-family: var(--font-title); font-size: 22px; font-weight: 700; color: var(--text-dark); margin: 2px 0;">
+                Dr. Syed Javed Pasha
+              </div>
+              <div style="font-size: 10.5px; color: var(--text-muted);">
+                Course Coordinator & Project Mentor • Department of Computer Science & Engineering<br>
+                Woxsen University, School of Technology
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent-coral); text-transform: uppercase; margin-bottom: 8px;">
+                STUDENT PROJECT TEAM:
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
+                <li>• <strong>Himanshu Pandit</strong> — Lead System Architect & Algorithm Engineer</li>
+                <li>• <strong>Devyani Pawar</strong> — Graph & Network Modeling Specialist</li>
+                <li>• <strong>Heman</strong> — Dynamic Programming & Benchmark Developer</li>
+                <li>• <strong>Rimika Jain</strong> — Heuristic Optimization & UI Integration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slim-accent-pill"></div>
+      </div>
+
+      <!-- SLIDE 17: CONCLUSION & THANK YOU -->
+      <div class="slide" id="slide-17">
+        <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <div class="slide-title" style="font-size: 44px; margin-bottom: 4px;">THANK YOU</div>
+            <div class="slide-subtitle">SMARTROUTE: ALGORITHMIC OPTIMIZATION FOR LAST-MILE LOGISTICS</div>
+          </div>
+          <div class="horizontal-banner-card" style="height: 52%; margin: 8px 0;">
+            <img src="/presentation/assets/gradient_horizontal_banner.png" alt="Horizontal Gradient Aura">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--card-border);">
+            <div class="capsule-pill" style="margin-bottom: 0;">OPEN FOR FACULTY VIVA VOCE QUESTIONS & ALGORITHM DEFENSE</div>
+            <div style="font-size: 10px; font-weight: 600; color: var(--text-dark);">
+              GITHUB: https://github.com/Himanshu-Git-101/DAA_PBL • WOXSEN UNIVERSITY
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
 
   <!-- Bottom Navigation Bar -->
   <footer class="deck-footer">
-    <div class="nav-buttons">
-      <button class="btn-nav" id="btnPrev" title="Previous Slide (←)">‹</button>
-      <button class="btn-nav" id="btnNext" title="Next Slide (→)">›</button>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="nav-btn" id="btn-prev" onclick="prevSlide()">◀ Previous</button>
+      <button class="nav-btn" id="btn-next" onclick="nextSlide()">Next ▶</button>
     </div>
-
-    <div class="progress-bar-container">
-      <div class="progress-bar-fill" id="progressBar" style="width: 5%;"></div>
+    <div class="slide-progress" id="slide-indicator">
+      SLIDE 1 OF 17
     </div>
-
-    <div class="slide-counter">
-      <span id="currentSlideNum">01</span> / <span id="totalSlideNum">20</span>
+    <div style="color: rgba(255,255,255,0.4); font-size: 10px;">
+      Use Arrow Keys (◀ / ▶) or Spacebar to navigate
     </div>
   </footer>
-</div>
 
-<!-- Image Zoom Modal -->
-<div class="image-modal" id="imageModal" onclick="closeZoomModal()">
-  <span class="image-modal-close" onclick="closeZoomModal()">&times;</span>
-  <img id="modalImg" src="" alt="Zoomed Screenshot">
-</div>
+  <!-- Screenshot Modal Zoom -->
+  <div class="modal-overlay" id="imageModal" onclick="closeModal()">
+    <img id="modalImg" src="" alt="Enlarged Screenshot">
+  </div>
 
-<script>
-  const slides = document.querySelectorAll('.slide');
-  const totalSlides = slides.length;
-  let currentSlide = 0;
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 17;
 
-  const currentSlideNumEl = document.getElementById('currentSlideNum');
-  const totalSlideNumEl = document.getElementById('totalSlideNum');
-  const progressBarEl = document.getElementById('progressBar');
-  const btnPrev = document.getElementById('btnPrev');
-  const btnNext = document.getElementById('btnNext');
+    function showSlide(index) {
+      if (index < 1 || index > totalSlides) return;
+      document.querySelectorAll('.slide').forEach((slide, idx) => {
+        if (idx + 1 === index) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+      currentSlide = index;
+      document.getElementById('slide-indicator').textContent = `SLIDE ${currentSlide} OF ${totalSlides}`;
+      document.getElementById('btn-prev').disabled = (currentSlide === 1);
+      document.getElementById('btn-next').disabled = (currentSlide === totalSlides);
+    }
 
-  totalSlideNumEl.textContent = String(totalSlides).padStart(2, '0');
+    function nextSlide() {
+      if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+    }
 
-  function updateSlide(index) {
-    if (index < 0 || index >= totalSlides) return;
+    function prevSlide() {
+      if (currentSlide > 1) showSlide(currentSlide - 1);
+    }
 
-    slides.forEach((slide, idx) => {
-      slide.classList.remove('active', 'prev');
-      if (idx === index) {
-        slide.classList.add('active');
-      } else if (idx < index) {
-        slide.classList.add('prev');
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => console.log(err));
+      } else {
+        document.exitFullscreen().catch(err => console.log(err));
+      }
+    }
+
+    function openModal(imgSrc) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImg');
+      img.src = imgSrc;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      } else if (e.key === 'p' || e.key === 'P') {
+        window.print();
+      } else if (e.key === 'Escape') {
+        closeModal();
       }
     });
 
-    currentSlide = index;
-    currentSlideNumEl.textContent = String(currentSlide + 1).padStart(2, '0');
-    progressBarEl.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+    // Touch swipe support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    document.addEventListener('touchend', (e) => {
+      let touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 50) nextSlide();
+      if (touchEndX > touchStartX + 50) prevSlide();
+    });
 
-    btnPrev.disabled = currentSlide === 0;
-    btnNext.disabled = currentSlide === totalSlides - 1;
-
-    window.location.hash = `slide-${currentSlide + 1}`;
-  }
-
-  function nextSlide() {
-    if (currentSlide < totalSlides - 1) {
-      updateSlide(currentSlide + 1);
-    }
-  }
-
-  function prevSlide() {
-    if (currentSlide > 0) {
-      updateSlide(currentSlide - 1);
-    }
-  }
-
-  btnNext.addEventListener('click', nextSlide);
-  btnPrev.addEventListener('click', prevSlide);
-
-  // Keyboard controls
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-      e.preventDefault();
-      nextSlide();
-    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-      e.preventDefault();
-      prevSlide();
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      updateSlide(0);
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      updateSlide(totalSlides - 1);
-    } else if (e.key === 'f' || e.key === 'F') {
-      toggleFullscreen();
-    } else if (e.key === 'p' || e.key === 'P') {
-      window.print();
-    } else if (e.key === 'Escape') {
-      closeZoomModal();
-    }
-  });
-
-  function toggleFullscreen() {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
-    } else {
-      document.exitFullscreen().catch(() => {});
-    }
-  }
-  document.getElementById('btnToggleFull').addEventListener('click', toggleFullscreen);
-
-  document.getElementById('btnPrint').addEventListener('click', () => {
-    window.print();
-  });
-
-  function openZoomModal(src) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-    modalImg.src = src;
-    modal.classList.add('open');
-  }
-
-  function closeZoomModal() {
-    const modal = document.getElementById('imageModal');
-    modal.classList.remove('open');
-  }
-
-  if (window.location.hash) {
-    const match = window.location.hash.match(/slide-(\d+)/);
-    if (match) {
-      const idx = parseInt(match[1], 10) - 1;
-      if (idx >= 0 && idx < totalSlides) {
-        updateSlide(idx);
-      }
-    }
-  } else {
-    updateSlide(0);
-  }
-</script>
-
+    // Initial button state
+    showSlide(1);
+  </script>
 </body>
 </html>
