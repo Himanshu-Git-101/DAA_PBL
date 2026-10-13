@@ -260,27 +260,29 @@ html_content = """<!DOCTYPE html>
       <div class="title-page-border">
         <div>
           <h1 style="font-size: 22pt; font-weight: bold; margin-bottom: 4pt;">Woxsen University</h1>
-          <h2 style="font-size: 16pt; font-weight: bold; margin-bottom: 16pt;">School of Technology</h2>
-          <div style="margin: 12pt 0;">
+          <h2 style="font-size: 16pt; font-weight: bold; margin-bottom: 12pt;">School of Technology</h2>
+          <div style="margin: 10pt 0;">
             <img src="/presentation/assets/woxsen_logo.jpg" alt="Woxsen University Logo" style="width: 170px;">
           </div>
-          <div style="font-size: 12pt; margin-top: 14pt;">A</div>
-          <div style="font-size: 16pt; font-weight: bold; margin: 4pt 0;">PROJECT REPORT</div>
-          <div style="font-size: 12pt; margin-bottom: 14pt;">on</div>
-          <div style="font-size: 15pt; font-weight: bold; line-height: 1.3; margin: 10pt 20pt; text-transform: uppercase;">
-            SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD
+          <div style="font-size: 12pt; margin-top: 10pt;">A</div>
+          <div style="font-size: 16pt; font-weight: bold; margin: 2pt 0;">PROJECT REPORT</div>
+          <div style="font-size: 13pt; font-weight: bold; color: #222; margin: 2pt 0;">DESIGN AND ANALYSIS OF ALGORITHMS<br>PROJECT BASED LEARNING REPORT</div>
+          <div style="font-size: 12pt; margin: 6pt 0;">on</div>
+          <div style="font-size: 14pt; font-weight: bold; line-height: 1.3; margin: 8pt 20pt; text-transform: uppercase;">
+            SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPERATIONS OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD
           </div>
         </div>
 
         <div>
-          <div style="font-size: 12pt; margin-bottom: 6pt;">Submitted in partial fulfillment of the requirements for the degree of</div>
-          <div style="font-size: 14pt; font-weight: bold; margin-bottom: 18pt;">B. Tech. in Computer Science and Engineering</div>
+          <div style="font-size: 12pt; margin-bottom: 4pt;">Submitted in partial fulfillment of the requirements for the degree of</div>
+          <div style="font-size: 13pt; font-weight: bold; margin-bottom: 2pt;">B. Tech. in Computer Science and Engineering<br>(Artificial Intelligence and Machine Learning)</div>
+          <div style="font-size: 12pt; font-weight: bold; margin-bottom: 14pt; color: #1B365D;">Section: AIML Rhinos | 3rd Semester</div>
 
           <div style="font-size: 12pt; font-weight: bold; margin-bottom: 4pt;">Submitted by:</div>
-          <div style="font-size: 12pt;">Himanshu Pandit (WOU/BTECH/CSE/2023/042)</div>
-          <div style="font-size: 12pt;">Devyani Pawar (WOU/BTECH/CSE/2023/018)</div>
-          <div style="font-size: 12pt;">Heman (WOU/BTECH/CSE/2023/029)</div>
-          <div style="font-size: 12pt; margin-bottom: 14pt;">Rimika Jain (WOU/BTECH/CSE/2023/065)</div>
+          <div style="font-size: 12pt;">Himanshu Pandit (25WU0102098)</div>
+          <div style="font-size: 12pt;">Rimika Jain (25WU0101111)</div>
+          <div style="font-size: 12pt;">Devyani Pawar (25WU0102069)</div>
+          <div style="font-size: 12pt; margin-bottom: 12pt;">Heman (25WU0102097)</div>
 
           <div style="font-size: 12pt; font-weight: bold; margin-bottom: 4pt;">Under the guidance of:</div>
           <div style="font-size: 13pt; font-weight: bold;">Dr. Syed Javed Pasha</div>
@@ -295,7 +297,7 @@ html_content = """<!DOCTYPE html>
     <div class="page-break">
       <div class="center-header">CERTIFICATE</div>
       <p>
-        This is to certify that the project report entitled <strong>"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD"</strong> submitted by <strong>Himanshu Pandit (WOU/BTECH/CSE/2023/042)</strong>, <strong>Devyani Pawar (WOU/BTECH/CSE/2023/018)</strong>, <strong>Heman (WOU/BTECH/CSE/2023/029)</strong>, and <strong>Rimika Jain (WOU/BTECH/CSE/2023/065)</strong> in partial fulfillment of the requirements for the award of the degree of <strong>Bachelor of Technology in Computer Science and Engineering</strong> from <strong>Woxsen University, School of Technology</strong> is a bonafide record of work carried out by the students under my supervision and guidance.
+        This is to certify that the project report entitled <strong>"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPERATIONS OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD"</strong> submitted by <strong>Himanshu Pandit (25WU0102098)</strong>, <strong>Rimika Jain (25WU0101111)</strong>, <strong>Devyani Pawar (25WU0102069)</strong>, and <strong>Heman (25WU0102097)</strong>, students of <strong>B. Tech. in Computer Science and Engineering (Artificial Intelligence and Machine Learning), Section: AIML Rhinos, 3rd Semester</strong>, in partial fulfillment of the requirements for the award of the degree and <strong>Design and Analysis of Algorithms Project Based Learning (DAA PBL)</strong> from <strong>Woxsen University, School of Technology</strong> is a bonafide record of work carried out by the students under my supervision and guidance.
       </p>
       <p style="margin-top: 14pt;">
         The work embodied in this project report has been carried out by the candidates and has not been submitted elsewhere for a degree.
@@ -315,7 +317,7 @@ html_content = """<!DOCTYPE html>
     <div class="page-break">
       <div class="center-header">DECLARATION of the candidates</div>
       <p>
-        We hereby declare that the project work entitled <strong>"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD"</strong> submitted to the Department of Computer Science and Engineering, School of Technology, Woxsen University, in partial fulfillment of the requirements for the award of the degree of <strong>Bachelor of Technology in Computer Science and Engineering</strong> is our original work and has been carried out under the guidance of <strong>Dr. Syed Javed Pasha</strong>.
+        We hereby declare that the project work entitled <strong>"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPERATIONS OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD"</strong> submitted to the Department of Computer Science and Engineering, School of Technology, Woxsen University, <strong>Section: AIML Rhinos, 3rd Semester</strong>, in partial fulfillment of the requirements for <strong>Design and Analysis of Algorithms Project Based Learning (DAA PBL)</strong> for the degree of <strong>Bachelor of Technology in Computer Science and Engineering (Artificial Intelligence and Machine Learning)</strong> is our original work and has been carried out under the guidance of <strong>Dr. Syed Javed Pasha</strong>.
       </p>
       <p style="margin-top: 14pt;">
         We further declare that the work reported in this project has not been submitted and will not be submitted, either in part or in full, for the award of any other degree or diploma in this institute or any other institute or university.
@@ -324,22 +326,22 @@ html_content = """<!DOCTYPE html>
         <div>
           <p>Signature: ______________________</p>
           <p><strong>Name: Himanshu Pandit</strong></p>
-          <p>Roll Number: WOU/BTECH/CSE/2023/042</p>
-        </div>
-        <div>
-          <p>Signature: ______________________</p>
-          <p><strong>Name: Devyani Pawar</strong></p>
-          <p>Roll Number: WOU/BTECH/CSE/2023/018</p>
-        </div>
-        <div>
-          <p>Signature: ______________________</p>
-          <p><strong>Name: Heman</strong></p>
-          <p>Roll Number: WOU/BTECH/CSE/2023/029</p>
+          <p>Roll Number: 25WU0102098</p>
         </div>
         <div>
           <p>Signature: ______________________</p>
           <p><strong>Name: Rimika Jain</strong></p>
-          <p>Roll Number: WOU/BTECH/CSE/2023/065</p>
+          <p>Roll Number: 25WU0101111</p>
+        </div>
+        <div>
+          <p>Signature: ______________________</p>
+          <p><strong>Name: Devyani Pawar</strong></p>
+          <p>Roll Number: 25WU0102069</p>
+        </div>
+        <div>
+          <p>Signature: ______________________</p>
+          <p><strong>Name: Heman</strong></p>
+          <p>Roll Number: 25WU0102097</p>
         </div>
       </div>
       <div style="margin-top: 24pt;">
@@ -354,7 +356,7 @@ html_content = """<!DOCTYPE html>
     <div class="page-break">
       <div class="center-header">ACKNOWLEDGMENT</div>
       <p>
-        We would like to express our sincere gratitude to all those who have contributed to the successful completion of this project on <em>SmartRoute: Algorithmic Last-Mile Delivery Optimization Using Dynamic Programming, Greedy Heuristics, Dijkstra's Algorithm, and Bellman-Ford</em>.
+        We would like to express our sincere gratitude to all those who have contributed to the successful completion of this project on <em>SmartRoute: Algorithmic Last-Mile Delivery Operations Optimization Using Dynamic Programming, Greedy Heuristics, Dijkstra's Algorithm, and Bellman-Ford</em>.
       </p>
       <p>
         First and foremost, we extend our heartfelt thanks to our project mentor, <strong>Dr. Syed Javed Pasha</strong>, Associate Professor, Department of Computer Science & Engineering, for his invaluable guidance, continuous support, and constructive feedback throughout the duration of this project. His deep expertise in algorithm design, network optimization, and computational complexity has been instrumental in shaping this research.
@@ -369,10 +371,11 @@ html_content = """<!DOCTYPE html>
         Finally, we are deeply grateful to our families and peers for their unwavering support, encouragement, and understanding throughout our academic journey.
       </p>
       <div style="margin-top: 36pt; text-align: right;">
-        <p><strong>Himanshu Pandit</strong></p>
-        <p><strong>Devyani Pawar</strong></p>
-        <p><strong>Heman</strong></p>
-        <p><strong>Rimika Jain</strong></p>
+        <p><strong>Himanshu Pandit (25WU0102098)</strong></p>
+        <p><strong>Rimika Jain (25WU0101111)</strong></p>
+        <p><strong>Devyani Pawar (25WU0102069)</strong></p>
+        <p><strong>Heman (25WU0102097)</strong></p>
+        <p style="margin-top: 8pt; font-size: 11pt; color: #555;">Section: AIML Rhinos | 3rd Semester<br>B. Tech. CSE (AI & ML), School of Technology, Woxsen University</p>
       </div>
     </div>
 
@@ -476,7 +479,6 @@ html_content = """<!DOCTYPE html>
         <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 4.3: Dijkstra Min-Heap Step Tracer & Step Log in Working Prototype</td><td style="text-align: right;">25</td></tr>
         <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 4.4: 0/1 Knapsack 2D DP Interactive Cell Arithmetic Inspector</td><td style="text-align: right;">26</td></tr>
         <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 4.5: Multi-Algorithm Benchmark Matrix and Faculty Viva Voce Guide</td><td style="text-align: right;">27</td></tr>
-        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure A.1: GitHub Repository, Code Architecture, and Deployment Workspace</td><td style="text-align: right;">35</td></tr>
       </table>
     </div>
 
@@ -1064,27 +1066,40 @@ html_content = """<!DOCTYPE html>
     <div class="page-break">
       <h1 class="chapter-title">APPENDIX – I</h1>
       <h2 class="section-title">SCREENSHOTS OF WORK DONE AND DEPLOYMENT TOOLS</h2>
-      <p>This appendix documents the codebase repository, deployment infrastructure, and interactive execution environments utilized in developing and testing SmartRoute:</p>
+      <p>Screen shots of work done and deployment tools utilized during the Design and Analysis of Algorithms Project Based Learning (DAA PBL):</p>
       
-      <h3 class="subsection-title">A.1 Codebase Repository and Version Control</h3>
+      <h3 class="subsection-title">A.1 Algorithmic Problem Solving & Platform Verification</h3>
+      <p>The foundational algorithmic logic powering SmartRoute was validated and benchmarked through rigorous problem solving across industry-standard competitive programming platforms:</p>
       <ul>
-        <li><strong>GitHub Repository:</strong> <code>https://github.com/Himanshu-Git-101/DAA_PBL</code></li>
-        <li><strong>Branch Architecture:</strong> <code>main</code> (fully tracked commits, automated deployment)</li>
-        <li><strong>Technology Stack:</strong> Integrated TypeScript 5.5, React 18, Vite 5.4, Python 3.11, Google Maps API</li>
+        <li><strong>LeetCode Algorithmic Problem Solving:</strong>
+          <ul>
+            <li><em>Problem #416 & #474 (0/1 Knapsack & Partition Equal Subset Sum Dynamic Programming):</em> Implementation of 2D memoization tables and space-optimized bottom-up dynamic programming.</li>
+            <li><em>Problem #743 (Network Delay Time):</em> Single-source shortest path using custom Binary Min-Heap Priority Queue (Dijkstra's Algorithm).</li>
+            <li><em>Problem #787 (Cheapest Flights Within K Stops):</em> Iterative edge relaxation with step-bound invariants (Bellman-Ford Algorithm).</li>
+          </ul>
+        </li>
+        <li><strong>HackerRank Algorithmic Verification:</strong>
+          <ul>
+            <li><em>Dijkstra: Shortest Reach 2:</em> Evaluated on dense and sparse road topologies to verify adjacency list performance against adjacency matrices.</li>
+            <li><em>Floyd-Warshall & Graph Theory Challenges:</em> Multi-pair shortest path and negative cycle detection audits.</li>
+          </ul>
+        </li>
       </ul>
 
-      <h3 class="subsection-title">A.2 Algorithmic Problem Solving & Source Code Files</h3>
+      <h3 class="subsection-title">A.2 Codebase Repository and Deployment Architecture</h3>
       <ul>
-        <li><strong>dijkstra.py:</strong> Custom Binary Min-Heap Priority Queue class and step-by-step trace logger.</li>
-        <li><strong>knapsack.py:</strong> 2D memoization table generator, SKIP vs TAKE arithmetic inspector, and golden backtracking tracer.</li>
-        <li><strong>graph.py:</strong> Hyderabad adjacency matrix, Begumpet Central Hub coordinates, and 35+ delivery node locations.</li>
-        <li><strong>src/components:</strong> Algorithm Lab components, Google Maps view, and Viva Cheat Sheet.</li>
+        <li><strong>GitHub Public Repository:</strong> <code>https://github.com/Himanshu-Git-101/DAA_PBL</code></li>
+        <li><strong>Production Branch Architecture:</strong> <code>main</code> (fully tracked version-controlled commits, continuous integration workflows)</li>
+        <li><strong>Source Code Organization:</strong>
+          <ul>
+            <li><code>dijkstra.py</code>: Custom Binary Min-Heap Priority Queue class and step-by-step trace logger.</li>
+            <li><code>knapsack.py</code>: 2D memoization table generator, SKIP vs TAKE arithmetic inspector, and golden backtracking tracer.</li>
+            <li><code>graph.py</code>: Hyderabad road network adjacency matrix, Begumpet Central Hub coordinates, and 35+ delivery node locations.</li>
+            <li><code>src/components</code>: Algorithm Lab components, Google Maps interactive view, and operations control deck.</li>
+          </ul>
+        </li>
+        <li><strong>Deployment Framework:</strong> React 18, TypeScript 5.5, Vite 5.4, Python 3.11, Google Maps API, GitHub Pages / Netlify hosting.</li>
       </ul>
-
-      <div class="figure-container">
-        <img src="/presentation/viva_guide.png" alt="Viva Guide">
-      </div>
-      <div class="figure-caption">Figure A.1: Faculty Viva Voce Concept Reference Sheet and Deployment Architecture</div>
     </div>
 
     <!-- ========================================================= -->

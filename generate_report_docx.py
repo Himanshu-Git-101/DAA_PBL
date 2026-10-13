@@ -190,36 +190,49 @@ p_a.paragraph_format.space_after = Pt(4)
 r = p_a.add_run("A")
 format_run(r, size_pt=12)
 
+# Project Title & PBL Specification
 p_rep = doc.add_paragraph()
 p_rep.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_rep.paragraph_format.space_after = Pt(4)
+p_rep.paragraph_format.space_after = Pt(2)
 r = p_rep.add_run("PROJECT REPORT")
 format_run(r, size_pt=16, bold=True)
 
+p_pbl = doc.add_paragraph()
+p_pbl.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p_pbl.paragraph_format.space_after = Pt(4)
+r = p_pbl.add_run("DESIGN AND ANALYSIS OF ALGORITHMS\nPROJECT BASED LEARNING REPORT")
+format_run(r, size_pt=13, bold=True)
+
 p_on = doc.add_paragraph()
 p_on.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_on.paragraph_format.space_after = Pt(14)
+p_on.paragraph_format.space_after = Pt(10)
 r = p_on.add_run("on")
 format_run(r, size_pt=12)
 
 # Project Title
 p_title = doc.add_paragraph()
 p_title.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_title.paragraph_format.space_after = Pt(18)
-r = p_title.add_run("SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD")
-format_run(r, size_pt=15, bold=True)
+p_title.paragraph_format.space_after = Pt(14)
+r = p_title.add_run("SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPERATIONS OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD")
+format_run(r, size_pt=14, bold=True)
 
 p_sub = doc.add_paragraph()
 p_sub.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_sub.paragraph_format.space_after = Pt(14)
+p_sub.paragraph_format.space_after = Pt(6)
 r = p_sub.add_run("Submitted in partial fulfillment of the requirements for the degree of")
 format_run(r, size_pt=12)
 
 p_deg = doc.add_paragraph()
 p_deg.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_deg.paragraph_format.space_after = Pt(24)
-r = p_deg.add_run("B. Tech. in Computer Science and Engineering")
-format_run(r, size_pt=14, bold=True)
+p_deg.paragraph_format.space_after = Pt(2)
+r = p_deg.add_run("B. Tech. in Computer Science and Engineering\n(Artificial Intelligence and Machine Learning)")
+format_run(r, size_pt=13, bold=True)
+
+p_sec = doc.add_paragraph()
+p_sec.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p_sec.paragraph_format.space_after = Pt(16)
+r = p_sec.add_run("Section: AIML Rhinos | 3rd Semester")
+format_run(r, size_pt=12, bold=True)
 
 # Student Names
 p_by = doc.add_paragraph()
@@ -229,10 +242,10 @@ r = p_by.add_run("Submitted by:")
 format_run(r, size_pt=12, bold=True)
 
 team_members = [
-    ("Himanshu Pandit", "WOU/BTECH/CSE/2023/042"),
-    ("Devyani Pawar", "WOU/BTECH/CSE/2023/018"),
-    ("Heman", "WOU/BTECH/CSE/2023/029"),
-    ("Rimika Jain", "WOU/BTECH/CSE/2023/065")
+    ("Himanshu Pandit", "25WU0102098"),
+    ("Rimika Jain", "25WU0101111"),
+    ("Devyani Pawar", "25WU0102069"),
+    ("Heman", "25WU0102097")
 ]
 
 for name, roll in team_members:
@@ -245,7 +258,7 @@ for name, roll in team_members:
 # Guide
 p_guid = doc.add_paragraph()
 p_guid.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_guid.paragraph_format.space_before = Pt(14)
+p_guid.paragraph_format.space_before = Pt(12)
 p_guid.paragraph_format.space_after = Pt(2)
 r = p_guid.add_run("Under the guidance of:")
 format_run(r, size_pt=12, bold=True)
@@ -276,11 +289,12 @@ r = p_cert.add_run("CERTIFICATE")
 format_run(r, size_pt=16, bold=True)
 
 cert_text = (
-    "This is to certify that the project report entitled \"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION "
+    "This is to certify that the project report entitled \"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPERATIONS OPTIMIZATION "
     "USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD\" submitted by "
-    "Himanshu Pandit (WOU/BTECH/CSE/2023/042), Devyani Pawar (WOU/BTECH/CSE/2023/018), Heman (WOU/BTECH/CSE/2023/029), "
-    "and Rimika Jain (WOU/BTECH/CSE/2023/065) in partial fulfillment of the requirements for the award of the degree of "
-    "Bachelor of Technology in Computer Science and Engineering from Woxsen University, School of Technology is a bonafide "
+    "Himanshu Pandit (25WU0102098), Rimika Jain (25WU0101111), Devyani Pawar (25WU0102069), "
+    "and Heman (25WU0102097), students of B. Tech. in Computer Science and Engineering (Artificial Intelligence and Machine Learning), "
+    "Section: AIML Rhinos, 3rd Semester, in partial fulfillment of the requirements for the award of the degree and Design and Analysis "
+    "of Algorithms Project Based Learning (DAA PBL) from Woxsen University, School of Technology is a bonafide "
     "record of work carried out by the students under my supervision and guidance.\n\n"
     "The work embodied in this project report has been carried out by the candidates and has not been submitted elsewhere for a degree."
 )
@@ -320,11 +334,12 @@ r = p_dec.add_run("DECLARATION of the candidates")
 format_run(r, size_pt=16, bold=True)
 
 dec_text = (
-    "We hereby declare that the project work entitled \"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION "
+    "We hereby declare that the project work entitled \"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPERATIONS OPTIMIZATION "
     "USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD\" submitted to the Department "
-    "of Computer Science and Engineering, School of Technology, Woxsen University, in partial fulfillment of the requirements "
-    "for the award of the degree of Bachelor of Technology in Computer Science and Engineering is our original work and has "
-    "been carried out under the guidance of Dr. Syed Javed Pasha.\n\n"
+    "of Computer Science and Engineering, School of Technology, Woxsen University, Section: AIML Rhinos, 3rd Semester, "
+    "in partial fulfillment of the requirements for Design and Analysis of Algorithms Project Based Learning (DAA PBL) "
+    "for the degree of Bachelor of Technology in Computer Science and Engineering (Artificial Intelligence and Machine Learning) "
+    "is our original work and has been carried out under the guidance of Dr. Syed Javed Pasha.\n\n"
     "We further declare that the work reported in this project has not been submitted and will not be submitted, either in part "
     "or in full, for the award of any other degree or diploma in this institute or any other institute or university."
 )
@@ -333,10 +348,10 @@ add_body_paragraph(doc, dec_text, space_after=36)
 # Signatures Table (2x2 grid)
 table_sig = doc.add_table(rows=2, cols=2)
 table_sig.alignment = WD_TABLE_ALIGNMENT.CENTER
-for r_i, c_i, name, roll in [(0, 0, "Himanshu Pandit", "WOU/BTECH/CSE/2023/042"),
-                             (0, 1, "Devyani Pawar", "WOU/BTECH/CSE/2023/018"),
-                             (1, 0, "Heman", "WOU/BTECH/CSE/2023/029"),
-                             (1, 1, "Rimika Jain", "WOU/BTECH/CSE/2023/065")]:
+for r_i, c_i, name, roll in [(0, 0, "Himanshu Pandit", "25WU0102098"),
+                             (0, 1, "Rimika Jain", "25WU0101111"),
+                             (1, 0, "Devyani Pawar", "25WU0102069"),
+                             (1, 1, "Heman", "25WU0102097")]:
     cell = table_sig.cell(r_i, c_i)
     p = cell.paragraphs[0]
     p.paragraph_format.space_after = Pt(20)
@@ -399,8 +414,15 @@ add_body_paragraph(doc, ack_p5, space_after=30)
 
 p_names = doc.add_paragraph()
 p_names.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-r = p_names.add_run("Himanshu Pandit\nDevyani Pawar\nHeman\nRimika Jain\n(B. Tech. CSE, Class of 2026)")
-format_run(r, size_pt=12, bold=True)
+r = p_names.add_run(
+    "Himanshu Pandit (25WU0102098)\n"
+    "Rimika Jain (25WU0101111)\n"
+    "Devyani Pawar (25WU0102069)\n"
+    "Heman (25WU0102097)\n\n"
+    "Section: AIML Rhinos | 3rd Semester\n"
+    "B. Tech. CSE (AI & ML), School of Technology, Woxsen University"
+)
+format_run(r, size_pt=11, bold=True)
 
 doc.add_page_break()
 
@@ -610,8 +632,7 @@ figures_list = [
     ("Figure 4.2: Total Fleet Transit Distance Reduction (Baseline vs Optimized)", "24"),
     ("Figure 4.3: Dijkstra Min-Heap Step Tracer & Step Log in Working Prototype", "25"),
     ("Figure 4.4: 0/1 Knapsack 2D DP Interactive Cell Arithmetic Inspector", "26"),
-    ("Figure 4.5: Multi-Algorithm Benchmark Matrix and Faculty Viva Voce Guide", "27"),
-    ("Figure A.1: GitHub Repository, Code Architecture, and Deployment Workspace", "35")
+    ("Figure 4.5: Multi-Algorithm Benchmark Matrix and Faculty Viva Voce Guide", "27")
 ]
 
 table_lof = doc.add_table(rows=len(figures_list), cols=2)
@@ -1304,21 +1325,17 @@ p_app_sub.paragraph_format.space_after = Pt(14)
 r = p_app_sub.add_run("SCREENSHOTS OF WORK DONE AND DEPLOYMENT TOOLS")
 format_run(r, size_pt=14, bold=True)
 
-add_body_paragraph(doc, "This appendix documents the codebase repository, deployment infrastructure, and interactive execution environments utilized in developing and testing SmartRoute:")
+add_body_paragraph(doc, "Screen shots of work done and deployment tools utilized during the Design and Analysis of Algorithms Project Based Learning (DAA PBL):")
 
-add_heading_2(doc, "A.1 Codebase Repository and Version Control")
+add_heading_2(doc, "A.1 Algorithmic Problem Solving & Platform Verification")
+add_bullet_item(doc, "Problem #416 & #474 (0/1 Knapsack & Partition Equal Subset Sum Dynamic Programming). Problem #743 (Network Delay Time - Dijkstra with Min-Heap). Problem #787 (Cheapest Flights Within K Stops - Bellman-Ford Iterative Edge Relaxation).", "LeetCode: ")
+add_bullet_item(doc, "Dijkstra: Shortest Reach 2 (Min-Heap Priority Queue on sparse road networks). Graph Theory & Negative Cycle Detection Challenges.", "HackerRank: ")
+
+add_heading_2(doc, "A.2 Source Code Repository, Architecture & CI/CD Deployment")
 add_bullet_item(doc, "Public Repository URL: https://github.com/Himanshu-Git-101/DAA_PBL", "GitHub Repository: ")
-add_bullet_item(doc, "Primary Branch: main (fully tracked commits, automated GitHub workflows)", "Branch Architecture: ")
-add_bullet_item(doc, "Integrated TypeScript 5.5, React 18, Vite 5.4, Python 3.11, Google Maps API", "Technology Stack: ")
-
-add_heading_2(doc, "A.2 Algorithmic Problem Solving & Source Code Files")
-add_bullet_item(doc, "Contains custom Binary Min-Heap Priority Queue class and step-by-step trace logger.", "dijkstra.py: ")
-add_bullet_item(doc, "Contains 2D memoization table generator, SKIP vs TAKE arithmetic inspector, and golden backtracking tracer.", "knapsack.py: ")
-add_bullet_item(doc, "Defines Hyderabad adjacency matrix, Begumpet Central Hub coordinates, and 35+ delivery node locations.", "graph.py: ")
-add_bullet_item(doc, "Houses Algorithm Lab components, Google Maps view, and Viva Cheat Sheet.", "src/components: ")
-
-add_figure(doc, os.path.join(SCREENSHOTS_DIR, "viva_guide.png"),
-           "Figure A.1: Faculty Viva Voce Concept Reference Sheet and Deployment Architecture", width=Inches(5.8))
+add_bullet_item(doc, "Primary Branch: main (fully tracked version-controlled commits, continuous integration workflows)", "Branch Architecture: ")
+add_bullet_item(doc, "dijkstra.py (Binary Min-Heap), knapsack.py (2D Memoization Table), graph.py (Adjacency Matrix & Coordinates), src/components (Algorithm Lab & Google Maps Engine).", "Core Modules: ")
+add_bullet_item(doc, "Integrated TypeScript 5.5, React 18, Vite 5.4, Python 3.11, Google Maps API, GitHub Pages / Netlify hosting.", "Technology Stack: ")
 
 doc.add_page_break()
 
