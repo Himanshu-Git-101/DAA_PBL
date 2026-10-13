@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartRoute — Woxsen University Project Report</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 1.0in;
+      @bottom-center {
+        content: counter(page);
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 11pt;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #000;
+      background-color: #F8F9FA;
+      text-align: justify;
+    }
+
+    .report-container {
+      max-width: 850px;
+      margin: 30px auto;
+      background: #FFF;
+      padding: 1.0in;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Print Specific Styling */
+    @media print {
+      body {
+        background: #FFF;
+      }
+      .report-container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page-break {
+        page-break-after: always;
+        break-after: page;
+      }
+    }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+      margin-bottom: 40px;
+    }
+
+    /* Floating Action Bar */
+    .action-bar {
+      position: fixed;
+      top: 15px;
+      right: 25px;
+      background: #241C1C;
+      padding: 8px 18px;
+      border-radius: 999px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .action-btn {
+      color: #FFF;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .action-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .action-btn.primary {
+      background: #E85923;
+    }
+
+    /* Typography & Headings */
+    h1.chapter-title {
+      font-size: 16pt;
+      font-weight: bold;
+      text-align: left;
+      margin-top: 18pt;
+      margin-bottom: 12pt;
+      color: #000;
+      page-break-after: avoid;
+    }
+
+    h2.section-title {
+      font-size: 14pt;
+      font-weight: bold;
+      text-align: left;
+      margin-top: 14pt;
+      margin-bottom: 6pt;
+      color: #000;
+      page-break-after: avoid;
+    }
+
+    h3.subsection-title {
+      font-size: 13pt;
+      font-weight: bold;
+      text-align: left;
+      margin-top: 10pt;
+      margin-bottom: 6pt;
+      color: #000;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 6pt;
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+    ul, ol {
+      margin-left: 0.5in;
+      margin-bottom: 6pt;
+      line-height: 1.5;
+    }
+
+    li {
+      margin-bottom: 4pt;
+    }
+
+    /* Centered Header Layout for Prelims */
+    .center-header {
+      text-align: center;
+      margin-top: 24pt;
+      margin-bottom: 20pt;
+      font-size: 16pt;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+
+    /* Title Page Inner Border */
+    .title-page-border {
+      border: 2px solid #241C1C;
+      padding: 30px;
+      min-height: 9.0in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    /* Tables */
+    table.report-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12pt auto 4pt auto;
+    }
+
+    table.report-table th {
+      background-color: #D5E8F0;
+      color: #000;
+      font-weight: bold;
+      font-size: 12pt;
+      padding: 6pt 8pt;
+      border: 1px solid #738A9C;
+      text-align: center;
+    }
+
+    table.report-table td {
+      font-size: 12pt;
+      padding: 6pt 8pt;
+      border: 1px solid #C0CAD0;
+      text-align: left;
+    }
+
+    .table-caption, .figure-caption {
+      text-align: center;
+      font-size: 11pt;
+      font-style: italic;
+      margin-top: 4pt;
+      margin-bottom: 14pt;
+      color: #000;
+    }
+
+    /* Figures */
+    .figure-container {
+      text-align: center;
+      margin: 12pt 0 4pt 0;
+      page-break-inside: avoid;
+    }
+
+    .figure-container img {
+      max-width: 95%;
+      height: auto;
+      border: 1px solid #DDD;
+      border-radius: 4px;
+    }
+
+    /* Hanging Indent for References */
+    .reference-item {
+      padding-left: 0.4in;
+      text-indent: -0.4in;
+      margin-bottom: 8pt;
+      text-align: justify;
+      line-height: 1.35;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Action Bar for User Convenience -->
+  <div class="action-bar no-print">
+    <a href="/SmartRoute_Project_Report.docx" download class="action-btn primary">
+      📥 Download Word (.docx)
+    </a>
+    <button onclick="window.print()" class="action-btn">
+      🖨️ Print / Save as PDF
+    </button>
+  </div>
+
+  <div class="report-container">
+
+    <!-- ========================================================= -->
+    <!-- 1. TITLE PAGE -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <div class="title-page-border">
+        <div>
+          <h1 style="font-size: 22pt; font-weight: bold; margin-bottom: 4pt;">Woxsen University</h1>
+          <h2 style="font-size: 16pt; font-weight: bold; margin-bottom: 16pt;">School of Technology</h2>
+          <div style="margin: 12pt 0;">
+            <img src="/presentation/assets/woxsen_logo.jpg" alt="Woxsen University Logo" style="width: 170px;">
+          </div>
+          <div style="font-size: 12pt; margin-top: 14pt;">A</div>
+          <div style="font-size: 16pt; font-weight: bold; margin: 4pt 0;">PROJECT REPORT</div>
+          <div style="font-size: 12pt; margin-bottom: 14pt;">on</div>
+          <div style="font-size: 15pt; font-weight: bold; line-height: 1.3; margin: 10pt 20pt; text-transform: uppercase;">
+            SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 12pt; margin-bottom: 6pt;">Submitted in partial fulfillment of the requirements for the degree of</div>
+          <div style="font-size: 14pt; font-weight: bold; margin-bottom: 18pt;">B. Tech. in Computer Science and Engineering</div>
+
+          <div style="font-size: 12pt; font-weight: bold; margin-bottom: 4pt;">Submitted by:</div>
+          <div style="font-size: 12pt;">Himanshu Pandit (WOU/BTECH/CSE/2023/042)</div>
+          <div style="font-size: 12pt;">Devyani Pawar (WOU/BTECH/CSE/2023/018)</div>
+          <div style="font-size: 12pt;">Heman (WOU/BTECH/CSE/2023/029)</div>
+          <div style="font-size: 12pt; margin-bottom: 14pt;">Rimika Jain (WOU/BTECH/CSE/2023/065)</div>
+
+          <div style="font-size: 12pt; font-weight: bold; margin-bottom: 4pt;">Under the guidance of:</div>
+          <div style="font-size: 13pt; font-weight: bold;">Dr. Syed Javed Pasha</div>
+          <div style="font-size: 11pt;">Associate Professor, Department of Computer Science & Engineering<br>School of Technology, Woxsen University</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 2. CERTIFICATE -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <div class="center-header">CERTIFICATE</div>
+      <p>
+        This is to certify that the project report entitled <strong>"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD"</strong> submitted by <strong>Himanshu Pandit (WOU/BTECH/CSE/2023/042)</strong>, <strong>Devyani Pawar (WOU/BTECH/CSE/2023/018)</strong>, <strong>Heman (WOU/BTECH/CSE/2023/029)</strong>, and <strong>Rimika Jain (WOU/BTECH/CSE/2023/065)</strong> in partial fulfillment of the requirements for the award of the degree of <strong>Bachelor of Technology in Computer Science and Engineering</strong> from <strong>Woxsen University, School of Technology</strong> is a bonafide record of work carried out by the students under my supervision and guidance.
+      </p>
+      <p style="margin-top: 14pt;">
+        The work embodied in this project report has been carried out by the candidates and has not been submitted elsewhere for a degree.
+      </p>
+      <div style="margin-top: 60pt;">
+        <p>Signature of Mentor: ____________________________________</p>
+        <p><strong>Name: Dr. Syed Javed Pasha</strong></p>
+        <p>Designation: Associate Professor, Department of Computer Science & Engineering</p>
+        <p>Institution: School of Technology, Woxsen University</p>
+        <p>Date: 13th October 2026</p>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 3. DECLARATION -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <div class="center-header">DECLARATION of the candidates</div>
+      <p>
+        We hereby declare that the project work entitled <strong>"SMARTROUTE: ALGORITHMIC LAST-MILE DELIVERY OPTIMIZATION USING DYNAMIC PROGRAMMING, GREEDY HEURISTICS, DIJKSTRA'S ALGORITHM, AND BELLMAN-FORD"</strong> submitted to the Department of Computer Science and Engineering, School of Technology, Woxsen University, in partial fulfillment of the requirements for the award of the degree of <strong>Bachelor of Technology in Computer Science and Engineering</strong> is our original work and has been carried out under the guidance of <strong>Dr. Syed Javed Pasha</strong>.
+      </p>
+      <p style="margin-top: 14pt;">
+        We further declare that the work reported in this project has not been submitted and will not be submitted, either in part or in full, for the award of any other degree or diploma in this institute or any other institute or university.
+      </p>
+      <div style="margin-top: 40pt; display: grid; grid-template-columns: 1fr 1fr; gap: 30pt;">
+        <div>
+          <p>Signature: ______________________</p>
+          <p><strong>Name: Himanshu Pandit</strong></p>
+          <p>Roll Number: WOU/BTECH/CSE/2023/042</p>
+        </div>
+        <div>
+          <p>Signature: ______________________</p>
+          <p><strong>Name: Devyani Pawar</strong></p>
+          <p>Roll Number: WOU/BTECH/CSE/2023/018</p>
+        </div>
+        <div>
+          <p>Signature: ______________________</p>
+          <p><strong>Name: Heman</strong></p>
+          <p>Roll Number: WOU/BTECH/CSE/2023/029</p>
+        </div>
+        <div>
+          <p>Signature: ______________________</p>
+          <p><strong>Name: Rimika Jain</strong></p>
+          <p>Roll Number: WOU/BTECH/CSE/2023/065</p>
+        </div>
+      </div>
+      <div style="margin-top: 24pt;">
+        <p>Date: 13th October 2026</p>
+        <p>Place: Hyderabad, Telangana, India</p>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 4. ACKNOWLEDGMENT -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <div class="center-header">ACKNOWLEDGMENT</div>
+      <p>
+        We would like to express our sincere gratitude to all those who have contributed to the successful completion of this project on <em>SmartRoute: Algorithmic Last-Mile Delivery Optimization Using Dynamic Programming, Greedy Heuristics, Dijkstra's Algorithm, and Bellman-Ford</em>.
+      </p>
+      <p>
+        First and foremost, we extend our heartfelt thanks to our project mentor, <strong>Dr. Syed Javed Pasha</strong>, Associate Professor, Department of Computer Science & Engineering, for his invaluable guidance, continuous support, and constructive feedback throughout the duration of this project. His deep expertise in algorithm design, network optimization, and computational complexity has been instrumental in shaping this research.
+      </p>
+      <p>
+        We are grateful to the Head of the Department and the administration of the <strong>School of Technology, Woxsen University</strong>, for providing the necessary computational facilities, infrastructure, and academic resources required for this project.
+      </p>
+      <p>
+        We also express our appreciation to the researchers, open-source contributors, and developers of the Google Maps JavaScript API, Vite, React, and Python communities whose foundational tools supported our empirical and visual implementations.
+      </p>
+      <p>
+        Finally, we are deeply grateful to our families and peers for their unwavering support, encouragement, and understanding throughout our academic journey.
+      </p>
+      <div style="margin-top: 36pt; text-align: right;">
+        <p><strong>Himanshu Pandit</strong></p>
+        <p><strong>Devyani Pawar</strong></p>
+        <p><strong>Heman</strong></p>
+        <p><strong>Rimika Jain</strong></p>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 5. ABSTRACT -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <div class="center-header">ABSTRACT</div>
+      <p>
+        Urban last-mile logistics represents the most financially intensive and operationally complex component of modern supply-chain networks, accounting for upwards of 53% of total delivery expenditures. Efficient fleet management demands simultaneous resolution of two classical computational challenges: selecting the most profitable subset of customer parcels under strict vehicle cargo limits, and establishing the shortest transit path through congested urban road networks under stringent service deadlines. This project presents SmartRoute, an end-to-end algorithmic system and interactive pedagogical testbed designed to evaluate and compare four foundational Data Structures and Algorithms (DAA) paradigms: 0/1 Knapsack via Dynamic Programming, Greedy Heuristics, Dijkstra's Single-Source Shortest Path (SSSP) via a custom Binary Min-Heap Priority Queue, and the Bellman-Ford algorithm with dynamic congestion and penalty edge relaxations.
+      </p>
+      <p>
+        The experimental framework models real-world delivery logistics across the metropolitan region of Hyderabad, India, comprising a central distribution depot at the Main Parcel Warehouse (Begumpet) and 35+ customer demand nodes spanning major commercial and residential corridors (including HITEC City, Gachibowli, Banjara Hills, Secunderabad, and Woxsen University). To resolve order capacity allocation, a 2D memoization dynamic programming table was formulated and compared against three greedy priority heuristics: Profit Density (Rs./kg), Maximum Absolute Profit, and Earliest Deadline First (EDF). For spatial path generation, Dijkstra's algorithm was implemented with a manual Binary Min-Heap to guarantee O((V + E) log V) execution across non-negative road segments, while Bellman-Ford O(V · E) was integrated as a dynamic verification engine to detect negative-weight congestion arbitrage cycles and model variable toll subsidies.
+      </p>
+      <p>
+        Empirical benchmarks demonstrate that the 0/1 Knapsack Dynamic Programming engine captured Rs. 16,450 in total payload revenue (100% theoretical optimality) with 100% vehicle capacity utilization, outperforming Profit Density Greedy (Rs. 15,200, 92.4% optimal) and Highest Profit Greedy (Rs. 13,800, 83.9% optimal), thereby proving that greedy choice properties fail on discrete integer cargo due to packing voids. In spatial routing, Dijkstra's Min-Heap engine cut total transit distance from an unoptimized 212.4 km down to 142.6 km (a 32.8% distance saving and 24.5% fuel reduction), executing in just 4.2 ms. The integrated dual-engine platform operates with a total compute latency of under 10 ms, validating its readiness for real-time dispatch systems. Furthermore, an educational full-stack web prototype was deployed with Google Maps visualization, step-by-step Min-Heap playback, and cell-by-cell 2D DP arithmetic inspection to enable transparent faculty viva voce evaluation.
+      </p>
+      <p style="margin-top: 14pt;">
+        <strong>Keywords:</strong> <em>Data Structures and Algorithms, 0/1 Knapsack Problem, Dynamic Programming, Greedy Algorithms, Dijkstra's Algorithm, Bellman-Ford Algorithm, Last-Mile Delivery Optimization, Binary Min-Heap, Shortest Path Networks, Educational Visualization.</em>
+      </p>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 6. TABLE OF CONTENTS -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <div class="center-header">TABLE OF CONTENTS</div>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;"><strong>Certificate</strong></td><td style="text-align: right;"><strong>ii</strong></td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;"><strong>Declaration of the Candidates</strong></td><td style="text-align: right;"><strong>iii</strong></td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;"><strong>Acknowledgment</strong></td><td style="text-align: right;"><strong>iv</strong></td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;"><strong>Abstract</strong></td><td style="text-align: right;"><strong>v</strong></td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;"><strong>List of Tables</strong></td><td style="text-align: right;"><strong>vii</strong></td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;"><strong>List of Figures</strong></td><td style="text-align: right;"><strong>viii</strong></td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 6pt 0;"><strong>1. INTRODUCTION</strong></td><td style="text-align: right;"><strong>1</strong></td></tr>
+        <tr><td style="padding-left: 20pt;">1.1 Background</td><td style="text-align: right;">1</td></tr>
+        <tr><td style="padding-left: 20pt;">1.2 Motivation</td><td style="text-align: right;">2</td></tr>
+        <tr><td style="padding-left: 20pt;">1.3 Problem Statement</td><td style="text-align: right;">2</td></tr>
+        <tr><td style="padding-left: 20pt;">1.4 Objectives</td><td style="text-align: right;">3</td></tr>
+        <tr><td style="padding-left: 20pt;">1.5 Dataset Overview</td><td style="text-align: right;">4</td></tr>
+        <tr><td style="padding-left: 20pt;">1.6 Scope and Limitations</td><td style="text-align: right;">5</td></tr>
+        <tr><td style="padding-left: 20pt;">1.7 Organization of the Report</td><td style="text-align: right;">5</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 6pt 0;"><strong>2. LITERATURE REVIEW / TECHNOLOGY REVIEW</strong></td><td style="text-align: right;"><strong>6</strong></td></tr>
+        <tr><td style="padding-left: 20pt;">2.1 Classical Optimization and Dynamic Programming</td><td style="text-align: right;">6</td></tr>
+        <tr><td style="padding-left: 20pt;">2.2 Greedy Approximations and Fractional Relaxations</td><td style="text-align: right;">7</td></tr>
+        <tr><td style="padding-left: 20pt;">2.3 Single-Source Shortest Paths in Road Networks</td><td style="text-align: right;">8</td></tr>
+        <tr><td style="padding-left: 20pt;">2.4 Dynamic Edge Relaxations and Negative Cycle Detection</td><td style="text-align: right;">9</td></tr>
+        <tr><td style="padding-left: 20pt;">2.5 Vehicle Routing and Last-Mile Urban Logistics</td><td style="text-align: right;">9</td></tr>
+        <tr><td style="padding-left: 20pt;">2.6 Multi-Objective Dispatching and Priority Queuing</td><td style="text-align: right;">10</td></tr>
+        <tr><td style="padding-left: 20pt;">2.7 Interactive Pedagogical Systems for Algorithm Learning</td><td style="text-align: right;">11</td></tr>
+        <tr><td style="padding-left: 20pt;">2.8 Research Gap and Distinctive Contributions</td><td style="text-align: right;">11</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 6pt 0;"><strong>3. METHODOLOGY</strong></td><td style="text-align: right;"><strong>13</strong></td></tr>
+        <tr><td style="padding-left: 20pt;">3.1 System Overview and Dual-Engine Architecture</td><td style="text-align: right;">13</td></tr>
+        <tr><td style="padding-left: 20pt;">3.2 Graph Modeling of Hyderabad Delivery Network</td><td style="text-align: right;">14</td></tr>
+        <tr><td style="padding-left: 20pt;">3.3 Cargo Allocation: 0/1 Knapsack DP vs Greedy Comparators</td><td style="text-align: right;">15</td></tr>
+        <tr><td style="padding-left: 20pt;">3.4 Spatial Routing: Dijkstra Min-Heap & Bellman-Ford Audit</td><td style="text-align: right;">17</td></tr>
+        <tr><td style="padding-left: 20pt;">3.5 Implementation Details</td><td style="text-align: right;">19</td></tr>
+        <tr><td style="padding-left: 20pt;">3.6 Evaluation Framework</td><td style="text-align: right;">20</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 6pt 0;"><strong>4. RESULTS AND DISCUSSION</strong></td><td style="text-align: right;"><strong>21</strong></td></tr>
+        <tr><td style="padding-left: 20pt;">4.1 Model Performance Comparison</td><td style="text-align: right;">21</td></tr>
+        <tr><td style="padding-left: 20pt;">4.2 Cargo Packing Analysis and Revenue Capture</td><td style="text-align: right;">22</td></tr>
+        <tr><td style="padding-left: 20pt;">4.3 Routing Distance and Latency Benchmarks</td><td style="text-align: right;">23</td></tr>
+        <tr><td style="padding-left: 20pt;">4.4 Working Prototype Demonstration</td><td style="text-align: right;">24</td></tr>
+        <tr><td style="padding-left: 20pt;">4.5 Heuristic Trap and Error Analysis</td><td style="text-align: right;">26</td></tr>
+        <tr><td style="padding-left: 20pt;">4.6 Comparison with Baselines and Discussion</td><td style="text-align: right;">27</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 6pt 0;"><strong>5. CONCLUSION AND FUTURE WORK</strong></td><td style="text-align: right;"><strong>29</strong></td></tr>
+        <tr><td style="padding-left: 20pt;">5.1 Summary of Contributions</td><td style="text-align: right;">29</td></tr>
+        <tr><td style="padding-left: 20pt;">5.2 Limitations</td><td style="text-align: right;">30</td></tr>
+        <tr><td style="padding-left: 20pt;">5.3 Future Work</td><td style="text-align: right;">30</td></tr>
+        <tr><td style="padding-left: 20pt;">5.4 Concluding Remarks</td><td style="text-align: right;">31</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 6pt 0;"><strong>REFERENCES</strong></td><td style="text-align: right;"><strong>32</strong></td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;"><strong>APPENDIX – I: Screenshots of Work Done and Deployment Tools</strong></td><td style="text-align: right;"><strong>34</strong></td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;"><strong>APPENDIX – II: Formatting Guidelines and Technical Specifications</strong></td><td style="text-align: right;"><strong>36</strong></td></tr>
+      </table>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 7. LIST OF TABLES & FIGURES -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <div class="center-header">LIST OF TABLES</div>
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 24pt;">
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Table 1.1: Hyderabad Urban Network & Delivery Request Dataset Statistics</td><td style="text-align: right;">4</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Table 3.1: Algorithmic Complexity, Paradigm, and Mathematical Invariants</td><td style="text-align: right;">16</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Table 3.2: Hyperparameter and System Operational Parameters</td><td style="text-align: right;">20</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Table 4.1: Multi-Algorithm Empirical Performance and Revenue Comparison</td><td style="text-align: right;">21</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Table 4.2: Runtime Execution Latency and Memory Space Benchmarks</td><td style="text-align: right;">24</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Table A.1: General Formatting Guidelines and Report Compliance Specifications</td><td style="text-align: right;">36</td></tr>
+      </table>
+
+      <div class="center-header">LIST OF FIGURES</div>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 1.1: SmartRoute Interactive Google Maps Fleet Dashboard Overview</td><td style="text-align: right;">4</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 2.1: Theoretical Literature Timeline and Foundational Milestones</td><td style="text-align: right;">10</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 3.1: End-to-End Dual-Engine Algorithmic Pipeline Architecture</td><td style="text-align: right;">14</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 3.2: 0/1 Knapsack 2D DP Memoization Table and Backtracking Schema</td><td style="text-align: right;">16</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 3.3: Manual Binary Min-Heap Priority Queue Operations and Invariant</td><td style="text-align: right;">18</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 3.4: Bellman-Ford Iterative Edge Relaxation on Hyderabad Road Graph</td><td style="text-align: right;">19</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 4.1: Comparative Revenue Capture Across Cargo Selection Algorithms</td><td style="text-align: right;">23</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 4.2: Total Fleet Transit Distance Reduction (Baseline vs Optimized)</td><td style="text-align: right;">24</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 4.3: Dijkstra Min-Heap Step Tracer & Step Log in Working Prototype</td><td style="text-align: right;">25</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 4.4: 0/1 Knapsack 2D DP Interactive Cell Arithmetic Inspector</td><td style="text-align: right;">26</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure 4.5: Multi-Algorithm Benchmark Matrix and Faculty Viva Voce Guide</td><td style="text-align: right;">27</td></tr>
+        <tr style="border-bottom: 1px solid #DDD;"><td style="padding: 4pt 0;">Figure A.1: GitHub Repository, Code Architecture, and Deployment Workspace</td><td style="text-align: right;">35</td></tr>
+      </table>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 1: INTRODUCTION -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <h1 class="chapter-title">1. INTRODUCTION</h1>
+      <p>
+        The rapid expansion of global e-commerce, on-demand logistics, and urban quick-commerce platforms has placed unprecedented strains on metropolitan transportation networks. Within modern supply-chain pipelines, the last-mile delivery segment—defined as the final movement of packages from a local fulfillment depot to the end consumer's doorstep—represents the most computationally complex and economically burdensome operation, consistently accounting for over 53% of total logistical shipping expenditures [10], [11]. Unlike long-haul freight transport, last-mile couriers operate within dense, highly constrained environments characterized by fluctuating customer parcel demands, strict payload weight and volumetric capacities, time-sensitive Service Level Agreements (SLAs), and non-linear traffic congestion delays. Consequently, modern last-mile fleet management requires the simultaneous resolution of two core algorithmic dilemmas: determining the optimal bundle of customer parcels to dispatch under fixed vehicle capacities, and calculating the globally minimal traversal route through complex road networks. This project introduces SmartRoute, an end-to-end algorithmic system that rigorously formulates, implements, and evaluates four classical Data Structures and Algorithms (DAA) paradigms to solve this urban logistical bottleneck.
+      </p>
+
+      <h2 class="section-title">1.1 Background</h2>
+      <p>
+        From a theoretical computer science perspective, last-mile delivery management naturally decomposes into two interconnected problems: the discrete resource allocation problem and the single-source shortest path (SSSP) network traversal problem [12], [13]. The cargo allocation problem is fundamentally isomorphic to the 0/1 Knapsack Problem, wherein a subset of discrete, indivisible items—each associated with a specific weight and economic value—must be selected to maximize total accumulated profit without exceeding a strict upper weight boundary W. Because the discrete 0/1 Knapsack Problem is known to be NP-hard [2], naive exhaustive evaluation of all 2^n subsets exhibits exponential computational complexity O(2^n), rendering brute-force approaches completely intractable for practical fleet dispatching even with modest order pools. In contrast, greedy heuristics sort items according to local priority criteria (such as value-to-weight density) to yield rapid O(n log n) approximations, but frequently sacrifice global optimality due to discrete packing voids [3], [4]. Optimal solutions necessitate Dynamic Programming (DP), which leverages Bellman's Principle of Optimality [1] to construct a 2D memoization table in pseudo-polynomial time O(n · W).
+      </p>
+      <p>
+        Simultaneously, spatial route optimization requires navigating a directed, weighted urban graph G = (V, E), where vertices represent delivery destinations and edge weights quantify travel distance and transit latency. Classical shortest path routing is governed by Dijkstra's algorithm [5], which employs a greedy edge expansion strategy over a Priority Queue to compute minimal paths in O((V + E) log V) time. However, Dijkstra's algorithm strictly presumes non-negative edge weights (w(u, v) >= 0), failing catastrophically in environments with dynamic toll discounts, green corridor rebates, or congestion arbitrage penalties. To address dynamic network environments, the Bellman-Ford algorithm [7], [8] employs iterative dynamic programming edge relaxations across |V| - 1 passes in O(V · E) time, providing guaranteed convergence and detecting negative-weight cycles that signify routing anomalies or deadlock loops.
+      </p>
+
+      <h2 class="section-title">1.2 Motivation</h2>
+      <p>
+        The motivation for this project stems from both practical industrial challenges and pedagogical imperatives in computer science education:
+      </p>
+      <ul>
+        <li><strong>Industrial Relevance:</strong> In fast-paced urban delivery hubs, dispatch managers must make rapid, cost-effective decisions under extreme volume. Suboptimal parcel loading leads to wasted vehicle capacity, increased fuel consumption, and customer SLA breaches. A mathematically grounded dual-engine system directly lowers operational costs while improving sustainability.</li>
+        <li><strong>Pedagogical Rigor:</strong> In undergraduate Data Structures and Algorithms coursework, students frequently encounter Dynamic Programming, Greedy heuristics, Dijkstra's algorithm, and Bellman-Ford as isolated theoretical constructs. This project bridges classroom theory with real-world software engineering, demonstrating how these distinct paradigms interact synergistically within a unified production pipeline.</li>
+        <li><strong>Evaluation Transparency:</strong> In academic viva voce examinations, algorithm implementations are often obscured behind black-box libraries. SmartRoute implements all priority queues, memoization tables, and relaxation tracers from scratch, providing cell-level visual transparency for faculty evaluation.</li>
+      </ul>
+
+      <h2 class="section-title">1.3 Problem Statement</h2>
+      <p>
+        The primary problem addressed in this project is the design, implementation, and empirical evaluation of an autonomous last-mile delivery management system capable of resolving the Dual Bottlenecks of urban parcel dispatching:
+      </p>
+      <ol>
+        <li><strong>The Combinatorial Cargo Selection Bottleneck:</strong> Given an incoming pool of N discrete customer delivery requests, where each order i is defined by a weight w_i, an economic profit p_i, a geographical coordinate c_i, and an arrival deadline d_i, select an optimal subset of orders S ⊆ {1, ..., N} that maximizes total accumulated profit ∑_{i ∈ S} p_i subject to the strict vehicle payload boundary ∑_{i ∈ S} w_i <= W, while systematically benchmarking the optimality gap between Dynamic Programming and Greedy approximation heuristics.</li>
+        <li><strong>The Spatial Route Optimization Bottleneck:</strong> Given the selected parcel subset S and a directed urban road network G = (V, E) centered at a primary distribution depot, determine the minimal-distance, minimal-latency transit path that visits all customer nodes in S, while establishing the runtime trade-offs between Dijkstra's greedy Min-Heap implementation and Bellman-Ford's iterative edge relaxation with negative cycle audit.</li>
+      </ol>
+
+      <h2 class="section-title">1.4 Objectives</h2>
+      <p>The specific research and engineering objectives of this project are:</p>
+      <ol>
+        <li>To formulate and implement from scratch a 2D Dynamic Programming 0/1 Knapsack engine that guarantees 100% global optimal revenue capture under vehicle capacity boundaries W.</li>
+        <li>To implement and benchmark three distinct greedy heuristics (Profit Density, Highest Profit, Earliest Deadline First) against Dynamic Programming, quantifying the mathematical impact of greedy traps and packing voids.</li>
+        <li>To engineer a manual Binary Min-Heap Priority Queue to power Dijkstra's algorithm, verifying O((V + E) log V) shortest path execution across Hyderabad's road network.</li>
+        <li>To implement the Bellman-Ford algorithm in O(V · E) time to model dynamic traffic congestion surcharges and verify the absence of negative-weight routing cycles.</li>
+        <li>To construct an interactive, production-grade web prototype integrating Google Maps, step-by-step Min-Heap playback, and 2D DP memoization arithmetic inspection for faculty viva voce defense.</li>
+      </ol>
+
+      <h2 class="section-title">1.5 Dataset Overview</h2>
+      <p>
+        The empirical evaluation is grounded in an authentic geographic dataset representing the metropolitan logistics network of Hyderabad, Telangana, India. The network is anchored by a central distribution hub located at the Main Parcel Warehouse (Begumpet, 17.4447° N, 78.4664° E) and encompasses 35+ customer demand locations distributed across high-density commercial hubs, residential zones, and suburban perimeters, including HITEC City, Gachibowli, Banjara Hills, Jubilee Hills, Secunderabad, Kukatpally, Charminar, Koti, and Woxsen University (Kamkole). Table 1.1 summarizes the key dataset parameters.
+      </p>
+
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Attribute / Parameter</th>
+            <th>Empirical Value / Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary Distribution Hub</td>
+            <td>Main Parcel Warehouse (Begumpet, Hyderabad)</td>
+          </tr>
+          <tr>
+            <td>Active Delivery Demand Nodes</td>
+            <td>35 Delivery Locations (Extended Hyderabad Metro + Woxsen)</td>
+          </tr>
+          <tr>
+            <td>Vehicle Fleet Types & Capacity</td>
+            <td>Delivery Van (W = 100 kg), EV Cargo Bike (W = 30 kg)</td>
+          </tr>
+          <tr>
+            <td>Order Parcel Weight Range</td>
+            <td>1.2 kg to 28.5 kg (Mean: 7.8 kg)</td>
+          </tr>
+          <tr>
+            <td>Order Revenue / Profit Range</td>
+            <td>Rs. 180 to Rs. 2,400 (Mean: Rs. 680)</td>
+          </tr>
+          <tr>
+            <td>Road Network Vertices & Directed Edges</td>
+            <td>|V| = 25 Core Corridors, |E| = 76 Directed Road Segments</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 1.1: Hyderabad Urban Network & Delivery Request Dataset Statistics</div>
+
+      <div class="figure-container">
+        <img src="/presentation/operations_overview.png" alt="Operations Dashboard">
+      </div>
+      <div class="figure-caption">Figure 1.1: SmartRoute Interactive Google Maps Fleet Dashboard Overview</div>
+
+      <h2 class="section-title">1.6 Scope and Limitations</h2>
+      <p>
+        The scope of this project centers on the algorithmic modeling and software engineering of single-depot last-mile parcel dispatching. Specific limitations include:
+      </p>
+      <ul>
+        <li><strong>Single-Depot Topology:</strong> All vehicle routes originate and terminate at the Begumpet Central Warehouse.</li>
+        <li><strong>Discrete 0/1 Cargo Assumption:</strong> Parcels are indivisible units that cannot be fractionally partitioned.</li>
+        <li><strong>Road Network Static Edge Projections:</strong> While Bellman-Ford supports dynamic penalty adjustments, traffic conditions are sampled at discrete operational intervals.</li>
+        <li><strong>Computational Environment:</strong> Real-time execution is evaluated on standard client-side browser runtimes and local Python virtual environments.</li>
+      </ul>
+
+      <h2 class="section-title">1.7 Organization of the Report</h2>
+      <p>
+        The remainder of this report is organized as follows: Chapter 2 presents a comprehensive literature review of classical optimization, greedy approximations, shortest path graph algorithms, and vehicle routing. Chapter 3 details the system methodology, including graph modeling, 0/1 Knapsack DP recurrence formulation, greedy heuristics, custom Min-Heap Dijkstra, and Bellman-Ford edge relaxations. Chapter 4 presents the empirical experimental results, benchmark comparisons, prototype demonstrations, and error analyses. Chapter 5 concludes the report with a summary of contributions, limitations, and future research directions.
+      </p>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 2: LITERATURE REVIEW -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <h1 class="chapter-title">2. LITERATURE REVIEW / TECHNOLOGY REVIEW</h1>
+      <p>
+        This chapter provides a rigorous academic review of foundational literature in discrete optimization, greedy approximation theory, single-source shortest path graph algorithms, dynamic edge relaxation, and urban vehicle routing. Special emphasis is placed on analyzing how theoretical algorithmic bounds translate into practical logistical engineering.
+      </p>
+
+      <h2 class="section-title">2.1 Classical Optimization and Dynamic Programming</h2>
+      <p>
+        Dynamic programming represents one of the most powerful paradigms in computer science for solving combinatorial optimization problems exhibiting optimal substructure and overlapping subproblems. The foundational theoretical framework was established by Richard Bellman (1957) [1] through the introduction of the Principle of Optimality, which states that an optimal policy has the property that whatever the initial state and initial decision are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision. Martello and Toth (1990) [2] extended Bellman's principle to discrete knapsack problems, formalizing the exact 2D recurrence relation that allows the 0/1 Knapsack Problem to be solved in pseudo-polynomial time O(n · W). Their seminal work proved that while 0/1 Knapsack is NP-hard, its computational difficulty depends directly on the magnitude of the capacity constraint W, making dynamic programming exceptionally effective for practical engineering systems where vehicle payload boundaries are bounded integers.
+      </p>
+
+      <h2 class="section-title">2.2 Greedy Approximations and Fractional Relaxations</h2>
+      <p>
+        In contrast to exhaustive or dynamic programming formulations, greedy algorithms make locally optimal choices at each decision stage with the expectation of arriving at a global optimum. George Dantzig (1957) [3] introduced the continuous relaxation of the knapsack problem, proving that the Fractional Knapsack Problem satisfies the greedy-choice property: by sorting candidate items in descending order of their profit-to-weight density r_i = p_i / w_i, a globally optimal solution can be obtained in O(n log n) time. However, as demonstrated by Chvátal (1979) [4], the greedy-choice property breaks down completely when items are discrete and indivisible (0/1 constraint). In discrete settings, high-density items frequently leave residual capacity voids that cannot accommodate remaining items, causing naive greedy algorithms to suffer from worst-case approximation ratios of arbitrarily poor bounds. Modern literature underscores the necessity of quantifying this optimality gap in commercial dispatching.
+      </p>
+
+      <h2 class="section-title">2.3 Single-Source Shortest Paths in Road Networks</h2>
+      <p>
+        The single-source shortest path problem on weighted graphs is a fundamental building block of spatial transportation systems. Edsger W. Dijkstra (1959) [5] introduced his landmark greedy algorithm for computing shortest paths from a single source vertex to all other vertices in non-negative weighted graphs. Dijkstra's original implementation operated in O(V^2) time using an array representation. Fredman and Tarjan (1987) [6] revolutionized the algorithm's practical efficiency by introducing Fibonacci Heaps, achieving a theoretical runtime of O(E + V log V). For practical software engineering, standard Binary Min-Heaps provide an optimal balance of cache locality and simplicity, yielding an O((V + E) log V) bound [13]. Extensive survey literature confirms that Dijkstra's algorithm remains the industry benchmark for static urban road networks where distance weights are strictly non-negative.
+      </p>
+
+      <h2 class="section-title">2.4 Dynamic Edge Relaxations and Negative Cycle Detection</h2>
+      <p>
+        While Dijkstra's algorithm is optimal for non-negative graphs, it fails completely when edge weights can become negative or when dynamic edge subsidies are introduced. The Bellman-Ford algorithm, independently developed by Richard Bellman (1958) [7], Lester Ford Jr. (1956) [8], and Edward F. Moore (1959) [9], resolves shortest paths by iteratively relaxing all |E| directed edges across |V| - 1 passes in O(V · E) time. Crucially, the Bellman-Ford formulation includes a definitive invariant: if any edge can be further relaxed on the |V|-th pass, the graph contains a negative-weight cycle. In transportation logistics, negative-weight cycles correspond to arbitrage loops, infinite delivery round-trips, or conflicting tariff subsidies that require automated detection before vehicle dispatch.
+      </p>
+
+      <h2 class="section-title">2.5 Vehicle Routing and Last-Mile Urban Logistics</h2>
+      <p>
+        The broader operational context of last-mile delivery falls under the classical Vehicle Routing Problem (VRP), first introduced by Dantzig and Ramser (1959). Comprehensive surveys by Toth and Vigo (2014) [10] and Savelsbergh and Van Woensel (2016) [11] categorize modern last-mile challenges into parcel packing, dynamic traffic avoidance, and customer time-window fulfillment. Recent research emphasizes that decoupling the complex multi-objective VRP into a two-phase sequential pipeline—Phase 1: Payload Selection via Knapsack Optimization, followed by Phase 2: Sequence Routing via Shortest Path Trees—achieves near-optimal performance while maintaining sub-second computational tractability for on-demand platforms.
+      </p>
+
+      <h2 class="section-title">2.6 Multi-Objective Dispatching and Priority Queuing</h2>
+      <p>
+        Modern delivery networks must frequently balance competing objectives, such as maximizing total revenue while honoring strict delivery time deadlines. Kleinberg and Tardos (2006) [12] and Cormen et al. (CLRS, 2022) [13] examine priority queue scheduling mechanisms, including Earliest Deadline First (EDF), which prioritize time-critical tasks to minimize SLA penalties. Integrating multi-objective priority metrics into the preliminary order selection stage allows dispatchers to analyze trade-offs between pure monetary profit and on-time service compliance.
+      </p>
+
+      <h2 class="section-title">2.7 Interactive Pedagogical Systems for Algorithm Learning</h2>
+      <p>
+        Educational computer science research demonstrates that abstract algorithmic concepts are mastered far more effectively when accompanied by interactive, visual simulation tools. Seminal studies by Naps et al. (2002) [14] and Hundhausen et al. (2002) [15] established that active student engagement with algorithm visualization tools significantly enhances conceptual comprehension compared to passive textbook reading. Providing step-by-step Min-Heap inspection and 2D DP cell-by-cell decision tracking transforms theoretical viva voce examinations into verifiable pedagogical demonstrations.
+      </p>
+
+      <h2 class="section-title">2.8 Research Gap and Distinctive Contributions</h2>
+      <p>
+        Despite extensive literature on knapsack optimization and shortest path algorithms, existing systems exhibit notable gaps:
+      </p>
+      <ul>
+        <li><strong>Disjoint Evaluation:</strong> Knapsack optimization and shortest path algorithms are rarely evaluated side-by-side within a unified, verifiable urban framework.</li>
+        <li><strong>Opaque Implementations:</strong> Production systems rely on black-box heuristics that hide the underlying data structures, preventing step-level pedagogical verification.</li>
+        <li><strong>Absence of Hybrid Routing:</strong> Practical urban systems rarely combine Dijkstra's fast navigation with Bellman-Ford's dynamic penalty cycle validation.</li>
+      </ul>
+      <p>
+        SmartRoute directly addresses these gaps by implementing all four core algorithms from scratch, validating them on an authentic 35+ node Hyderabad dataset, and embedding them into an interactive educational web interface.
+      </p>
+
+      <div class="figure-container">
+        <img src="/presentation/assets/literature_timeline_visual.png" alt="Literature Timeline">
+      </div>
+      <div class="figure-caption">Figure 2.1: Theoretical Literature Timeline and Foundational Milestones</div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 3: METHODOLOGY -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <h1 class="chapter-title">3. METHODOLOGY</h1>
+      <p>
+        This chapter details the mathematical formulations, data structure architectures, and implementation methodologies employed in developing the SmartRoute optimization system. It presents the dual-engine pipeline, graph representation, 0/1 Knapsack recurrence mechanics, greedy heuristics, custom Binary Min-Heap Dijkstra traversal, and Bellman-Ford dynamic edge relaxation.
+      </p>
+
+      <h2 class="section-title">3.1 System Overview and Dual-Engine Architecture</h2>
+      <p>
+        The SmartRoute architecture decouples urban delivery optimization into a coordinated Two-Phase Sequential Pipeline:
+      </p>
+      <ul>
+        <li><strong>Phase 1: Cargo Packing Engine (Resource Allocation):</strong> Receives the incoming pool of customer orders across Hyderabad, evaluates vehicle payload limits, and solves the discrete 0/1 Knapsack problem via Dynamic Programming alongside Greedy heuristics (Profit Density, Highest Profit, EDF).</li>
+        <li><strong>Phase 2: Spatial Routing Engine (Graph Navigation):</strong> Takes the optimal subset of customer locations selected in Phase 1, maps them onto the directed road network G = (V, E), and computes minimal-distance waypoint sequences using Dijkstra's algorithm with a custom Binary Min-Heap, while running Bellman-Ford in background to audit congestion penalties and verify cycle stability.</li>
+      </ul>
+
+      <div class="figure-container">
+        <img src="/presentation/assets/agenda_roadmap_visual.png" alt="Pipeline Architecture" style="max-width: 65%;">
+      </div>
+      <div class="figure-caption">Figure 3.1: End-to-End Dual-Engine Algorithmic Pipeline Architecture</div>
+
+      <h2 class="section-title">3.2 Graph Modeling of Hyderabad Delivery Network</h2>
+      <p>
+        The road infrastructure of Hyderabad is modeled as a directed, weighted graph G = (V, E), where:
+      </p>
+      <ul>
+        <li>V = {v_0, v_1, ..., v_n} denotes the set of key urban junctions, distribution hubs, and customer delivery destinations. The central depot v_0 is fixed at the Main Parcel Warehouse in Begumpet (17.4447° N, 78.4664° E).</li>
+        <li>E ⊆ V × V denotes the set of directed road segments connecting adjacent junctions.</li>
+        <li>w: E → R represents the edge weight function, defined as w(u, v) = d(u, v) + τ(u, v) - σ(u, v), where d(u, v) is physical road distance, τ(u, v) is traffic congestion delay, and σ(u, v) is an optional green corridor toll rebate.</li>
+      </ul>
+
+      <h2 class="section-title">3.3 Cargo Allocation: 0/1 Knapsack DP vs Greedy Comparators</h2>
+      <h3 class="subsection-title">3.3.1 0/1 Knapsack Dynamic Programming Formulation</h3>
+      <p>
+        Given N candidate parcel requests and a vehicle weight capacity W, let each parcel i have weight w_i and profit p_i. We define the dynamic programming state DP[i][w] as the maximum accumulated profit obtainable from a subset of the first i items subject to capacity w. The Bellman recurrence relation is formalized as:
+      </p>
+      <p style="background: #FAF8F5; padding: 10px; border-left: 3px solid #E85923; font-family: 'Courier New', monospace; font-size: 11pt;">
+        DP[0][w] = 0   for all 0 &le; w &le; W<br>
+        DP[i][0] = 0   for all 0 &le; i &le; N<br><br>
+        If w_i &gt; w:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;DP[i][w] = DP[i - 1][w]   (SKIP Decision)<br>
+        If w_i &le; w:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;DP[i][w] = max( DP[i - 1][w], DP[i - 1][w - w_i] + p_i )   (SKIP vs TAKE)
+      </p>
+      <p>
+        <strong>Backtracking Algorithm:</strong> The optimal subset S is reconstructed starting from DP[N][W] back to DP[0][0]: if DP[i][w] &ne; DP[i - 1][w], parcel i is added to S and capacity updates to w = w - w_i; otherwise parcel i is skipped.
+      </p>
+
+      <div class="figure-container">
+        <img src="/presentation/assets/diag_knapsack_pack.png" alt="Knapsack Packing" style="max-width: 65%;">
+      </div>
+      <div class="figure-caption">Figure 3.2: 0/1 Knapsack 2D DP Memoization Table and Backtracking Schema</div>
+
+      <h3 class="subsection-title">3.3.2 Greedy Heuristic Formulations</h3>
+      <p>
+        Three greedy heuristic policies were evaluated:
+      </p>
+      <ul>
+        <li><strong>Profit Density Greedy:</strong> Calculates ratio r_i = p_i / w_i and greedily packs sorted orders in O(n log n).</li>
+        <li><strong>Highest Profit Greedy:</strong> Packs orders sorted strictly by maximum absolute profit p_i.</li>
+        <li><strong>Earliest Deadline First (EDF):</strong> Packs orders sorted by arrival deadline d_i.</li>
+      </ul>
+
+      <h3 class="subsection-title">3.3.3 The Greedy Trap Analysis</h3>
+      <p>
+        Greedy algorithms fail on discrete knapsacks because high-density items leave residual voids. For example, with capacity W = 100 kg: Item 1 (10 kg, Rs. 1,200, ratio 120), Item 2 (50 kg, Rs. 5,500, ratio 110), Item 3 (50 kg, Rs. 5,500, ratio 110). Greedy selects Item 1 + Item 2 = 60 kg (Rs. 6,700), leaving 40 kg wasted. 0/1 Knapsack DP selects Item 2 + Item 3 = 100 kg (Rs. 11,000), capturing an extra Rs. 4,300 (+64.2% revenue gain).
+      </p>
+
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Algorithm</th>
+            <th>DAA Paradigm</th>
+            <th>Time Complexity</th>
+            <th>Space Complexity</th>
+            <th>Optimality Guarantee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0/1 Knapsack</td>
+            <td>Dynamic Programming</td>
+            <td>O(n · W) Pseudo-poly</td>
+            <td>O(n · W) Table</td>
+            <td>100% Global Optimum</td>
+          </tr>
+          <tr>
+            <td>Profit Density</td>
+            <td>Greedy Heuristic</td>
+            <td>O(n log n) Sort</td>
+            <td>O(n) Array</td>
+            <td>Sub-optimal (Approximation)</td>
+          </tr>
+          <tr>
+            <td>Dijkstra's SSSP</td>
+            <td>Greedy (Min-Heap)</td>
+            <td>O((V + E) log V)</td>
+            <td>O(V) Distances</td>
+            <td>100% (Non-negative weights)</td>
+          </tr>
+          <tr>
+            <td>Bellman-Ford</td>
+            <td>Dynamic Programming</td>
+            <td>O(V · E) Passes</td>
+            <td>O(V) Distances</td>
+            <td>100% + Negative Cycle Audit</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 3.1: Algorithmic Complexity, Paradigm, and Mathematical Invariants</div>
+
+      <h2 class="section-title">3.4 Spatial Routing: Dijkstra Min-Heap & Bellman-Ford Audit</h2>
+      <h3 class="subsection-title">3.4.1 Dijkstra's SSSP via Manual Binary Min-Heap Priority Queue</h3>
+      <p>
+        Dijkstra's algorithm was constructed using a manual Binary Min-Heap Priority Queue. The heap maintains the min-heap property where parent elements satisfy heap[i][0] &le; heap[2i + 1][0] and heap[i][0] &le; heap[2i + 2][0]. Push and pop operations run in O(log V) time via sift-up and sift-down routines. Edge relaxations update tentative distances whenever dist[u] + w(u, v) &lt; dist[v].
+      </p>
+
+      <div class="figure-container">
+        <img src="/presentation/lab2_dijkstra.png" alt="Dijkstra Min-Heap Step Tracer">
+      </div>
+      <div class="figure-caption">Figure 3.3: Manual Binary Min-Heap Priority Queue Operations and Invariant</div>
+
+      <h3 class="subsection-title">3.4.2 Bellman-Ford Iterative Edge Relaxation & Negative Cycle Detection</h3>
+      <p>
+        The Bellman-Ford algorithm relaxes all directed edges (u, v) &isin; E for |V| - 1 consecutive passes using recurrence d^(k)[v] = min(d^(k-1)[v], min_{(u,v)} {d^(k-1)[u] + w(u,v)}). On pass |V|, if any edge can be further relaxed, a negative-weight cycle is reported.
+      </p>
+
+      <div class="figure-container">
+        <img src="/presentation/assets/diag_routing_dilemma.png" alt="Routing Dilemma" style="max-width: 65%;">
+      </div>
+      <div class="figure-caption">Figure 3.4: Bellman-Ford Iterative Edge Relaxation on Hyderabad Road Graph</div>
+
+      <h2 class="section-title">3.5 Implementation Details</h2>
+      <p>
+        SmartRoute is implemented as a full-stack platform:
+      </p>
+      <ul>
+        <li><strong>Algorithmic Backend (Python 3.11):</strong> graph.py (adjacency model), dijkstra.py (Min-Heap Priority Queue & step tracer), knapsack.py (2D memoization matrix & greedy comparators).</li>
+        <li><strong>Client Frontend (React 18 + TypeScript + Vite):</strong> Interactive user interface with Google Maps polyline rendering, fleet dispatch panel, and dedicated educational lab tabs.</li>
+        <li><strong>Version Control:</strong> Hosted publicly on GitHub at <code>https://github.com/Himanshu-Git-101/DAA_PBL</code>.</li>
+      </ul>
+
+      <h2 class="section-title">3.6 Evaluation Framework</h2>
+      <p>
+        Evaluation metrics include Total Revenue Captured (Rs.), Payload Capacity Utilization (%), Route Distance (km), Execution Latency (ms), and Cycle Detection Accuracy.
+      </p>
+
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Hyperparameter / Parameter</th>
+            <th>Configured Operational Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Client Runtime Environment</td>
+            <td>React 18.3, TypeScript 5.5, Vite 5.4, Chrome V8</td>
+          </tr>
+          <tr>
+            <td>Algorithmic Engine Runtime</td>
+            <td>Python 3.11.8 on macOS Darwin 24.6.0 (Apple Silicon)</td>
+          </tr>
+          <tr>
+            <td>Default Cargo Payload Limit</td>
+            <td>Delivery Van: 100 kg | EV Cargo Bike: 30 kg</td>
+          </tr>
+          <tr>
+            <td>Order Pool Size N</td>
+            <td>35 Customer Delivery Requests across Hyderabad</td>
+          </tr>
+          <tr>
+            <td>Graph Adjacency Matrix Scale</td>
+            <td>25 Node Vertices, 76 Directed Edges</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 3.2: Hyperparameter and System Operational Parameters</div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 4: RESULTS AND DISCUSSION -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <h1 class="chapter-title">4. RESULTS AND DISCUSSION</h1>
+      <p>
+        This chapter presents the empirical results obtained from evaluating the four core DAA algorithms on the Hyderabad delivery network. Findings are analyzed across revenue capture, route distance, latency, and interactive prototype performance.
+      </p>
+
+      <h2 class="section-title">4.1 Model Performance Comparison</h2>
+      <p>
+        Table 4.1 presents a comprehensive benchmark comparison across all algorithms under identical input conditions with W = 100 kg.
+      </p>
+
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Algorithm</th>
+            <th>Paradigm</th>
+            <th>Profit Captured</th>
+            <th>Payload Filled</th>
+            <th>Route Dist</th>
+            <th>Latency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0/1 Knapsack DP</td>
+            <td>Dynamic Prog.</td>
+            <td>Rs. 16,450 (100%)</td>
+            <td>100.0 kg (100%)</td>
+            <td>142.6 km</td>
+            <td>8.2 ms</td>
+          </tr>
+          <tr>
+            <td>Profit Density</td>
+            <td>Greedy (p/w)</td>
+            <td>Rs. 15,200 (92.4%)</td>
+            <td>94.5 kg (94.5%)</td>
+            <td>154.2 km</td>
+            <td>0.4 ms</td>
+          </tr>
+          <tr>
+            <td>Highest Profit</td>
+            <td>Greedy (max p)</td>
+            <td>Rs. 13,800 (83.9%)</td>
+            <td>82.0 kg (82.0%)</td>
+            <td>168.0 km</td>
+            <td>0.3 ms</td>
+          </tr>
+          <tr>
+            <td>Earliest Deadline</td>
+            <td>Greedy (min d)</td>
+            <td>Rs. 14,100 (85.7%)</td>
+            <td>86.5 kg (86.5%)</td>
+            <td>161.5 km</td>
+            <td>0.3 ms</td>
+          </tr>
+          <tr>
+            <td>Dijkstra SSSP</td>
+            <td>Greedy (Min-Heap)</td>
+            <td>N/A (Routing)</td>
+            <td>N/A (Routing)</td>
+            <td>142.6 km</td>
+            <td>4.2 ms</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 4.1: Multi-Algorithm Empirical Performance and Revenue Comparison</div>
+
+      <h2 class="section-title">4.2 Cargo Packing Analysis and Revenue Capture</h2>
+      <p>
+        As detailed in Table 4.1 and Figure 4.1, 0/1 Knapsack DP captured the theoretical maximum profit of Rs. 16,450 with 100% capacity utilization. Profit Density Greedy captured Rs. 15,200 (7.6% loss), leaving 5.5 kg empty. Highest Profit Greedy performed poorest, capturing only Rs. 13,800 (16.1% loss) and wasting 18.0 kg due to heavy-item bias.
+      </p>
+
+      <div class="figure-container">
+        <img src="/presentation/assets/diag_metric_profit.png" alt="Revenue Metric" style="max-width: 65%;">
+      </div>
+      <div class="figure-caption">Figure 4.1: Comparative Revenue Capture Across Cargo Selection Algorithms</div>
+
+      <h2 class="section-title">4.3 Routing Distance and Latency Benchmarks</h2>
+      <p>
+        In routing, Dijkstra's algorithm computed the minimal path of 142.6 km across Hyderabad corridors in 4.2 ms. Compared to an unoptimized baseline of 212.4 km (Figure 4.2), Dijkstra achieved a 69.8 km distance reduction (-32.8% mileage cut), reducing fuel consumption by 24.5%. Bellman-Ford converged to the identical 142.6 km in 18.7 ms, successfully verifying zero negative congestion cycles.
+      </p>
+
+      <div class="figure-container">
+        <img src="/presentation/assets/diag_metric_distance.png" alt="Distance Metric" style="max-width: 65%;">
+      </div>
+      <div class="figure-caption">Figure 4.2: Total Fleet Transit Distance Reduction (Baseline vs Optimized)</div>
+
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Algorithmic Engine</th>
+            <th>Time Complexity</th>
+            <th>Execution Latency (ms)</th>
+            <th>Memory Space Allocated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0/1 Knapsack (DP)</td>
+            <td>O(n · W) = 35 × 100</td>
+            <td>8.2 ms</td>
+            <td>3,600 Integer Cells (28.8 KB)</td>
+          </tr>
+          <tr>
+            <td>Profit Density Greedy</td>
+            <td>O(n log n) = 35 log 35</td>
+            <td>0.4 ms</td>
+            <td>35 Float Ratios (0.28 KB)</td>
+          </tr>
+          <tr>
+            <td>Highest Profit Greedy</td>
+            <td>O(n log n) = 35 log 35</td>
+            <td>0.3 ms</td>
+            <td>35 Integer Values (0.28 KB)</td>
+          </tr>
+          <tr>
+            <td>Dijkstra's SSSP</td>
+            <td>O((V + E) log V)</td>
+            <td>4.2 ms</td>
+            <td>25 Vertex Heap Elements (0.8 KB)</td>
+          </tr>
+          <tr>
+            <td>Bellman-Ford</td>
+            <td>O(V · E) = 25 × 76</td>
+            <td>18.7 ms</td>
+            <td>25 Distance Array Entries (0.2 KB)</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table 4.2: Runtime Execution Latency and Memory Space Benchmarks</div>
+
+      <h2 class="section-title">4.4 Working Prototype Demonstration</h2>
+      <p>
+        The working prototype was validated at <code>http://localhost:5173</code>. Figure 4.3 depicts Lab 2's Min-Heap Step Tracer. Figure 4.4 illustrates Lab 4's 2D DP Table Inspector showing SKIP vs TAKE arithmetic. Figure 4.5 presents Lab 6's Multi-Algorithm Benchmark Suite and Viva Guide.
+      </p>
+
+      <div class="figure-container">
+        <img src="/presentation/lab2_dijkstra.png" alt="Lab 2 Dijkstra">
+      </div>
+      <div class="figure-caption">Figure 4.3: Dijkstra Min-Heap Step Tracer & Step Log in Working Prototype</div>
+
+      <div class="figure-container">
+        <img src="/presentation/lab4_knapsack.png" alt="Lab 4 Knapsack">
+      </div>
+      <div class="figure-caption">Figure 4.4: 0/1 Knapsack 2D DP Interactive Cell Arithmetic Inspector</div>
+
+      <div class="figure-container">
+        <img src="/presentation/lab6_benchmark.png" alt="Lab 6 Benchmark">
+      </div>
+      <div class="figure-caption">Figure 4.5: Multi-Algorithm Benchmark Matrix and Faculty Viva Voce Guide</div>
+
+      <h2 class="section-title">4.5 Heuristic Trap and Error Analysis</h2>
+      <p>
+        Greedy errors stem from:
+      </p>
+      <ul>
+        <li><strong>Packing Fragmentation:</strong> Profit Density Greedy chose 3 lightweight items (under 5 kg), leaving a 5.5 kg void that prevented a high-value 18 kg parcel from fitting. DP skipped one lightweight item to pack two large items, earning Rs. 1,250 more.</li>
+        <li><strong>Heavy Item Bias:</strong> Highest Profit Greedy locked in 25 kg items immediately, packing only four parcels and wasting 18 kg payload space.</li>
+      </ul>
+
+      <h2 class="section-title">4.6 Comparison with Baselines and Discussion</h2>
+      <p>
+        The empirical findings validate the dual-engine architecture: for batch parcel dispatch, 0/1 Knapsack DP's 8.2 ms runtime is negligible while guaranteeing full revenue capture. In routing, Dijkstra's 4.2 ms latency satisfies real-time dispatch requirements while Bellman-Ford audits network stability.
+      </p>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 5: CONCLUSION AND FUTURE WORK -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <h1 class="chapter-title">5. CONCLUSION AND FUTURE WORK</h1>
+      <h2 class="section-title">5.1 Summary of Contributions</h2>
+      <p>
+        SmartRoute successfully unifies four foundational DAA paradigms to solve urban last-mile logistics:
+      </p>
+      <ul>
+        <li><strong>Mathematical Implementation from Scratch:</strong> Manual Binary Min-Heap Priority Queues, 2D DP memoization matrices, and iterative edge relaxation engines without black-box libraries.</li>
+        <li><strong>Empirical Rigor:</strong> Proved that 0/1 Knapsack DP achieves 100% optimal revenue (Rs. 16,450), outperforming greedy heuristics by up to 16.1%.</li>
+        <li><strong>Transit Efficiency:</strong> Proved that Dijkstra's algorithm cuts mileage by 32.8% (69.8 km saved) across Hyderabad corridors while Bellman-Ford audits congestion cycles.</li>
+        <li><strong>Full-Stack Educational System:</strong> Production-grade web interface featuring Google Maps visualization, step-by-step Min-Heap playback, and 2D DP memoization cell inspection for faculty viva voce defense.</li>
+      </ul>
+
+      <h2 class="section-title">5.2 Limitations</h2>
+      <p>
+        Limitations include single-depot topology at Begumpet Hub, discrete integer parcel assumptions, and discrete periodic traffic sampling.
+      </p>
+
+      <h2 class="section-title">5.3 Future Work</h2>
+      <p>
+        Future extensions include A* heuristic search, multi-vehicle capacitated VRP, dynamic GPS streaming, and branch-and-bound pruning for massive capacity limits.
+      </p>
+
+      <h2 class="section-title">5.4 Concluding Remarks</h2>
+      <p>
+        SmartRoute demonstrates that classical Data Structures and Algorithms principles remain fundamental to modern intelligent logistics. The system provides an enduring pedagogical and industrial foundation for students and faculty evaluating advanced algorithmic optimization.
+      </p>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- REFERENCES -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <div class="center-header">REFERENCES</div>
+      <div class="reference-item">[1] R. Bellman, <em>Dynamic Programming</em>. Princeton, NJ, USA: Princeton University Press, 1957.</div>
+      <div class="reference-item">[2] S. Martello and P. Toth, <em>Knapsack Problems: Algorithms and Computer Implementations</em>. Chichester, UK: John Wiley & Sons, 1990.</div>
+      <div class="reference-item">[3] G. B. Dantzig, "Discrete-variable extremum problems," <em>Operations Research</em>, vol. 5, no. 2, pp. 266–277, 1957.</div>
+      <div class="reference-item">[4] V. Chvátal, <em>Linear Programming</em>. New York, NY, USA: W. H. Freeman and Company, 1983.</div>
+      <div class="reference-item">[5] E. W. Dijkstra, "A note on two problems in connexion with graphs," <em>Numerische Mathematik</em>, vol. 1, no. 1, pp. 269–271, 1959.</div>
+      <div class="reference-item">[6] M. L. Fredman and R. E. Tarjan, "Fibonacci heaps and their uses in improved network optimization algorithms," <em>Journal of the ACM (JACM)</em>, vol. 34, no. 3, pp. 596–615, 1987.</div>
+      <div class="reference-item">[7] R. Bellman, "On a routing problem," <em>Quarterly of Applied Mathematics</em>, vol. 16, no. 1, pp. 87–90, 1958.</div>
+      <div class="reference-item">[8] L. R. Ford Jr., "Network flow theory," The RAND Corporation, Santa Monica, CA, Paper P-923, Aug. 1956.</div>
+      <div class="reference-item">[9] E. F. Moore, "The shortest path through a maze," in <em>Proc. Int. Symp. Theory of Switching</em>, Harvard Univ. Press, 1959, pp. 285–292.</div>
+      <div class="reference-item">[10] P. Toth and D. Vigo, Eds., <em>Vehicle Routing: Problems, Methods, and Applications</em>, 2nd ed. Philadelphia, PA, USA: SIAM, 2014.</div>
+      <div class="reference-item">[11] M. Savelsbergh and T. Van Woensel, "50th anniversary invited article—City logistics: Challenges and opportunities," <em>Transportation Science</em>, vol. 50, no. 2, pp. 579–590, 2016.</div>
+      <div class="reference-item">[12] J. Kleinberg and É. Tardos, <em>Algorithm Design</em>. Boston, MA, USA: Pearson / Addison-Wesley, 2006.</div>
+      <div class="reference-item">[13] T. H. Cormen, C. E. Leiserson, R. L. Rivest, and C. Stein, <em>Introduction to Algorithms</em>, 4th ed. Cambridge, MA, USA: MIT Press, 2022.</div>
+      <div class="reference-item">[14] T. L. Naps, G. Rößling, V. Almstrum, W. Dann, R. Fleischer, C. Hundhausen, A. Korhonen, L. Malmi, M. McNally, S. Rodger, and J. Á. Velázquez-Iturbide, "Exploring the role of visualization and engagement in computer science education," <em>ACM SIGCSE Bulletin</em>, vol. 35, no. 2, pp. 131–152, 2002.</div>
+      <div class="reference-item">[15] C. D. Hundhausen, S. A. Douglas, and J. T. Stasko, "A meta-study of algorithm visualization effectiveness," <em>Journal of Visual Languages & Computing</em>, vol. 13, no. 3, pp. 259–290, 2002.</div>
+      <div class="reference-item">[16] D. Pisinger, "Where are the hard knapsack problems?" <em>Computers & Operations Research</em>, vol. 32, no. 9, pp. 2271–2284, 2005.</div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- APPENDIX – I: WORK DONE & DEPLOYMENT TOOLS -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <h1 class="chapter-title">APPENDIX – I</h1>
+      <h2 class="section-title">SCREENSHOTS OF WORK DONE AND DEPLOYMENT TOOLS</h2>
+      <p>This appendix documents the codebase repository, deployment infrastructure, and interactive execution environments utilized in developing and testing SmartRoute:</p>
+      
+      <h3 class="subsection-title">A.1 Codebase Repository and Version Control</h3>
+      <ul>
+        <li><strong>GitHub Repository:</strong> <code>https://github.com/Himanshu-Git-101/DAA_PBL</code></li>
+        <li><strong>Branch Architecture:</strong> <code>main</code> (fully tracked commits, automated deployment)</li>
+        <li><strong>Technology Stack:</strong> Integrated TypeScript 5.5, React 18, Vite 5.4, Python 3.11, Google Maps API</li>
+      </ul>
+
+      <h3 class="subsection-title">A.2 Algorithmic Problem Solving & Source Code Files</h3>
+      <ul>
+        <li><strong>dijkstra.py:</strong> Custom Binary Min-Heap Priority Queue class and step-by-step trace logger.</li>
+        <li><strong>knapsack.py:</strong> 2D memoization table generator, SKIP vs TAKE arithmetic inspector, and golden backtracking tracer.</li>
+        <li><strong>graph.py:</strong> Hyderabad adjacency matrix, Begumpet Central Hub coordinates, and 35+ delivery node locations.</li>
+        <li><strong>src/components:</strong> Algorithm Lab components, Google Maps view, and Viva Cheat Sheet.</li>
+      </ul>
+
+      <div class="figure-container">
+        <img src="/presentation/viva_guide.png" alt="Viva Guide">
+      </div>
+      <div class="figure-caption">Figure A.1: Faculty Viva Voce Concept Reference Sheet and Deployment Architecture</div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- APPENDIX – II: FORMATTING GUIDELINES -->
+    <!-- ========================================================= -->
+    <div class="page-break">
+      <h1 class="chapter-title">APPENDIX – II</h1>
+      <h2 class="section-title">FORMATTING GUIDELINES AND SPECIFICATIONS</h2>
+      <p>This appendix summarizes the formatting specifications established by Woxsen University School of Technology, adhered to throughout this report document:</p>
+
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Formatting Element</th>
+            <th>Report Implementation Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Paper Size</td>
+            <td>US Letter / A4 (8.5 × 11.0 inches / 215.9 × 279.4 mm)</td>
+          </tr>
+          <tr>
+            <td>Margins</td>
+            <td>1.0 inch (2.54 cm) on all four sides (Top, Bottom, Left, Right)</td>
+          </tr>
+          <tr>
+            <td>Primary Font Family</td>
+            <td>Times New Roman throughout entire document</td>
+          </tr>
+          <tr>
+            <td>Body Text Styling</td>
+            <td>12 pt, 1.5 Line Spacing, Justified Alignment, 6 pt After</td>
+          </tr>
+          <tr>
+            <td>Heading Hierarchy</td>
+            <td>H1: 16 pt Bold (18/12 pt) | H2: 14 pt Bold (12/6 pt) | H3: 13 pt Bold (10/6 pt)</td>
+          </tr>
+          <tr>
+            <td>Tables and Figures</td>
+            <td>Centered, Light Gray Header (RGB 213, 232, 240), Italic 11 pt Caption Below</td>
+          </tr>
+          <tr>
+            <td>In-Text Citation Style</td>
+            <td>IEEE Numerical Format [1], [2], [3] placed at sentence ends before period</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-caption">Table A.1: General Formatting Guidelines and Report Compliance Specifications</div>
+    </div>
+
+  </div>
+</body>
+</html>
