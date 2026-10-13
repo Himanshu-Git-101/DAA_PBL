@@ -10,7 +10,33 @@ import { buildCompletePlan, PlanningStrategy } from './lib/planning/buildPlan';
 import { DeliveryRequest, Vehicle, FinalPlan } from './types';
 
 export const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<AppView>("operations");
+  const getInitialView = (): AppView => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('viva')) return 'viva_guide';
+      if (hash.includes('algorithm')) return 'algorithm_lab';
+    }
+    return 'operations';
+  };
+  const [currentView, setCurrentView] = useState<AppView>(getInitialView);
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('viva')) setCurrentView('viva_guide');
+      else if (hash.includes('algorithm')) setCurrentView('algorithm_lab');
+      else if (hash.includes('operations')) setCurrentView('operations');
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const handleSetView = (view: AppView) => {
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view;
+    }
+  };
   const [operatingDate, setOperatingDate] = useState<string>("Wed, Oct 07, 2026");
 
   // Single shared source of truth
@@ -193,7 +219,7 @@ export const App: React.FC = () => {
     <div className="app-shell flex flex-col h-screen w-screen overflow-hidden bg-slate-50 font-sans">
       <Navbar
         currentView={currentView}
-        onChangeView={setCurrentView}
+        onChangeView={handleSetView}
         operatingDate={operatingDate}
         onPrevDay={handlePrevDay}
         onNextDay={handleNextDay}
@@ -211,7 +237,7 @@ export const App: React.FC = () => {
             plan={plan}
             onRunPlan={handleRunPlan}
             onResetPlan={handleResetPlan}
-            onOpenAlgorithmLab={() => setCurrentView("algorithm_lab")}
+            onOpenAlgorithmLab={() => handleSetView("algorithm_lab")}
             onAddDelivery={handleAddDelivery}
             currentStrategy={currentStrategy}
             onChangeStrategy={setCurrentStrategy}

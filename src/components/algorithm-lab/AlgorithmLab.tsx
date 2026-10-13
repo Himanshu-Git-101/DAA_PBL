@@ -47,10 +47,34 @@ export const AlgorithmLab: React.FC<AlgorithmLabProps> = ({
   onUpdateVehicleCapacity,
   onUpdateDeliveryProfit
 }) => {
-  const [activeStep, setActiveStep] = useState<number>(0);
+  const getInitialStep = (): number => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      const match = hash.match(/lab[_-]?(\d)/i);
+      if (match) {
+        const s = parseInt(match[1], 10);
+        if (s >= 0 && s < LAB_STEPS.length) return s;
+      }
+    }
+    return 0;
+  };
+  const [activeStep, setActiveStep] = useState<number>(getInitialStep);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1.0);
   const [selectedLocationId, setSelectedLocationId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.toLowerCase();
+      const match = hash.match(/lab[_-]?(\d)/i);
+      if (match) {
+        const s = parseInt(match[1], 10);
+        if (s >= 0 && s < LAB_STEPS.length) setActiveStep(s);
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   useEffect(() => {
     let timer: any;
